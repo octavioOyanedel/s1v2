@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    SIND1 Desarrollo 
                 </div>
 
                 <div class="links">
