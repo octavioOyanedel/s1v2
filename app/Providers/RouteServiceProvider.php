@@ -46,7 +46,40 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapUserRoutes();
+
+        $this->mapPrivilegioRoutes();
+
         //
+    }
+
+
+    /**
+     * Define las rutas de usuario.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapPrivilegioRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/privilegio.php'));
+    }
+
+    /**
+     * Define las rutas de usuario.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapUserRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/user.php'));
     }
 
     /**
