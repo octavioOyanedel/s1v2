@@ -8,6 +8,15 @@ form, form input, form select, form select option {
 }
 
 /******************************************************
+ * spinner*********************************************
+ *****************************************************/
+div.spinner-border {
+	width: 18px !important;
+	height: 18px !important;
+	padding-right: 10px !important;
+}
+
+/******************************************************
  * formulario login************************************
  *****************************************************/
 div.contenedor-form-login {

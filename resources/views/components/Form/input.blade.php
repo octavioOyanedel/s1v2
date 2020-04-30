@@ -1,7 +1,7 @@
 <div>
 
 @error($nombre)
-    <div class="error-login alert alert-danger alerta-forms" role="alert">
+    <div class="alert alert-danger" role="alert">
         {{ $message }}
     </div>
 @else
