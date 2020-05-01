@@ -1,8 +1,15 @@
 <div>
+<!-- extraer objeto para cargar valor en input -->
+@if (request()->email != null && $nombre === 'email')
+	@php 
+		$valor = request()->email;
+	@endphp 
+@endif
+
 
 @error($nombre)
     <div class="alert alert-danger" role="alert">
-        {{ $message }}
+        <small>{{ $message }}</small>
     </div>
 @else
 	@if($label != 'no')

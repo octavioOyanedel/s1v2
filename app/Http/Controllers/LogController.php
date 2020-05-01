@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Log;
 use App\User;
+use App\Traits\LogGenerico;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
@@ -12,6 +13,7 @@ class LogController extends Controller
 {
     use CrudGenerico;
     use BuscarGenerico;
+    use LogGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -101,14 +103,9 @@ class LogController extends Controller
     public function registrarEnvioReset(Request $request)
     {
         $correo = $request->parametro;
-        if($request->ajax()){
-            $usuario = $this->buscarObjetoGenerico(new User, 'email', $correo);  
-            $request->request->add(['operacion' => 'Envío de correo para recuperar contraseña.']); 
-            $request->request->add(['ip' => obtenerIp()]);
-            $request->request->add(['navegador' => obtenerBrowser()]);
-            $request->request->add(['sistema' => obtenerSistemaOperativo()]);
-            $request->request->add(['user_id' => $usuario->id]);
-            $this->createGenerico($request, new Log);
+        $usuario = $this->buscarObjetoGenerico(new User, 'email', $correo);  
+        if($request->ajax()){            
+            $this->logGenerico('Envío de correo para recuperar contraseña.', $usuario);
             return response()->json('ok'); 
         }
         return response()->json('error');

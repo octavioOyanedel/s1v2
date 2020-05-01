@@ -32,6 +32,9 @@ function cargarFormulario($action)
 	        break;
 	    case "password.email":
 	        return 'inc.forms.reset';
-	        break;	 	        	             	        	                               
+	        break;
+	    case "password.update":
+	        return 'inc.forms.reset_ok';
+	        break;	 	        	        	             	        	                               
 	}
 }
