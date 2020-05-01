@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------|
 */
 
-Route::resource('/usuarios', 'UserController');
+Route::resource('/log', 'LogController');
 
 /*
  * Ajax
  */
-Route::get('/correos_reset', 'UserController@existeCorreo');
+Route::get('/log_reset', 'LogController@registrarEnvioReset');

@@ -50,9 +50,24 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapPrivilegioRoutes();
 
+        $this->mapLogRoutes();
+
         //
     }
 
+    /**
+     * Define las rutas de log.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapLogRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/log.php'));
+    }
 
     /**
      * Define las rutas de usuario.

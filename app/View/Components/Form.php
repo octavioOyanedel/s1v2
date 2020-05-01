@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class Form extends Component
 {
+    public $id;
     public $colecciones;
     public $objetos;
     public $alinear;
@@ -23,8 +24,9 @@ class Form extends Component
      *
      * @return void
      */
-    public function __construct($colecciones, $objetos, $alinear, $metodo, $action, $csrf, $titulo, $colorBoton, $tituloBoton, $tamanoBoton, $largoBoton, $idBoton)
+    public function __construct($id, $colecciones, $objetos, $alinear, $metodo, $action, $csrf, $titulo, $colorBoton, $tituloBoton, $tamanoBoton, $largoBoton, $idBoton)
     {
+        $this->id = $id;
         $this->colecciones = $colecciones;
         $this->objetos = $objetos;
         $this->alinear = $alinear;

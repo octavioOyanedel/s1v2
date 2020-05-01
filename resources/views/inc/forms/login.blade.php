@@ -1,4 +1,4 @@
-<form class="{{ $alinear }} border border-light p-5" method="{{ $metodo }}" action="{{ route($action) }}">
+<form id="{{ $id }}" class="{{ $alinear }} border border-light p-5" method="{{ $metodo }}" action="{{ route($action) }}">
 	@include(obtenerCsrf($csrf))
 	<p class="h4 mb-4">{{ $titulo }}</p>
 	<!-- Correo -->
