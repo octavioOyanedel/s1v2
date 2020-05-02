@@ -43,7 +43,8 @@
             "app/Helpers/general.php",
             "app/Helpers/form.php",
             "app/Helpers/input.php",
-            "app/Helpers/log.php"
+            "app/Helpers/log.php",
+            "app/Helpers/navbar.php"
         ],
         "classmap": [
             "database/seeds",

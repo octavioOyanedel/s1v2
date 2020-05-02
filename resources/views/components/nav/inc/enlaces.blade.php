@@ -1,0 +1,1 @@
+<x-enlace-nav-bar titulo="usuario" />

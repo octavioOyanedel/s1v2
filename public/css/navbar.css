@@ -1,0 +1,50 @@
+/*
+ * Nav
+ */
+nav {
+	font-size: 14px !important;
+}
+
+/*
+ * Enlaces nav
+ */
+nav a {
+    font-size: 14px !important;
+}
+
+/*
+ * Contenedor circular logo nav
+ */
+.navbar-brand{
+    padding: 0px !important;
+    overflow: hidden;
+    width: 32px;
+    background-color: white !important;
+    border-radius: 16px;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+
+/*
+ * Agregar hover a navbar
+ */
+.dropdown .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropdown .dropdown-menu.dropdown-primary .dropdown-item:active, .dropdown .dropdown-menu.dropdown-primary .dropdown-item.active, .dropup .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropup .dropdown-menu.dropdown-primary .dropdown-item:active, .dropup .dropdown-menu.dropdown-primary .dropdown-item.active, .dropleft .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropleft .dropdown-menu.dropdown-primary .dropdown-item:active, .dropleft .dropdown-menu.dropdown-primary .dropdown-item.active, .dropright .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropright .dropdown-menu.dropdown-primary .dropdown-item:active, .dropright .dropdown-menu.dropdown-primary .dropdown-item.active {
+    background-color: #3F729B !important;
+    border-radius: .125rem;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+
+/*
+ * Quitar padding en enlaces de nav
+ */
+div.dropdown-menu{
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+/*
+ * Modificar color de texto a enlaces del nav en hover
+ */
+.dropdown-item:hover{
+	color: #fff !important;
+}
