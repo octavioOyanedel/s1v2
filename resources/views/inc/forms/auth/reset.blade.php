@@ -8,7 +8,8 @@
 
 		</div>
 	@endif
-
+	
+    @include('layouts.inc.mensajes.obligatorio')
 	<!-- Correo -->
 	<x-input label="no" tipo="email" nombre="email" id="email" margen="mb-4" tamano="" valor="" placeholder="Correo" obligatorio="si"/>
     <!-- Sign in button -->

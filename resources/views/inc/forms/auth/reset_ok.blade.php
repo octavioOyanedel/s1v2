@@ -2,10 +2,9 @@
     @include(obtenerCsrf($csrf))
     <p class="h4 mb-4">{{ $titulo }}</p>
 
-    <div class="alert alert-warning" role="alert">
-        Requerimientos contraseña: <br>Mínimo 8 caracteres. <br>Solo letras y números.
-    </div>
-
+    @include('layouts.inc.mensajes.obligatorio')
+    @include('layouts.inc.mensajes.requisitos_pass')
+    
     <!-- Token -->
     <input type="hidden" name="token" value="{{ request()->token }}">
 

@@ -7,6 +7,7 @@ use App\Privilegio;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
+use App\Http\Requests\PasswordRequest;
 
 class UserController extends Controller
 {
@@ -90,6 +91,32 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing password.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function formEditarPassword()
+    {
+        return view('app.usuarios.pass');
+    }
+
+    /**
+     * Update password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editarPassword(PasswordRequest $request)
+    {
+        $usuario = Auth::user();
+        $usuario->password = Hash::make($request->nueva);
+        $usuario->update();
+        return redirect('home')->with('status', 'Contraseña Actualizada!');
     }
 
     /************************************************

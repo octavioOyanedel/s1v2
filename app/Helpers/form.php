@@ -38,7 +38,10 @@ function cargarFormulario($action)
 	        break;
 	    case "usuarios.update":
 	        return 'inc.forms.usuario.editar';
-	        break;		                	        	             	        	                               
+	        break;
+	    case "editar_passwd":
+	        return 'inc.forms.usuario.pass';
+	        break;		        	                	        	             	        	                               
 	}
 }
 
