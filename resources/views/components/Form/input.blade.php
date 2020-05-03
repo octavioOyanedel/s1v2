@@ -9,7 +9,7 @@
 
 @error($nombre)
     <div class="alert alert-danger" role="alert">
-        <small>{{ $message }}</small>
+        {{ $message }}
     </div>
 @else
 	@if($label != 'no')

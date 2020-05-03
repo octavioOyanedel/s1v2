@@ -10,7 +10,7 @@ function obtenerEnlacesNav($nombre)
 {
 	switch ($nombre) {
 		case "usuario":
-			return array('Editar usuario'=>'home','Cambiar contraseña'=>'password.reset','Salir'=>'logout');
+			return array('Editar usuario'=>'usuarios.edit','Cambiar contraseña'=>'home','Salir'=>'logout');
 		break;			
 	}
 }

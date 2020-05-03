@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Privilegio;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\UsuarioRequest;
 
 class UserController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +61,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $privilegios = Privilegio::orderBy('nombre','ASC')->get();
+        $usuario = User::findOrFail($id);
+        $objetos = array('usuario'=>$usuario);
+        $colecciones = array('privilegios'=>$privilegios);
+        return view('app.usuarios.edit', compact('colecciones','objetos'));
     }
 
     /**
@@ -67,9 +75,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsuarioRequest $request, $id)
     {
-        //
+        $this->updateGenerico($request, User::findOrFail($id));
+        return redirect('home')->with('status', 'Usuario Actualizado!');
     }
 
     /**
