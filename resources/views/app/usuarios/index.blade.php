@@ -2,5 +2,7 @@
 
 @section('content')
 
+    <!-- Tabla usuarios -->
 
+    
 @endsection

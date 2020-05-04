@@ -1,6 +1,6 @@
 <div>
 	<!-- Dropdown usuario logeado-->
-	<li class="nav-item dropdown active">
+	<li class="nav-item dropdown {{ esActive(request()->path(), $titulo) }}">
 		
 		<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			@if($titulo === 'usuario')
