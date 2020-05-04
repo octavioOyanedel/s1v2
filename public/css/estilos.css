@@ -32,6 +32,17 @@ div.spinner-border {
 /******************************************************
  * formulario login************************************
  *****************************************************/
+div.contenedor-form {
+	width: 400px;
+	left: 50%;
+	height: auto;
+	position: absolute;
+	transform: translate(-50%, 0);
+}
+
+/******************************************************
+ * formulario login************************************
+ *****************************************************/
 div.contenedor-form-login {
 	width: 400px;
 	height: 400px;
@@ -42,7 +53,7 @@ div.contenedor-form-login {
 }
 
 @media (max-width: 768px) { 
-	div.contenedor-form-login{
+	div.contenedor-form-login, div.contenedor-form {
 		width: 100%;
 	}
 }

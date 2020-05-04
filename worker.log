@@ -152,3 +152,5 @@ Could not open input file: /home/vagrant/code/laravel_lab/artisan
 [2020-05-01 17:44:09][1] Processed:  Illuminate\Auth\Notifications\ResetPassword
 [2020-05-01 17:49:01][1] Processing: Illuminate\Auth\Notifications\ResetPassword
 [2020-05-01 17:49:03][1] Processed:  Illuminate\Auth\Notifications\ResetPassword
+[2020-05-04 00:04:48][1] Processing: Illuminate\Auth\Notifications\ResetPassword
+[2020-05-04 00:04:51][1] Processed:  Illuminate\Auth\Notifications\ResetPassword

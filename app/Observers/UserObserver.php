@@ -27,10 +27,12 @@ class UserObserver
      */
     public function updated(User $user)
     {
+        $texto = obtenerDatosEditados($user->getOriginal(), $user->toArray(), 'usuario');
         if($user->password != $user->getOriginal('password')){
             $this->logGenerico('Cambio de contraseña.', $user);
+        }else{
+            $this->logGenerico('Datos de usuario editados: '.$texto, $user);
         }
-
     }
 
     /**

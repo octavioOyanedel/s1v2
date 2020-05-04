@@ -1,6 +1,62 @@
 <?php
 
 /**
+ * Descripción: Obtener llave y valor de array (Objeto) modificados por usuario
+ * Entrada/s: arrays original y modificado desde formulario
+ * Salida: array con key y valor modificados
+ */
+function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
+    $original = filtrarArrayParaEditar($array_original, $nombre);
+    $formulario = filtrarArrayParaEditar($array_formulario, $nombre);
+    $modificados = array();
+    $keys = array();
+    foreach ($formulario as $key => $value) {
+        if($value != $original[$key]){
+            $modificados[$original[$key]] = $value;
+            array_push($keys, $key);
+        }
+    }
+    return obtenerTextoEditar($modificados, $keys);
+}
+
+/**
+ * Descripción: Obtener texto para log editar
+ * Entrada/s: array
+ * Salida: array filtrado 
+ */
+function obtenerTextoEditar($modificados, $keys) {
+    $indice = 0;
+    $separador = '';
+    $texto = '';
+    foreach ($modificados as $key => $value) {
+        if($indice != 0){
+            $separador = ', ';
+        }
+        $texto = $texto.$separador.$keys[$indice].' de '.$key.' a '.$value;
+        $indice++;
+    }
+    return $texto; 
+}
+
+/**
+ * Descripción: Obtener arreglo con llaves a eliminar
+ * Entrada/s: array
+ * Salida: array filtrado 
+ */
+function filtrarArrayParaEditar($array, $nombre) {
+    $keys = null;
+    switch ($nombre) {
+        case 'usuario':
+            $keys = array('password','remember_token','created_at','updated_at');
+            break;
+    }
+    foreach ($keys as $key) {
+        unset($array[$key]);
+    }
+    return $array;
+}
+
+/**
  * Descripción: Obtener sistema operativo de cliente
  * Entrada/s: 
  * Salida: string sistema operativo cliente

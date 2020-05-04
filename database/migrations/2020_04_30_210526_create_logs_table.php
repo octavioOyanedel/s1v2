@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');    
-            $table->string('operacion');
+            $table->text('operacion');
             $table->string('ip');
             $table->string('navegador');
             $table->string('sistema');

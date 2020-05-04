@@ -6,6 +6,8 @@ use App\User;
 use App\Privilegio;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UsuarioRequest;
 use App\Http\Requests\PasswordRequest;
 
