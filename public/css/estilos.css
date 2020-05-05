@@ -21,6 +21,28 @@ button.close {
 	padding: 10px !important;
 }
 
+/******************************************************
+ * tabla***********************************************
+ *****************************************************/
+table tbody tr td{
+	font-size: 14px !important;
+}
+
+table tbody td, table thead th{
+    white-space: nowrap !important;
+}
+
+table tbody tr:hover{
+    background-color: #cfd8dc !important;
+}
+
+ul.pagination {
+    justify-content: center !important;
+}
+
+/******************************************************
+ * nav ************************************************
+ *****************************************************/
 .navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
     background-color: rgba(255,255,255,0.135) !important;
 }
@@ -35,7 +57,7 @@ div.spinner-border {
 }
 
 /******************************************************
- * formulario login************************************
+ * tablas y forms *************************************
  *****************************************************/
 div.contenedor-form {
 	width: 400px;
@@ -45,6 +67,65 @@ div.contenedor-form {
 	transform: translate(-50%, 0);
 }
 
+/******************************************************
+ * filtro *************************************
+ *****************************************************/
+.contenedor-filtro {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto;
+    align-items: center;
+}
+
+.contenedor-filtro .cantidad,
+.contenedor-filtro .campo,
+.contenedor-filtro .orden{
+	margin-right: 10px;
+}
+
+.contenedor-filtro .boton button {    
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.total-filtro {
+	border: 1px solid gray;
+	font-size: 12px;
+	background-color: white;
+	margin-right: 10px;
+	padding: 3px 6px;
+	border-radius: 18px;
+} 
+
+@media (max-width: 768px) {
+    /*
+    * Redimensión de elementos del filtro
+    */
+    .contenedor-filtro .excel,
+    .contenedor-filtro .cantidad,
+    .contenedor-filtro .campo,
+    .contenedor-filtro .orden,
+    .contenedor-filtro .boton{    
+        grid-column: 1 / -1; 
+    }
+
+	.contenedor-filtro .cantidad,
+	.contenedor-filtro .campo,
+	.contenedor-filtro .orden,
+	.contenedor-filtro .boton{
+		margin-top: 10px;
+		margin-right: 0px;
+	}
+
+    .contenedor-filtro .boton button{    
+        width: 100%;
+        margin: 0px;
+    }    
+
+    .contenedor-filtro {
+    	text-align: center;
+    }
+
+}
 /******************************************************
  * formulario login************************************
  *****************************************************/

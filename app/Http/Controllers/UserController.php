@@ -19,9 +19,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('app.usuarios.index');
+        $cantidad = obtenerCantidad($request);
+        $columna = obtenerColumna($request);
+        $orden = obtenerOrden($request);
+
+        $coleccion = User::orderBy($columna, $orden)
+        ->paginate($cantidad)->appends([
+            'cantidad' => $cantidad,
+            'columna' => $columna,
+            'orden' => $orden,
+        ]);
+
+        $total = $coleccion->total();
+        return view('app.usuarios.index', compact('coleccion', 'total'));
     }
 
     /**
@@ -92,7 +104,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 
     /**
