@@ -9,3 +9,4 @@
 <!-- Scripts -->
 <script src="{{ asset('js/ajax.js') }}" defer></script>
 <script src="{{ asset('js/spinner-reset.js') }}" defer></script>
+<script src="{{ asset('js/filtro.js') }}" defer></script>

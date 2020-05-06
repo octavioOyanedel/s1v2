@@ -36,7 +36,7 @@
 							</a>
 						</td>
 						<!-- Ventana modal  -->
-						<x-modal :id="$item->id" titulo="Eliminar Usuario" csrf="delete" action="usuarios.destroy" texto="este préstamo"/>						
+						<x-modal :id="$item->id" titulo="Eliminar Usuario" csrf="delete" action="usuarios.destroy" texto="a este usuario"/>						
 						@include(obtenerContenidoTabla($contenido))
 					</tr>
 				@endforeach				

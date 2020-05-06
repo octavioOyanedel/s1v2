@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Privilegio;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -36,6 +37,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /*******************************************************************************************
+    /************************************ Métodos Estáticos ************************************
+    *******************************************************************************************/
+
+
+    /**
+     * Relación belongsTo
+     * Esta/e usuario pertenece a un/a préstamo
+     */
+    public function privilegio()
+    {
+        return $this->belongsTo('App\Privilegio');
+    }
+        
 
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************

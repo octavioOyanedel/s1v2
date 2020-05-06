@@ -6,6 +6,7 @@ use App\User;
 use App\Privilegio;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Traits\BuscarGenerico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UsuarioRequest;
@@ -14,6 +15,7 @@ use App\Http\Requests\PasswordRequest;
 class UserController extends Controller
 {
     use CrudGenerico;
+    use BuscarGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -24,15 +26,20 @@ class UserController extends Controller
         $cantidad = obtenerCantidad($request);
         $columna = obtenerColumna($request);
         $orden = obtenerOrden($request);
+        $coleccion = null;
 
-        $coleccion = User::orderBy($columna, $orden)
-        ->paginate($cantidad)->appends([
-            'cantidad' => $cantidad,
-            'columna' => $columna,
-            'orden' => $orden,
-        ]);
+        switch ($columna) {
+            case 'privilegio_id':
+                $coleccion = $this->buscarParaFiltradoJoin('privilegios', 'users', 'nombre', $cantidad, $columna, $orden);
+                break;
+            
+            default:
+                $coleccion = $this->buscarParaFiltrado('users', $cantidad, $columna, $orden);
+                break;
+        }
 
         $total = $coleccion->total();
+       
         return view('app.usuarios.index', compact('coleccion', 'total'));
     }
 

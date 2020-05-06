@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 
 /**
@@ -14,12 +15,40 @@ function obtenerCamposParaFiltro($nombre)
 			return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Rut'=>'rut');
 		break;
         case "usuarios":
-            return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2');
+            return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Correo'=>'email','Privilegio'=>'privilegio_id');
         break;
         case "prestamos":
             return array('Numero'=>'registro','Cheque'=>'cheque');
         break;  
 	}
+}
+
+/**
+ * Descripción: obtener objeto de modelo para filtrado y posterior muestra de resultados + index
+ * Entrada/s: string nombre tabla
+ * Salida: objeto modelo
+ */
+function obtenerObjetoModel($tabla)
+{
+    switch ($tabla) {
+        case 'users':
+            return new User;
+            break;
+        
+        default:
+            return new Object;
+            break;
+    }
+}
+
+/**
+ * Descripción: obtener arreglo asociativo para appends en paginación
+ * Entrada/s: variables para filtrado cantidad, columna y orden
+ * Salida: arreglo asociativo
+ */
+function obtenerAppendsArray($cantidad, $columna, $orden)
+{
+    return array('cantidad' => $cantidad,'columna' => $columna,'orden' => $orden);
 }
 
 /**
