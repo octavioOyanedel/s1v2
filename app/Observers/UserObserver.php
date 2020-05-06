@@ -31,7 +31,9 @@ class UserObserver
         if($user->password != $user->getOriginal('password')){
             $this->logGenerico('Cambio de contraseña.', $user);
         }else{
-            $this->logGenerico('Datos de usuario editados: '.$texto, $user);
+            if($texto != ''){
+                $this->logGenerico('Datos de usuario editados: '.$texto, $user);
+            }            
         }
     }
 
