@@ -11,7 +11,7 @@
 					<th></th>
 	                <th></th>
 	                <th></th>
-					@foreach (obtenerCabederasTablas($contenido) as $nombre => $clase)
+					@foreach (obtenerCabecerasTablas($contenido) as $nombre => $clase)
 						<th class="{{ $clase }}"><b>{{ $nombre }}</b></th>
 					@endforeach	                
 				</tr>
@@ -20,12 +20,12 @@
 				@foreach ($coleccion as $item)
 					<tr>
 						<td class="text-center">
-							<a title="Ver" class="p-2 text-primary" href="{{ route('home') }}">
+							<a title="Ver" class="p-2 text-primary" href="{{ route($ver,$item->id) }}">
 								<i class="fas fa-eye"></i>
 							</a>
 						</td>
 						<td class="text-center">
-							<a title="Editar" class="p-2 text-warning" href="{{ route('home') }}">
+							<a title="Editar" class="p-2 text-warning" href="{{ route($editar,$item->id) }}">
 								<i class="fas fa-pen"></i>
 							</a>
 						</td>

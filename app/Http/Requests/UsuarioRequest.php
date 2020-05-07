@@ -31,9 +31,8 @@ class UsuarioRequest extends FormRequest
                 'nombre2' => 'nullable|alpha',
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
-                'email' => 'required|email:rfc,dns|unique:users,email',
-                'password' => ['required','alpha_num','min:8'],
-                'confirmar' => 'required|alpha_num|min:8',                
+                'email' => 'required|email|unique:users,email',
+                'password' => ['required','alpha_num','confirmed','min:8'],               
                 'privilegio_id' => 'required',
             ];
         }else{
@@ -42,7 +41,7 @@ class UsuarioRequest extends FormRequest
                 'nombre2' => 'nullable|alpha',
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
-                'email' => ['required','email:rfc,dns', new CampoUnicoRule(obtenerIdDesdeRequestUri(Request()->requestUri), new User)],
+                'email' => ['required','email', new CampoUnicoRule(obtenerIdDesdeRequestUri(Request()->requestUri), new User)],
                 'privilegio_id' => 'required',
             ];            
         }

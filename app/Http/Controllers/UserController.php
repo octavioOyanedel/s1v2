@@ -39,7 +39,7 @@ class UserController extends Controller
         }
 
         $total = $coleccion->total();
-       
+
         return view('app.usuarios.index', compact('coleccion', 'total'));
     }
 
@@ -50,7 +50,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $privilegios = Privilegio::orderBy('nombre','ASC')->get();
+        $colecciones = array('privilegios'=>$privilegios);
+        return view('app.usuarios.create', compact('colecciones'));
     }
 
     /**
@@ -59,9 +61,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        //
+        $this->createGenerico($request, new User);
+        return redirect('usuarios')->with('status', 'Usuario Creado!');        
     }
 
     /**
@@ -72,7 +75,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $objeto = User::findOrFail($id);
+        return view('app.usuarios.show', compact('objeto'));
+
     }
 
     /**
@@ -100,7 +105,7 @@ class UserController extends Controller
     public function update(UsuarioRequest $request, $id)
     {
         $this->updateGenerico($request, User::findOrFail($id));
-        return redirect('home')->with('status', 'Usuario Actualizado!');
+        return redirect('usuarios')->with('status', 'Usuario Actualizado!');
     }
 
     /**

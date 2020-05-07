@@ -1,13 +1,23 @@
 <?php
 
 /**
+ * Descripción: Obtener llave y valor de array (Objeto) creado
+ * Entrada/s: arrays y nombre
+ * Salida: array con key y valor creados sin valores null
+ */
+function obtenerDatosCreados($array) {
+
+    return obtenerTexto($array, '');
+}
+
+/**
  * Descripción: Obtener llave y valor de array (Objeto) modificados por usuario
  * Entrada/s: arrays original y modificado desde formulario
  * Salida: array con key y valor modificados
  */
 function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
-    $original = filtrarArrayParaEditar($array_original, $nombre);
-    $formulario = filtrarArrayParaEditar($array_formulario, $nombre);
+    $original = eliminarValoresArray($array_original, $nombre);
+    $formulario = eliminarValoresArray($array_formulario, $nombre);
     $modificados = array();
     $keys = array();
     foreach ($formulario as $key => $value) {
@@ -16,7 +26,7 @@ function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
             array_push($keys, $key);
         }
     }
-    return obtenerTextoEditar($modificados, $keys);
+    return obtenerTexto($modificados, $keys);
 }
 
 /**
@@ -24,7 +34,7 @@ function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
  * Entrada/s: array
  * Salida: array filtrado 
  */
-function obtenerTextoEditar($modificados, $keys) {
+function obtenerTexto($modificados, $keys) {
     $indice = 0;
     $separador = '';
     $texto = '';
@@ -32,7 +42,11 @@ function obtenerTextoEditar($modificados, $keys) {
         if($indice != 0){
             $separador = ', ';
         }
-        $texto = $texto.$separador.$keys[$indice].' de '.$key.' a '.$value;
+        if($keys != ''){
+            $texto = $texto.$separador.$keys[$indice].' de '.$key.' a '.$value;
+        }else{
+            $texto = $texto.$separador.$key.' = '.$value;            
+        }
         $indice++;
     }
     return $texto; 
@@ -43,17 +57,34 @@ function obtenerTextoEditar($modificados, $keys) {
  * Entrada/s: array
  * Salida: array filtrado 
  */
-function filtrarArrayParaEditar($array, $nombre) {
+function eliminarValoresArray($array, $nombre) {
     $keys = null;
     switch ($nombre) {
-        case 'usuario':
+        case 'editar_usuario':
             $keys = array('password','remember_token','created_at','updated_at');
             break;
+        case 'crear_usuario':
+            $keys = array('password','created_at','updated_at');
+            break;            
     }
     foreach ($keys as $key) {
         unset($array[$key]);
     }
     return $array;
+}
+
+/**
+ * Descripción: Quitar elementos que posean valores null
+ * Entrada/s: array
+ * Salida: array filtrado 
+ */
+function quitarNull($array) {
+    foreach ($array as $key => $value) {
+        if($value === null){
+            unset($array[$key]);
+        }
+    }
+    return $array; 
 }
 
 /**

@@ -11,18 +11,22 @@ class Tabla extends Component
     public $titulo;
     public $alinear;
     public $total;
+    public $ver;
+    public $editar;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($coleccion, $contenido, $titulo, $alinear, $total)
+    public function __construct($coleccion, $contenido, $titulo, $alinear, $total, $ver, $editar)
     {
         $this->coleccion = $coleccion;
         $this->contenido = $contenido;
         $this->titulo = $titulo;
         $this->alinear = $alinear;
         $this->total = $total;
+        $this->ver = $ver;
+        $this->editar = $editar;
     }
 
     /**

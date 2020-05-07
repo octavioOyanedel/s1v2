@@ -16,7 +16,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        $texto = obtenerDatosCreados(eliminarValoresArray($user->toArray(), 'crear_usuario'));  
+        $this->logGenerico('Usuario creado: '.$texto, $user);
     }
 
     /**
@@ -27,7 +28,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        $texto = obtenerDatosEditados($user->getOriginal(), $user->toArray(), 'usuario');
+        $texto = obtenerDatosEditados($user->getOriginal(), $user->toArray(), 'editar_usuario');
         if($user->password != $user->getOriginal('password')){
             $this->logGenerico('Cambio de contraseña.', $user);
         }else{

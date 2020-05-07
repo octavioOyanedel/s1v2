@@ -41,7 +41,10 @@ function cargarFormulario($action)
 	        break;
 	    case "editar_passwd":
 	        return 'inc.forms.usuario.pass';
-	        break;		        	                	        	             	        	                               
+	        break;
+	    case "usuarios.store":
+	        return 'inc.forms.usuario.crear';
+	        break;	                	                	        	             	        	                               
 	}
 }
 
