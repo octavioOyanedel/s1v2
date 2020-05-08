@@ -17,6 +17,11 @@ form, form input, form select, form select option {
 	font-size: 14px !important;
 }
 
+.breadcrumb {
+	margin-bottom: 0px !important;
+	padding: 12px 20px !important;
+}
+
 button.close {
 	padding: 10px !important;
 }
@@ -57,7 +62,7 @@ div.spinner-border {
 }
 
 /******************************************************
- * tablas y forms *************************************
+ * contenedores tablas y forms ************************
  *****************************************************/
 div.contenedor-form {
 	width: 400px;
@@ -68,7 +73,18 @@ div.contenedor-form {
 }
 
 /******************************************************
- * filtro *************************************
+ * tablas *********************************************
+ *****************************************************/
+div.centrar-tabla {
+	width: 600px !important;
+	left: 50%;
+	height: auto;
+	position: absolute;
+	transform: translate(-50%, 0);
+}
+
+/******************************************************
+ * filtro *********************************************
  *****************************************************/
 .contenedor-filtro {
     display: grid;
@@ -116,7 +132,15 @@ div.contenedor-form {
 		margin-right: 0px;
 	}
 
-    .contenedor-filtro .boton button{    
+	div.centrar-tabla {
+		width: 100% !important;
+		left: 0px;
+		height: auto;
+		position: absolute;
+		transform: translate(0, 0);
+	}
+
+    .contenedor-filtro .boton button {    
         width: 100%;
         margin: 0px;
     }    

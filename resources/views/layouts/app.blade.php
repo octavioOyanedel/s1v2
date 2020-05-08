@@ -16,10 +16,13 @@
     <div id="app">
 <small>{{ Request()->path() }}</small>
         @if (Auth::user() != null)
+
             <!-- Navbar -->
             <x-nav-bar />
-            @include('layouts.inc.mensajes.accion')
             <!-- Navbar -->
+            <x-mantenedor />
+            @include('layouts.inc.mensajes.accion')
+            
         @endif
         
         <main class="py-4">

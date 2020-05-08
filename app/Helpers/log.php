@@ -65,7 +65,10 @@ function eliminarValoresArray($array, $nombre) {
             break;
         case 'crear_usuario':
             $keys = array('password','created_at','updated_at');
-            break;            
+            break;      
+        case 'eliminar_usuario':
+            $keys = array('id','email_verified_at','password','remember_token','created_at','updated_at');
+            break;                    
     }
     foreach ($keys as $key) {
         unset($array[$key]);

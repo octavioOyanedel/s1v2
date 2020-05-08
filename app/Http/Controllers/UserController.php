@@ -116,7 +116,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $this->deleteGenerico(User::findOrFail($id));
+        return redirect('usuarios')->with('status', 'Usuario Eliminado!');
     }
 
     /**

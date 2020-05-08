@@ -21,7 +21,7 @@ class CreateLogsTable extends Migration
             $table->string('ip');
             $table->string('navegador');
             $table->string('sistema');
-            $table->unsignedInteger('user_id'); //restrict
+            $table->unsignedInteger('user_id')->nullable()->default(null); //set null
             $table->timestamps();
         });
     }

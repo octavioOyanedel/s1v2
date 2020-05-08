@@ -14,7 +14,7 @@ class UpdateLogsTable extends Migration
     public function up()
     {
         Schema::table('logs', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
         });
     }
 
