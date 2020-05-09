@@ -17,7 +17,12 @@ function esActive($ruta, $titulo)
 			if (preg_match('/^usuarios\/([0-9]*)/', $ruta) || $ruta === 'usuarios' || $ruta === 'usuarios/create'){
 			    return 'active';
 			}	
-		break;		
+		break;	
+		case 'socios':
+			if ($ruta === 'home'){
+			    return 'active';
+			}	
+		break;			
 		default:
 			return '';
 			break;
@@ -37,6 +42,9 @@ function obtenerEnlacesNav($nombre)
 		break;
 		case "usuarios":
 			return array('Listar'=>'usuarios.index','Crear'=>'usuarios.create');
-		break;					
+		break;		
+		case "socios":
+			return array('Listar'=>'home','Incorporar'=>'home');
+		break;				
 	}
 }

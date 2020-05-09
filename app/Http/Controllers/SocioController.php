@@ -80,6 +80,6 @@ class SocioController extends Controller
      */
     public function destroy(Socio $socio)
     {
-        //
+        dd($socio);
     }
 }

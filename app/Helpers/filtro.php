@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Socio;
 use Illuminate\Http\Request;
 
 /**
@@ -12,7 +13,7 @@ function obtenerCamposParaFiltro($nombre)
 {
 	switch ($nombre) {
 		case "socios":
-			return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Rut'=>'rut');
+			return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Género'=>'genero','Rut'=>'rut','Fecha Ing. Sind1'=>'fecha_sind1','N° Socio'=>'numero','Correo'=>'correo','Anexo'=>'anexo','N° Contacto'=>'celular','Sede'=>'sede_id','Cargo'=>'cargo_id');
 		break;
         case "usuarios":
             return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Correo'=>'email','Privilegio'=>'privilegio_id');
@@ -34,7 +35,9 @@ function obtenerObjetoModel($tabla)
         case 'users':
             return new User;
             break;
-        
+        case 'socios':
+            return new Socio;
+            break;        
         default:
             return new Object;
             break;

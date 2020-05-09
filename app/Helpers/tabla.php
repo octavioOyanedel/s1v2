@@ -14,6 +14,9 @@ function obtenerContenidoTabla($nombre)
 		case "ver_usuario":
 			return 'inc.tablas.usuarios.mostrar';
 		break;
+		case "socios":
+			return 'inc.tablas.socios.listar';
+		break;
 	}
 }
 
@@ -25,11 +28,14 @@ function obtenerContenidoTabla($nombre)
 function obtenerCabecerasTablas($nombre)
 {
 	switch ($nombre) {	
-		case "usuarios":
-			return array('Nombre'=>'','Correo'=>'','Privilegio'=>'');
+		case "socios":
+			return array('Nombre'=>'','Género'=>'','Rut'=>'','Fecha Ingreso Sind1'=>'','N° Socio'=>'','Correo'=>'','Anexo'=>'','N° Contacto'=>'','Sede'=>'','Área'=>'','Cargo'=>'');
 		break;
 		case "ver_usuario":
 			return array('Nombre'=>'nombre1','Correo'=>'email','Privilegio'=>'privilegio_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at' );
-		break;				
+		break;	
+		case "usuarios":
+			return array('Nombre'=>'','Correo'=>'','Privilegio'=>'');
+		break;			
 	}
 }

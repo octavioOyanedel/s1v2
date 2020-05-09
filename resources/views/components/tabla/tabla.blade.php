@@ -2,7 +2,7 @@
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 	
 	<!-- Filtro tabla -->
-	<x-filtro action="usuarios.index" filtro="usuarios" :total="$total"/>
+	<x-filtro :action="$actionFiltro" :filtro="$filtro" :total="$total"/>
 
     <div class="table-responsive">
 		<table class="table table-striped table-hover table-sm">
@@ -36,7 +36,7 @@
 							</a>
 						</td>
 						<!-- Ventana modal  -->
-						<x-modal :id="$item->id" titulo="Eliminar Usuario" csrf="delete" action="usuarios.destroy" texto="a este usuario"/>						
+						<x-modal :id="$item->id" :titulo="$tituloModal" csrf="delete" :action="$actionModal" :texto="$textoModal"/>						
 						@include(obtenerContenidoTabla($contenido))
 					</tr>
 				@endforeach				
@@ -44,7 +44,7 @@
 		</table>
 	</div>
 	<!-- Paginación -->
-	<div class="paginacion">
+	<div class="paginacion mt-4">
 		{{ $coleccion->links() }}			
 	</div>
 </div>

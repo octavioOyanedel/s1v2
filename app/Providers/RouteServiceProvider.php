@@ -52,7 +52,23 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapLogRoutes();
 
+        $this->mapSocioRoutes();
+
         //
+    }
+
+    /**
+     * Define las rutas de socios.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapSocioRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/socio.php'));
     }
 
     /**
