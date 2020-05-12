@@ -44,7 +44,10 @@ function cargarFormulario($action)
 	        break;
 	    case "usuarios.store":
 	        return 'inc.forms.usuario.crear';
-	        break;	                	                	        	             	        	                               
+	        break;	
+	    case "socios.store":
+	        return 'inc.forms.socio.incorporar';
+	        break;		                        	                	        	             	        	                               
 	}
 }
 

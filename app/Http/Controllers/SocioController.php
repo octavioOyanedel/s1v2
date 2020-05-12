@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Sede;
+use App\Cargo;
 use App\Socio;
+use App\Comuna;
+use App\Ciudadania;
 use Illuminate\Http\Request;
+use App\Http\Requests\SocioRequest;
 
 class SocioController extends Controller
 {
@@ -14,7 +19,7 @@ class SocioController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +29,12 @@ class SocioController extends Controller
      */
     public function create()
     {
-        //
+        $comunas = Comuna::orderBy('nombre','ASC')->get();
+        $sedes = Sede::orderBy('nombre','ASC')->get();
+        $cargos = Cargo::orderBy('nombre','ASC')->get();
+        $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
+        $colecciones = array('comunas'=>$comunas,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
+        return view('app.socios.create', compact('colecciones'));
     }
 
     /**
@@ -33,9 +43,9 @@ class SocioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SocioRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

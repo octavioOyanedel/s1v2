@@ -34,7 +34,7 @@ function obtenerEnlacesMantenedor($ruta)
 	if(preg_match('/^usuario\/([0-9]*)\/edit/', $ruta) || $ruta === 'password/form/editar' || preg_match('/^usuarios\/([0-9]*)/', $ruta) || $ruta === 'usuarios' || $ruta === 'usuarios/create'){
 		return array('Privilegio'=>'home');
 	}
-	if($ruta === 'home'){
+	if($ruta === 'home' || $ruta === 'socios/create'){
 		return array('Área'=>'home','Cargo'=>'home','Ciudad'=>'home','Comuna'=>'home','Nacionalidad'=>'home','Sede'=>'home','Situación'=>'home');
 	}
 }

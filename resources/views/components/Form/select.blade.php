@@ -13,14 +13,24 @@
 	@enderror
 
 	<!-- Select -->
-	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }}" @if ($obligatorio === 'si') required="required" @endif>
+	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }} mb-4" @if ($obligatorio === 'si') required="required" @endif>
 		<option value="" selected>...</option>
-
 		@switch($nombre)
-		    @case('')
-		        
+		    @case('genero')
+				@if ($keyObjeto != '')
+					<option value="Dama" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'Dama') }}>Dama</option>
+					<option value="Varón" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'Varón') }}>Varón</option>
+				@else
+					<option value="Dama" {{ estaSelected(old($nombre), 'Dama') }}>Dama</option>
+					<option value="Varón" {{ estaSelected(old($nombre), 'Varón') }}>Varón</option>
+				@endif		        
 		        @break
-
+			@case('urbe_id')
+				<option value="" selected>...</option>
+			@break
+			@case('area_id')
+				<option value="" selected>...</option>
+			@break			
 		    @default
 				@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item) <!-- Carga de otros selects -->
 					@if ($keyObjeto === '' && old($nombre) === null)

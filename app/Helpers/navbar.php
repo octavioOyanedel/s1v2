@@ -19,7 +19,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'socios':
-			if ($ruta === 'home'){
+			if ($ruta === 'home' || $ruta === 'socios/create'){
 			    return 'active';
 			}	
 		break;			
@@ -44,7 +44,7 @@ function obtenerEnlacesNav($nombre)
 			return array('Listar'=>'usuarios.index','Crear'=>'usuarios.create');
 		break;		
 		case "socios":
-			return array('Listar'=>'home','Incorporar'=>'home');
+			return array('Listar'=>'home','Incorporar'=>'socios.create');
 		break;				
 	}
 }
