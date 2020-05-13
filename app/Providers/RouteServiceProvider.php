@@ -54,8 +54,24 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapSocioRoutes();
 
+        $this->mapSelectRoutes();
+
         //
     }
+
+    /**
+     * Define las rutas para carga dinámica de select 2 niveles.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapSelectRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/select.php'));
+    }    
 
     /**
      * Define las rutas de socios.

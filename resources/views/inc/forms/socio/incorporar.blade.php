@@ -46,10 +46,11 @@
     <x-input label="Fecha SIND1" tipo="date" nombre="fecha_sind1" id="fecha_sind1" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
 
     <!-- Ciudad -->
-    <x-select :colecciones="$colecciones" keyColeccion="comunas" objetos="" keyObjeto="" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="no"/>
+    <x-select :colecciones="$colecciones" keyColeccion="comunas" objetos="" keyObjeto="" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si"/>
 
     <!-- Comuna -->
-    <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Comuna" nombre="urbe_id" id="urbe_id" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select-ajax keyObjeto="" objetos="" nombre="urbe_id" id="urbe_id" label="Comuna" idOld="old_urbe" idEditar="" obligatorio="no"/>
+
 
     <!-- Dirección -->
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>
@@ -58,7 +59,7 @@
     <x-select :colecciones="$colecciones" keyColeccion="sedes" objetos="" keyObjeto="" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si"/>    
 
     <!-- Área -->
-    <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Área" nombre="area_id" id="area_id" tamano="custom-select-sm" obligatorio="no"/>
+    <x-select-ajax keyObjeto="" objetos="" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="" obligatorio="no"/>
 
     <!-- Cargo -->
     <x-select :colecciones="$colecciones" keyColeccion="cargos" objetos="" keyObjeto="" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si"/>

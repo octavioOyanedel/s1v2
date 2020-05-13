@@ -1,13 +1,20 @@
 <?php
 
 /**
- * Descripción: Obtener llave y valor de array (Objeto) creado
- * Entrada/s: arrays y nombre
- * Salida: array con key y valor creados sin valores null
+ * Descripción: Obtener texto operacion para registro de log
+ * Entrada/s: array original, array opcional (editar), string identificador de operación 
+ * Salida: string con key y valor concatenados creados sin valores null
  */
-function obtenerDatosCreados($array) {
+function obtenerTexto($array, $opcional, $identificador) {
 
-    return obtenerTexto($array, '');
+    // $opcional === 0 crear
+    // $opcional != 0 editar
+    if(count($opcional) === 0){
+        return concatenarTexto(quitarNull(filtrarCampos($array, $identificador)), array());
+    }else{
+        $keys = obtenerKeysEditar($array, $opcional, $identificador)
+        return concatenarTexto($filtrado, );
+    }
 }
 
 /**
@@ -15,18 +22,16 @@ function obtenerDatosCreados($array) {
  * Entrada/s: arrays original y modificado desde formulario
  * Salida: array con key y valor modificados
  */
-function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
-    $original = eliminarValoresArray($array_original, $nombre);
-    $formulario = eliminarValoresArray($array_formulario, $nombre);
-    $modificados = array();
+function obtenerKeysEditar($array, $opcional, $identificador) {
+    $original = filtrarCampos($array, $identificador);
+    $formulario = filtrarCampos($opcional, $identificador);
     $keys = array();
     foreach ($formulario as $key => $value) {
         if($value != $original[$key]){
-            $modificados[$original[$key]] = $value;
-            array_push($keys, $key);
+            array_push($keys, $key=>$value);
         }
     }
-    return obtenerTexto($modificados, $keys);
+    return $keys;
 }
 
 /**
@@ -34,15 +39,17 @@ function obtenerDatosEditados($array_original, $array_formulario, $nombre) {
  * Entrada/s: array
  * Salida: array filtrado 
  */
-function obtenerTexto($modificados, $keys) {
+function concatenarTexto($array_filtrado, $keys) {
     $indice = 0;
     $separador = '';
     $texto = '';
-    foreach ($modificados as $key => $value) {
+    foreach ($array_filtrado as $key => $value) {
         if($indice != 0){
             $separador = ', ';
         }
-        if($keys != ''){
+        // $opcional === 0 crear
+        // $opcional != 0 editar
+        if(count($keys) != 0){
             $texto = $texto.$separador.$keys[$indice].' de '.$key.' a '.$value;
         }else{
             $texto = $texto.$separador.$key.' = '.$value;            
@@ -57,7 +64,7 @@ function obtenerTexto($modificados, $keys) {
  * Entrada/s: array
  * Salida: array filtrado 
  */
-function eliminarValoresArray($array, $nombre) {
+function filtrarCampos($array, $nombre) {
     $keys = null;
     switch ($nombre) {
         case 'editar_usuario':
@@ -68,7 +75,10 @@ function eliminarValoresArray($array, $nombre) {
             break;      
         case 'eliminar_usuario':
             $keys = array('id','email_verified_at','password','remember_token','created_at','updated_at');
-            break;                    
+            break;  
+        case 'crear_socio':
+            $keys = array('_token');
+            break;                                
     }
     foreach ($keys as $key) {
         unset($array[$key]);

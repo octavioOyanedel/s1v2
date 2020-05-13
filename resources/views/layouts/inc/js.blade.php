@@ -7,6 +7,6 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <!-- Scripts -->
-<script src="{{ asset('js/ajax.js') }}" defer></script>
+<script src="{{ asset('js/ajax-select.js') }}" defer></script>
 <script src="{{ asset('js/spinner-reset.js') }}" defer></script>
 <script src="{{ asset('js/filtro.js') }}" defer></script>
