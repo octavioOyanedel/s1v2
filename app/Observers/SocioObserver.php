@@ -19,4 +19,16 @@ class SocioObserver
         $texto = obtenerTexto(array(), $socio->toArray(), 'crear_socio');  
         $this->logGenerico('Socio creado: '.$texto);
     }    
+
+    /**
+     * Handle the socio "deleted" event.
+     *
+     * @param  \App\Socio  $socio
+     * @return void
+     */
+    public function deleted(Socio $socio)
+    {
+        $texto = obtenerTexto(array(), $socio->toArray(), 'eliminar_socio');  
+        $this->logGenerico('Socio eliminado: '.$texto);
+    }    
 }

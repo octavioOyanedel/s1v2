@@ -99,6 +99,7 @@ class SocioController extends Controller
      */
     public function destroy(Socio $socio)
     {
-        dd($socio);
+        $this->deleteGenerico(Socio::findOrFail($socio->id));
+        return redirect('home')->with('status', 'Socio Eliminado!');
     }
 }

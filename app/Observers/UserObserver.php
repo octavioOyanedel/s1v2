@@ -44,7 +44,8 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-
+        $texto = obtenerTexto(array(), $user->toArray(), 'eliminar_usuario');  
+        $this->logGenerico('Usuario eliminado: '.$texto);
     }
 
     /**
