@@ -49,7 +49,10 @@ class SocioController extends Controller
      */
     public function store(SocioRequest $request)
     {
-        //dd($request->toArray());
+        // cambio de formato por datepicker
+        $request['fecha_nac'] = formatoFecha($request->fecha_nac);
+        $request['fecha_pucv'] = formatoFecha($request->fecha_pucv);
+        $request['fecha_sind1'] = formatoFecha($request->fecha_sind1);
         $this->createGenerico($request, new Socio);
         return redirect('home')->with('status', 'Socio Creado!'); 
     }

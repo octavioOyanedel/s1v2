@@ -10,3 +10,6 @@
 <script src="{{ asset('js/ajax-select.js') }}" defer></script>
 <script src="{{ asset('js/spinner-reset.js') }}" defer></script>
 <script src="{{ asset('js/filtro.js') }}" defer></script>
+<script src="{{ asset('datepicker/bootstrap-datepicker.js') }}" defer></script>
+<script src="{{ asset('datepicker/bootstrap-datepicker.es.min.js') }}" defer></script>
+<script src="{{ asset('js/datepicker.js') }}" defer></script>

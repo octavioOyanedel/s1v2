@@ -5,33 +5,16 @@
  * Entrada/s: array original, array opcional (editar), string identificador de operación 
  * Salida: string con key y valor concatenados creados sin valores null
  */
-function obtenerTexto($array, $opcional, $identificador) {
+function obtenerTexto($original, $modificado, $identificador) {
 
-    // $opcional === 0 crear
-    // $opcional != 0 editar
-    if(count($opcional) === 0){
-        return concatenarTexto(quitarNull(filtrarCampos($array, $identificador)), array());
+    // $original === 0 crear
+    // $original != 0 editar
+    if(count($original) === 0){
+        return textoCrear(filtrarCampos($modificado, $identificador));
     }else{
-        $keys = obtenerKeysEditar($array, $opcional, $identificador)
-        return concatenarTexto($filtrado, );
+        return textoEditar(filtrarCampos($original, $identificador),filtrarCampos($modificado, $identificador));      
     }
-}
 
-/**
- * Descripción: Obtener llave y valor de array (Objeto) modificados por usuario
- * Entrada/s: arrays original y modificado desde formulario
- * Salida: array con key y valor modificados
- */
-function obtenerKeysEditar($array, $opcional, $identificador) {
-    $original = filtrarCampos($array, $identificador);
-    $formulario = filtrarCampos($opcional, $identificador);
-    $keys = array();
-    foreach ($formulario as $key => $value) {
-        if($value != $original[$key]){
-            array_push($keys, $key=>$value);
-        }
-    }
-    return $keys;
 }
 
 /**
@@ -39,24 +22,51 @@ function obtenerKeysEditar($array, $opcional, $identificador) {
  * Entrada/s: array
  * Salida: array filtrado 
  */
-function concatenarTexto($array_filtrado, $keys) {
+function textoEditar($original, $modificado) {
     $indice = 0;
     $separador = '';
     $texto = '';
-    foreach ($array_filtrado as $key => $value) {
+    foreach ($modificado as $key => $value) {
+        ($indice === 0) ? $separador = '' : $separador = ', ';
+        if($original[$key] != $value){
+            $texto = $texto.$separador.$key.' de '.formatearValor($original[$key]).' a '.formatearValor($value);   
+            $indice++;
+        }    
+        
+    }
+    return $texto; 
+}
+
+/**
+ * Descripción: Obtener texto para log crear
+ * Entrada/s: array
+ * Salida: array filtrado 
+ */
+function textoCrear($modificado) {
+    $indice = 0;
+    $separador = '';
+    $texto = '';
+    foreach ($modificado as $key => $value) {
         if($indice != 0){
             $separador = ', ';
         }
-        // $opcional === 0 crear
-        // $opcional != 0 editar
-        if(count($keys) != 0){
-            $texto = $texto.$separador.$keys[$indice].' de '.$key.' a '.$value;
-        }else{
-            $texto = $texto.$separador.$key.' = '.$value;            
-        }
+        $texto = $texto.$separador.$key.' = '.formatearValor($value);            
         $indice++;
     }
     return $texto; 
+}
+
+/**
+ * Descripción: Formatear valor para registro en log
+ * Entrada/s: string valor
+ * Salida: string - o valor 
+ */
+function formatearValor($valor) {
+    if($valor === null || $valor === ''){
+        return '-';
+    }else{
+        return $valor;
+    }
 }
 
 /**
@@ -68,7 +78,7 @@ function filtrarCampos($array, $nombre) {
     $keys = null;
     switch ($nombre) {
         case 'editar_usuario':
-            $keys = array('password','remember_token','created_at','updated_at');
+            $keys = array('password','email_verified_at','remember_token','created_at','updated_at');
             break;
         case 'crear_usuario':
             $keys = array('password','created_at','updated_at');
@@ -77,27 +87,13 @@ function filtrarCampos($array, $nombre) {
             $keys = array('id','email_verified_at','password','remember_token','created_at','updated_at');
             break;  
         case 'crear_socio':
-            $keys = array('_token');
+            $keys = array('_token', 'updated_at', 'created_at');
             break;                                
     }
     foreach ($keys as $key) {
         unset($array[$key]);
     }
     return $array;
-}
-
-/**
- * Descripción: Quitar elementos que posean valores null
- * Entrada/s: array
- * Salida: array filtrado 
- */
-function quitarNull($array) {
-    foreach ($array as $key => $value) {
-        if($value === null){
-            unset($array[$key]);
-        }
-    }
-    return $array; 
 }
 
 /**

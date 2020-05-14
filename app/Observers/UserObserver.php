@@ -16,8 +16,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $texto = obtenerTexto($user->toArray(), array(), 'crear_usuario');  
-        $this->logGenerico('Usuario creado: '.$texto, $user);
+        $texto = obtenerTexto(array(), $user->toArray(), 'crear_usuario');  
+        $this->logGenerico('Usuario creado: '.$texto);
     }
 
     /**
@@ -28,13 +28,11 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        $texto = obtenerTexto($user->getOriginal(), $user->toArray(), 'editar_usuario');
         if($user->password != $user->getOriginal('password')){
             $this->logGenerico('Cambio de contraseña.');
         }else{
-            if($texto != ''){
-                $this->logGenerico('Datos de usuario editados: '.$texto);
-            }            
+            $texto = obtenerTexto($user->getOriginal(), $user->toArray(), 'editar_usuario');
+            $this->logGenerico('Datos de usuario editados: '.$texto);           
         }
     }
 
@@ -46,9 +44,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $user->id = null;
-        $texto = obtenerTexto($user->toArray(), array(), 'eliminar_usuario');  
-        $this->logGenerico('Usuario eliminado: '.$texto);
+
     }
 
     /**

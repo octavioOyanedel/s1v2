@@ -16,6 +16,7 @@ class SocioObserver
      */
     public function created(Socio $socio)
     {
-
+        $texto = obtenerTexto(array(), $socio->toArray(), 'crear_socio');  
+        $this->logGenerico('Socio creado: '.$texto);
     }    
 }

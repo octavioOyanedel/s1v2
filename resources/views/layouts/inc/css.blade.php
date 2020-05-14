@@ -12,3 +12,5 @@
 <!-- Styles -->
 <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
 <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+<link href="{{ asset('datepicker/bootstrap-datepicker3.css') }}" rel="stylesheet">
+<link href="{{ asset('datepicker/bootstrap-datepicker.standalone.css') }}" rel="stylesheet">
