@@ -13,8 +13,14 @@
 					@include(obtenerCsrf($csrf))
 					<div class="modal-body">
 						<div class="alert alert-warning text-center" role="alert">
-							<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>¿Estás seguro/a que desea eliminar {{ $texto }}?
-						</div>					
+							<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>¿Estás seguro/a que desea eliminar {{ $texto }}					
+						</div>	
+						@if ($anexos != '' || $anexos != null)
+							<div class="">
+								<!-- Categoria -->
+								<x-select :colecciones="$anexos" keyColeccion="categorias" objetos="" keyObjeto="" label="Categoría" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="si"/>  								
+							</div> 
+						@endif				
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Cerrar</button>

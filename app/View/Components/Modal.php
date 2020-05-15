@@ -11,18 +11,20 @@ class Modal extends Component
     public $csrf;
     public $action;
     public $texto;
+    public $anexos;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $titulo, $csrf, $action, $texto)
+    public function __construct($id, $titulo, $csrf, $action, $texto, $anexos)
     {
         $this->id = $id;
         $this->titulo = $titulo;
         $this->csrf = $csrf;
         $this->action = $action;
         $this->texto = $texto;
+        $this->anexos = $anexos;
     }
 
     /**

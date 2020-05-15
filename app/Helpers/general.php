@@ -11,7 +11,7 @@ function formatoFecha($fecha)
         $bloque = explode('-', $fecha);
         return $nuevaFecha = $bloque[2] . '-' . $bloque[1] . '-' . $bloque[0];
     }else{
-        return '';
+        return null;
     }
 
 }

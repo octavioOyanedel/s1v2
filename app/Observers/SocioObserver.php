@@ -21,6 +21,18 @@ class SocioObserver
     }    
 
     /**
+     * Handle the user "updated" event.
+     *
+     * @param  \App\User  $user
+     * @return void
+     */
+    public function updated(Socio $socio)
+    {
+        $texto = obtenerTexto($socio->getOriginal(), $socio->toArray(), 'editar_socio');
+        $this->logGenerico('Datos de socio editado: '.$texto);           
+    }    
+
+    /**
      * Handle the socio "deleted" event.
      *
      * @param  \App\Socio  $socio

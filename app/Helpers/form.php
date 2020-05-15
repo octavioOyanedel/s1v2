@@ -49,7 +49,10 @@ function cargarFormulario($action)
 	        break;	
 	    case "socios.store":
 	        return 'inc.forms.socio.incorporar';
-	        break;		                        	                	        	             	        	                               
+	        break;
+        case "socios.update":
+            return 'inc.forms.socio.editar';
+            break;            	                        	                	        	             	        	                               
 	}
 }
 

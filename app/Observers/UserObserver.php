@@ -32,7 +32,7 @@ class UserObserver
             $this->logGenerico('Cambio de contraseña.');
         }else{
             $texto = obtenerTexto($user->getOriginal(), $user->toArray(), 'editar_usuario');
-            $this->logGenerico('Datos de usuario editados: '.$texto);           
+            $this->logGenerico('Datos de usuario editado: '.$texto);           
         }
     }
 

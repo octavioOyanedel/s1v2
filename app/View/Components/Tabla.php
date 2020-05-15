@@ -18,12 +18,13 @@ class Tabla extends Component
     public $tituloModal;
     public $actionModal;
     public $textoModal;
+    public $anexos;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($coleccion, $contenido, $titulo, $alinear, $total, $ver, $editar, $filtro, $actionFiltro, $tituloModal, $actionModal, $textoModal)
+    public function __construct($coleccion, $contenido, $titulo, $alinear, $total, $ver, $editar, $filtro, $actionFiltro, $tituloModal, $actionModal, $textoModal, $anexos)
     {
         $this->coleccion = $coleccion;
         $this->contenido = $contenido;
@@ -37,7 +38,7 @@ class Tabla extends Component
         $this->tituloModal = $tituloModal;
         $this->actionModal = $actionModal;
         $this->textoModal = $textoModal;
-
+        $this->anexos = $anexos;
     }
 
     /**

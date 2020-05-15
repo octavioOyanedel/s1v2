@@ -19,7 +19,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'socios':
-			if ($ruta === 'home' || $ruta === 'socios/create'){
+			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta)){
 			    return 'active';
 			}	
 		break;			

@@ -76,7 +76,13 @@ class SocioController extends Controller
      */
     public function edit(Socio $socio)
     {
-        //
+        $comunas = Comuna::orderBy('nombre','ASC')->get();
+        $sedes = Sede::orderBy('nombre','ASC')->get();
+        $cargos = Cargo::orderBy('nombre','ASC')->get();
+        $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
+        $objetos = array('socio' => $socio);
+        $colecciones = array('comunas'=>$comunas,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
+        return view('app.socios.edit', compact('colecciones','objetos'));
     }
 
     /**
@@ -86,9 +92,15 @@ class SocioController extends Controller
      * @param  \App\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Socio $socio)
+    public function update(SocioRequest $request, Socio $socio)
     {
-        //
+        // cambio de formato por datepicker
+        $request['fecha_nac'] = formatoFecha($request->fecha_nac);
+        $request['fecha_pucv'] = formatoFecha($request->fecha_pucv);
+        $request['fecha_sind1'] = formatoFecha($request->fecha_sind1);
+        $this->updateGenerico($request, $socio);
+        return redirect('home')->with('status', 'Socio Actualizado!');        
+
     }
 
     /**
@@ -97,8 +109,12 @@ class SocioController extends Controller
      * @param  \App\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Socio $socio)
+    public function destroy(Request $request, Socio $socio)
     {
+        // modificar categoria antes del softdelete
+        $socio = Socio::findOrFail($socio->id);
+        $socio->categoria_id = $request->categoria_id;
+        $socio->update();        
         $this->deleteGenerico(Socio::findOrFail($socio->id));
         return redirect('home')->with('status', 'Socio Eliminado!');
     }

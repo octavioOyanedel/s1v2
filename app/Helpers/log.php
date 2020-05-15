@@ -91,7 +91,10 @@ function filtrarCampos($array, $nombre) {
             break;
         case 'eliminar_socio':
             $keys = array('created_at','updated_at');
-            break;                                          
+            break;
+        case 'editar_socio':
+            $keys = array('created_at','updated_at');
+            break;                                                    
     }
     foreach ($keys as $key) {
         unset($array[$key]);

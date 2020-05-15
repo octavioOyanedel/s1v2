@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Categoria;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
@@ -31,7 +32,10 @@ class HomeController extends Controller
         $cantidad = obtenerCantidad($request);
         $columna = obtenerColumna($request);
         $orden = obtenerOrden($request);
-        $coleccion = null;    
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $categorias->pull('0');
+        $anexos = array('categorias'=>$categorias);
+        $coleccion = null;
         
         switch ($columna) {
             case 'comuna_id':
@@ -56,6 +60,6 @@ class HomeController extends Controller
                    
         $total = $coleccion->total();
 
-        return view('home', compact('coleccion', 'total'));
+        return view('home', compact('coleccion', 'total', 'anexos'));
     }
 }
