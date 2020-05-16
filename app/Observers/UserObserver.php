@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\User;
 use App\Traits\logGenerico;
+use Illuminate\Support\Facades\Auth;
 
 class UserObserver
 {
@@ -16,8 +17,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $texto = obtenerTexto(array(), $user->toArray(), 'crear_usuario');  
-        $this->logGenerico('Usuario creado: '.$texto);
+        //$texto = obtenerTexto(array(), $user->toArray(), 'crear_usuario');  
+        //$this->logGenerico('Usuario creado: '.$texto);
     }
 
     /**
@@ -28,11 +29,14 @@ class UserObserver
      */
     public function updated(User $user)
     {
+        //cambio de contraseña
         if($user->password != $user->getOriginal('password')){
             $this->logGenerico('Cambio de contraseña.');
         }else{
             $texto = obtenerTexto($user->getOriginal(), $user->toArray(), 'editar_usuario');
-            $this->logGenerico('Datos de usuario editado: '.$texto);           
+            if($texto != ''){
+                $this->logGenerico('Datos de usuario editado: '.$texto);
+            }
         }
     }
 
@@ -45,7 +49,7 @@ class UserObserver
     public function deleted(User $user)
     {
         $texto = obtenerTexto(array(), $user->toArray(), 'eliminar_usuario');  
-        $this->logGenerico('Usuario eliminado: '.$texto);
+        $this->logGenerico('Usuario eliminado: '.$texto, $user->id);
     }
 
     /**

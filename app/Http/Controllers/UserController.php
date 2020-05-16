@@ -116,8 +116,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $id_log = Auth::user()->id;
+        //dd($id.' - '.$id_log);
         $this->deleteGenerico(User::findOrFail($id));
-        return redirect('usuarios')->with('status', 'Usuario Eliminado!');
+        if((int)$id === $id_log){
+            return redirect('login');
+        }else{
+            return redirect('usuarios')->with('status', 'Usuario Eliminado!');
+        }
     }
 
     /**
