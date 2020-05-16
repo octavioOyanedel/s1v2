@@ -29,7 +29,7 @@
     <x-input label="Apellido Materno" tipo="text" nombre="apellido2" id="apellido2" margen="mb-4" tamano="form-control-sm" :valor="$socio->apellido2" placeholder="Ej. Pérez" obligatorio="no"/>    
 
     <!-- Género -->
-    <x-select colecciones="" keyColeccion="" :objetos="$objetos" keyObjeto="socio" label="Género" nombre="genero" id="genero" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select colecciones="" keyColeccion="" :objetos="$objetos" keyObjeto="socio" label="Género" nombre="genero" id="genero" tamano="custom-select-sm" obligatorio="si" nuevo="no"/>
 
     <!-- Fecha nacimiento -->
     <x-input label="Fecha Nacimiento" tipo="text" nombre="fecha_nac" id="fecha_nac" margen="mb-4" tamano="form-control-sm" :valor="formatoFecha($socio->fecha_nac)" placeholder="Ej. 01-01-2020" obligatorio="no"/> 
@@ -50,7 +50,7 @@
     <x-input label="Fecha SIND1" tipo="text" nombre="fecha_sind1" id="fecha_sind1" margen="mb-4" tamano="form-control-sm" :valor="formatoFecha($socio->fecha_sind1)" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
 
     <!-- Ciudad -->
-    <x-select :colecciones="$colecciones" keyColeccion="comunas" :objetos="$objetos" keyObjeto="socio" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="comunas" :objetos="$objetos" keyObjeto="socio" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Comuna -->
     <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="urbe_id" id="urbe_id" label="Comuna" idOld="old_urbe" idEditar="editar_urbe" obligatorio="si"/>
@@ -59,16 +59,16 @@
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" :valor="$socio->direccion" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>
 
     <!-- Sede -->
-    <x-select :colecciones="$colecciones" keyColeccion="sedes" :objetos="$objetos" keyObjeto="socio" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si"/>    
+    <x-select :colecciones="$colecciones" keyColeccion="sedes" :objetos="$objetos" keyObjeto="socio" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>    
 
     <!-- Área -->
     <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="editar_area" obligatorio="si"/>
 
     <!-- Cargo -->
-    <x-select :colecciones="$colecciones" keyColeccion="cargos" :objetos="$objetos" keyObjeto="socio" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="cargos" :objetos="$objetos" keyObjeto="socio" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Nacionalidad -->
-    <x-select :colecciones="$colecciones" keyColeccion="ciudadanias" :objetos="$objetos" keyObjeto="socio" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="si"/>       
+    <x-select :colecciones="$colecciones" keyColeccion="ciudadanias" :objetos="$objetos" keyObjeto="socio" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>       
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	

@@ -28,7 +28,7 @@
 						@if ($anexos != '' || $anexos != null)
 							<div class="">
 								<!-- Categoria -->
-								<x-select :colecciones="$anexos" keyColeccion="categorias" objetos="" keyObjeto="" label="Categoría" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="si"/>  								
+								<x-select :colecciones="$anexos" keyColeccion="categorias" objetos="" keyObjeto="" label="Categoría" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="si" nuevo="no"/>  								
 							</div> 
 						@endif				
 					</div>

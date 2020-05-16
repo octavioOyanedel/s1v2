@@ -28,7 +28,7 @@
     <x-input label="Confirmar Contraseña" tipo="password" nombre="password_confirmation" id="password_confirmation" margen="mb-4" tamano="" valor="" placeholder="" obligatorio="si"/>
 
     <!-- Privilegio -->
-    <x-select :colecciones="$colecciones" keyColeccion="privilegios" objetos="" keyObjeto="" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="privilegios" objetos="" keyObjeto="" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	

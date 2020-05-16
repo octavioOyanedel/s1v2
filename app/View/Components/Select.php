@@ -14,13 +14,14 @@ class Select extends Component
     public $colecciones;
     public $keyColeccion;
     public $objetos;
-    public $keyObjeto;    
+    public $keyObjeto;
+    public $nuevo;    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label, $nombre, $id, $tamano, $obligatorio, $colecciones, $keyColeccion, $objetos, $keyObjeto)
+    public function __construct($label, $nombre, $id, $tamano, $obligatorio, $colecciones, $keyColeccion, $objetos, $keyObjeto, $nuevo)
     {
         $this->label = $label;
         $this->nombre = $nombre;
@@ -31,6 +32,7 @@ class Select extends Component
         $this->keyColeccion = $keyColeccion;
         $this->objetos = $objetos;
         $this->keyObjeto = $keyObjeto;
+        $this->nuevo = $nuevo;
     }
 
     /**

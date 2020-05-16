@@ -26,7 +26,7 @@
     <x-input label="Correo" tipo="email" nombre="email" id="email" margen="mb-4" tamano="form-control-sm" :valor="$usuario->email" placeholder="Ej. correo@pucv.cl" obligatorio="si"/>        
 
     <!-- Privilegio -->
-    <x-select :colecciones="$colecciones" keyColeccion="privilegios" :objetos="$objetos" keyObjeto="usuario" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="privilegios" :objetos="$objetos" keyObjeto="usuario" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	

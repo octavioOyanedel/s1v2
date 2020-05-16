@@ -11,7 +11,10 @@
 			<label for="{{ $id }}">{{ $label }}</label>
 		@endif	   
 	@enderror
+	<!-- Nuevo registro -->
+	@if ($nuevo === 'si')
 
+	@endif			
 	<!-- Select -->
 	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }} mb-4" @if ($obligatorio === 'si') required="required" @endif>
 		<option value="" selected>...</option>
@@ -49,4 +52,5 @@
 		@endswitch
 
 	</select>
+
 </div>
