@@ -33,13 +33,13 @@ class HomeController extends Controller
         $columna = obtenerColumna($request);
         $orden = obtenerOrden($request);
         $categorias = Categoria::orderBy('nombre','ASC')->get();
-        $categorias->pull('0');
+        $categorias->pull('0'); //quitar activo
         $anexos = array('categorias'=>$categorias);
         $coleccion = null;
         
         switch ($columna) {
-            case 'comuna_id':
-                $coleccion = $this->buscarParaFiltradoJoin('comunas', 'socios', 'nombre', $cantidad, $columna, $orden);
+            case 'urbe_id':
+                $coleccion = $this->buscarParaFiltradoJoin('urbes', 'socios', 'nombre', $cantidad, $columna, $orden);
                 break;
              case 'sede_id':
                 $coleccion = $this->buscarParaFiltradoJoin('sedes', 'socios', 'nombre', $cantidad, $columna, $orden);

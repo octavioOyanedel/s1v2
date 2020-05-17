@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Area;
-use App\Urbe;
+use App\Comuna;
 use Illuminate\Http\Request;
 
 class SelectController extends Controller
 {
     /**
-     * Descripción: Obtener ciudades de una comuna
+     * Descripción: Obtener comunas de una comuna
      * Entrada/s: request
-     * Salida: coleccion con ciudades
+     * Salida: coleccion con comunas
      */
-    public function ciudades(Request $request)
+    public function comunas(Request $request)
     {
         if($request->ajax()){
-            return response()->json(Urbe::where('comuna_id','=',$request->id)->pluck('id','nombre'));
+            return response()->json(Comuna::where('urbe_id','=',$request->id)->pluck('id','nombre'));
         }
     }
 

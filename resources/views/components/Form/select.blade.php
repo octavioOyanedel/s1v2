@@ -25,7 +25,7 @@
 					<option value="Varón" {{ estaSelected(old($nombre), 'Varón') }}>Varón</option>
 				@endif		        
 		        @break
-			@case('urbe_id')
+			@case('comuna_id')
 				<option value="" selected>...</option>
 			@break
 			@case('area_id')

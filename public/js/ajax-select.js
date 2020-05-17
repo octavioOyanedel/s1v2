@@ -8,8 +8,8 @@ $(window).on('load',function(){
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
 	// 			valor old de select hijo
-	if(comprobarValor($('#old_urbe').val())){
-		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), $('#old_urbe').val());
+	if(comprobarValor($('#old_comuna').val())){
+		ajax($('#comuna_id'), 'comunas', $('#urbe_id option:selected').val(), $('#old_comuna').val());
 	}
 
 	if(comprobarValor($('#old_area').val())){
@@ -20,22 +20,20 @@ $(window).on('load',function(){
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
 	// 			valor old de select hijo
-	if(comprobarValor($('#editar_urbe').val())){
-		console.log('editar'+$('#editar_urbe').val());
-		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), $('#editar_urbe').val());
+	if(comprobarValor($('#editar_comuna').val())){
+		ajax($('#comuna_id'), 'comunas', $('#urbe_id option:selected').val(), $('#editar_comuna').val());
 	}
 
 	if(comprobarValor($('#editar_area').val())){
-		console.log('editar');
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#editar_area').val());
 	}
 
-	// 3 - llamada a ajax mientras ocurra evento chango en select padres
+	// 3 - llamada a ajax mientras ocurra evento change en select padres
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
 	// 			valor old de select hijo
-	$('#comuna_id').change(function(){
-		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), 0);
+	$('#urbe_id').change(function(){
+		ajax($('#comuna_id'), 'comunas', $('#urbe_id option:selected').val(), 0);
 	});
 
 	$('#sede_id').change(function(){
@@ -90,8 +88,8 @@ $(window).on('load',function(){
 
 	function obtenerRuta(nombre){
 		switch(nombre) {
-			case 'ciudades':
-				return '/cargar_ciudades';
+			case 'comunas':
+				return '/cargar_comunas';
 			break;
 			case 'areas':
 				return '/cargar_areas';

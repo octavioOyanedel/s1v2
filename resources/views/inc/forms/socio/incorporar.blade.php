@@ -47,11 +47,11 @@
 
     <!-- Ciudad -->
     <x-enlace-modal label="Ciudad" />
-    <x-select :colecciones="$colecciones" keyColeccion="comunas" objetos="" keyObjeto="" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="urbes" objetos="" keyObjeto="" label="Ciudad" nombre="urbe_id" id="urbe_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
 
     <!-- Comuna -->
-    <x-select-ajax keyObjeto="" objetos="" nombre="urbe_id" id="urbe_id" label="Comuna" idOld="old_urbe" idEditar="" obligatorio="si"/>
+    <x-select-ajax keyObjeto="" objetos="" nombre="comuna_id" id="comuna_id" label="Comuna" idOld="old_comuna" idEditar="" obligatorio="si"/>
 
     <!-- Dirección -->
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>

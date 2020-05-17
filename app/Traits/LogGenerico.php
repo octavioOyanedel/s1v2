@@ -12,7 +12,6 @@ trait LogGenerico {
  
     public static function logGenerico($operacion, $id = null)
     {
-        //dd($id.' - '.Auth::user()->id);
         $log = new Log;
         $log->operacion = $operacion;
         $log->ip = obtenerIp();

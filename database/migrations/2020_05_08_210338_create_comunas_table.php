@@ -18,6 +18,7 @@ class CreateComunasTable extends Migration
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');    
             $table->string('nombre');
+            $table->unsignedInteger('urbe_id'); //restrict
             $table->timestamps();
         });
     }

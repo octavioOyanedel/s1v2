@@ -50,10 +50,10 @@
     <x-input label="Fecha SIND1" tipo="text" nombre="fecha_sind1" id="fecha_sind1" margen="mb-4" tamano="form-control-sm" :valor="formatoFecha($socio->fecha_sind1)" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
 
     <!-- Ciudad -->
-    <x-select :colecciones="$colecciones" keyColeccion="comunas" :objetos="$objetos" keyObjeto="socio" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="urbes" :objetos="$objetos" keyObjeto="socio" label="Ciudad" nombre="urbe_id" id="urbe_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Comuna -->
-    <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="urbe_id" id="urbe_id" label="Comuna" idOld="old_urbe" idEditar="editar_urbe" obligatorio="si"/>
+    <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="comuna_id" id="comuna_id" label="Comuna" idOld="old_comuna" idEditar="editar_comuna" obligatorio="si"/>
 
     <!-- Dirección -->
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" :valor="$socio->direccion" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>

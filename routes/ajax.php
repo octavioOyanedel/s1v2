@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------|
 */
 
-Route::get('/cargar_ciudades', 'SelectController@ciudades')->name('cargar_ciudades');
+Route::get('/cargar_comunas', 'SelectController@comunas')->name('cargar_comunas');
 Route::get('/cargar_areas', 'SelectController@areas')->name('cargar_areas');
 
 Route::get('/correos_reset', 'UserController@existeCorreo');

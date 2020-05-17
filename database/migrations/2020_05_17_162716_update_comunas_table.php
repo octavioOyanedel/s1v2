@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUrbesTable extends Migration
+class UpdateComunasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateUrbesTable extends Migration
      */
     public function up()
     {
-        Schema::table('urbes', function (Blueprint $table) {
-            $table->foreign('comuna_id')->references('id')->on('comunas')->onUpdate('cascade')->onDelete('restrict');
+        Schema::table('comunas', function (Blueprint $table) {
+            $table->foreign('urbe_id')->references('id')->on('urbes')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -25,7 +25,7 @@ class UpdateUrbesTable extends Migration
      */
     public function down()
     {
-        Schema::table('urbes', function (Blueprint $table) {
+        Schema::table('comunas', function (Blueprint $table) {
             //
         });
     }

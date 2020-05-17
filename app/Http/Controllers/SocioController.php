@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Sede;
+use App\Urbe;
 use App\Cargo;
 use App\Socio;
-use App\Comuna;
 use App\Ciudadania;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
@@ -33,11 +33,11 @@ class SocioController extends Controller
      */
     public function create()
     {
-        $comunas = Comuna::orderBy('nombre','ASC')->get();
+        $urbes = Urbe::orderBy('nombre','ASC')->get();
         $sedes = Sede::orderBy('nombre','ASC')->get();
         $cargos = Cargo::orderBy('nombre','ASC')->get();
         $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
-        $colecciones = array('comunas'=>$comunas,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
+        $colecciones = array('urbes'=>$urbes,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
         return view('app.socios.create', compact('colecciones'));
     }
 
@@ -76,12 +76,12 @@ class SocioController extends Controller
      */
     public function edit(Socio $socio)
     {
-        $comunas = Comuna::orderBy('nombre','ASC')->get();
+        $urbes = Urbe::orderBy('nombre','ASC')->get();
         $sedes = Sede::orderBy('nombre','ASC')->get();
         $cargos = Cargo::orderBy('nombre','ASC')->get();
         $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
         $objetos = array('socio' => $socio);
-        $colecciones = array('comunas'=>$comunas,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
+        $colecciones = array('urbes'=>$urbes,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias);
         return view('app.socios.edit', compact('colecciones','objetos'));
     }
 
