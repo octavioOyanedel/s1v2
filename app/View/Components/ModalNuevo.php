@@ -7,8 +7,6 @@ use Illuminate\View\Component;
 class ModalNuevo extends Component
 {
     public $label;
-    public $titulo;
-    public $csrf;
     public $action;
     public $colecciones;
     public $keyColeccion;
@@ -17,11 +15,9 @@ class ModalNuevo extends Component
      *
      * @return void
      */
-    public function __construct($label, $titulo, $csrf, $action, $colecciones, $keyColeccion)
+    public function __construct($label, $action, $colecciones, $keyColeccion)
     {
         $this->label = $label;
-        $this->titulo = $titulo;
-        $this->csrf = $csrf;
         $this->action = $action;
         $this->colecciones = $colecciones;
         $this->keyColeccion = $keyColeccion;        

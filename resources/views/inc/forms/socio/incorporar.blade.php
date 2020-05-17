@@ -46,7 +46,7 @@
     <x-input label="Fecha SIND1" tipo="text" nombre="fecha_sind1" id="fecha_sind1" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
 
     <!-- Ciudad -->
-    <x-enlace-modal />
+    <x-enlace-modal label="Ciudad" />
     <x-select :colecciones="$colecciones" keyColeccion="comunas" objetos="" keyObjeto="" label="Ciudad" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
 

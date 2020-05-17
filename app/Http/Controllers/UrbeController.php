@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Urbe;
 use Illuminate\Http\Request;
+use App\Http\Requests\UrbeRequest;
 
 class UrbeController extends Controller
 {
@@ -82,4 +83,22 @@ class UrbeController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear ciudad via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(UrbeRequest $request)
+    {
+        if($request->ajax()){
+
+            return response()->json('ok');
+        }
+    }    
 }

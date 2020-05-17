@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapSocioRoutes();
 
-        $this->mapSelectRoutes();
+        $this->mapAjaxRoutes();
 
         //
     }
@@ -66,11 +66,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapSelectRoutes()
+    protected function mapAjaxRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/select.php'));
+            ->group(base_path('routes/ajax.php'));
     }    
 
     /**
