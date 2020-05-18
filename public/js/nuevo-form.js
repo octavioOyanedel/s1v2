@@ -11,7 +11,8 @@ $(window).on('load',function(){
         limpiarFormulario();
     });
 
-
+    // Lógica procesamiento de nuevos campos en form
+    // simples
     $('#form-nueva-urbe').on('submit',function(event){
         campo = 'urbe';
         procesarFormulario(event, campo);
@@ -30,8 +31,11 @@ $(window).on('load',function(){
     $('#form-nueva-ciudadania').on('submit',function(event){
         campo = 'ciudadania';
         procesarFormulario(event, campo);
-    });            
+    });
 
+    // compuestos     
+
+    // funciones
     function procesarFormulario(event, campo){
         // detener ejecución de envío de formulario
         event.preventDefault();
