@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Urbe;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\UrbeRequest;
 
 class UrbeController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -96,9 +98,10 @@ class UrbeController extends Controller
      */
     public function crearViaAjax(UrbeRequest $request)
     {
+        $this->createGenerico($request, new Urbe);
+        $urbe = Urbe::all()->last();
         if($request->ajax()){
-
-            return response()->json('ok');
+            return response()->json($urbe->id);
         }
     }    
 }

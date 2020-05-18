@@ -9,11 +9,31 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form id="nueva-ciudad" action="{{ route($action) }}" method="post">
+				<form id="{{ obtenerIdFormulario($label) }}" method="post">
 					@include(obtenerCsrf('post'))
-					<div class="modal-body">						
-						<!-- ciudad -->
-						<x-input label="Nombre" tipo="text" nombre="nombre" id="nombre-ciudad" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. Valparaíso" obligatorio="no"/>
+					<div class="modal-body">
+						@include('layouts.inc.mensajes.obligatorio')
+
+						<!-- form nuevo -->
+						@switch($label)
+						    @case('Ciudad')
+						        @include('inc.forms.socio.modal.nueva_urbe')
+						    @break
+						    @case('Sede')
+						        @include('inc.forms.socio.modal.nueva_sede')
+						    @break
+						    @case('Cargo')
+						        @include('inc.forms.socio.modal.nuevo_cargo')
+						    @break
+						    @case('Nacionalidad')
+						        @include('inc.forms.socio.modal.nueva_ciudadania')
+						    @break							    					    				
+						    @default
+						          
+						@endswitch
+						
+						<!-- form nuevo -->
+
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Cerrar</button>

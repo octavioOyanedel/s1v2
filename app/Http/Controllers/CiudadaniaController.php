@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ciudadania;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\CiudadaniaRequest;
 
 class CiudadaniaController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class CiudadaniaController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear ciudadania via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(CiudadaniaRequest $request)
+    {
+        $this->createGenerico($request, new Ciudadania);
+        $ciudadania = Ciudadania::all()->last();
+        if($request->ajax()){
+            return response()->json($ciudadania->id);
+        }
+    }       
 }

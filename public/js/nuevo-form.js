@@ -1,26 +1,105 @@
 $(window).on('load',function(){
 
     var valor = null;
+    var campo = '';
 
-    $('#nueva-ciudad').on('submit',function(event){
+    // esconde alert error
+    limpiarFormulario();
 
+    // limpia inputs tras cerrar modal
+    $('.enlace-modal-nuevo').click(function(){
+        limpiarFormulario();
+    });
+
+
+    $('#form-nueva-urbe').on('submit',function(event){
+        campo = 'urbe';
+        procesarFormulario(event, campo);
+    });
+
+    $('#form-nueva-sede').on('submit',function(event){
+        campo = 'sede';
+        procesarFormulario(event, campo);
+    });
+
+    $('#form-nuevo-cargo').on('submit',function(event){
+        campo = 'cargo';
+        procesarFormulario(event, campo);
+    });
+
+    $('#form-nueva-ciudadania').on('submit',function(event){
+        campo = 'ciudadania';
+        procesarFormulario(event, campo);
+    });            
+
+    function procesarFormulario(event, campo){
         // detener ejecución de envío de formulario
         event.preventDefault();
+        //event.currentTarget.submit(); // continuar ejecución de form
 
         // obtener valor de formulario
-        valor = $('#nombre-ciudad').val().trim();
+        valor = obtenerElementoValor(campo).val().trim(); 
 
         // validación inicial
         if(soloLetras(valor) && existe(valor)){
-            ajaxSimple(valor, event, '/create_urbe')
+            ajaxSimple(valor, event, obtenerRuta(campo), campo); 
         }else{
-            alert('error');
+            errorValidacion('Campo no válido, solo letras y espacios en blanco.');
         }
-        
+    }
 
-    });
+    function obtenerElementoValor(campo){
+        switch(campo) {
+            case 'urbe':
+                return $('#nueva-urbe');
+            break;
+            case 'sede':
+                return $('#nueva-sede');
+            break;
+            case 'cargo':
+                return $('#nuevo-cargo');
+            break;
+            case 'ciudadania':
+                return $('#nueva-ciudadania');
+            break;                     
+        }        
+    }
 
-    function ajaxSimple(valor, event, ruta){
+    function obtenerElementoCarga(campo){
+        switch(campo) {
+            case 'urbe':
+                return $('#urbe_id');
+            break;
+            case 'sede':
+                return $('#sede_id');
+            break;
+            case 'cargo':
+                return $('#cargo_id');
+            break;
+            case 'ciudadania':
+                return $('#ciudadania_id');
+            break;                          
+        }        
+    }
+
+    function obtenerRuta(campo){
+        switch(campo) {
+            case 'urbe':
+                return '/create_urbe';
+            break;
+            case 'sede':
+                return '/create_sede';
+            break;
+            case 'cargo':
+                return '/create_cargo';
+            break;
+            case 'ciudadania':
+                return '/create_ciudadania';
+            break;                       
+        }        
+    }
+
+    function ajaxSimple(valor, event, ruta, campo){
 
         cabeceraAjax();
 
@@ -30,18 +109,28 @@ $(window).on('load',function(){
             url: ruta,
             data: {nombre: valor},
             success: function(respuesta){
-                if(respuesta === 'ok'){
-                    //reanuda envío de formulario
-                    alert('si');
-                    //event.currentTarget.submit();                   
-                }
+                obtenerElementoCarga(campo).append('<option value='+respuesta+' selected>'+valor+'</option>');
+                //event.currentTarget.submit();
+                $('.modal').modal('hide');
+
             },
             error: function(respuesta){
-                alert(respuesta);
-                //event.currentTarget.submit();
+                errorValidacion(respuesta.responseJSON.errors.nombre);                              
             }
         }); 
     
+    }
+
+    function errorValidacion(mensaje){
+        $('.nuevo-campo-input').addClass('is-invalid');
+        $('.nueva-label').hide();
+        $('.alertas-nuevos').show().text(mensaje);       
+    }    
+
+    function limpiarFormulario(){
+        $('.nuevo-campo-input').val('');
+        $('.alertas-nuevos').hide();
+        $('.nuevo-campo-input').removeClass('is-invalid');        
     }       
 
     function cabeceraAjax(){
@@ -67,6 +156,14 @@ $(window).on('load',function(){
         }else{
             return false;
         }
-    }       
+    }      
+
+    function objetoVacio(objeto) {
+        for(var key in objeto) {
+            if(objeto.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }     
 
 });

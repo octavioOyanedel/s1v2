@@ -47,7 +47,8 @@
             "app/Helpers/navbar.php",
             "app/Helpers/tabla.php",
             "app/Helpers/filtro.php",
-            "app/Helpers/mantenedor.php"
+            "app/Helpers/mantenedor.php",
+            "app/Helpers/modal.php"
         ],
         "classmap": [
             "database/seeds",

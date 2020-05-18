@@ -9,9 +9,9 @@
     </div>
 
     <!-- Modal nuevo registro -->
-    <x-modal-nuevo label="Ciudad" action="home" colecciones="" keyColeccion="" />
-    <x-modal-nuevo label="Sede" action="home" colecciones="" keyColeccion="" />
-    <x-modal-nuevo label="Cargo" action="home" colecciones="" keyColeccion="" />
-    <x-modal-nuevo label="Nacionalidad" action="home" colecciones="" keyColeccion="" />
+    <x-modal-nuevo label="Ciudad" colecciones="" keyColeccion="" />
+    <x-modal-nuevo label="Sede" colecciones="" keyColeccion="" />
+    <x-modal-nuevo label="Cargo" colecciones="" keyColeccion="" />
+    <x-modal-nuevo label="Nacionalidad" colecciones="" keyColeccion="" />
     
 @endsection

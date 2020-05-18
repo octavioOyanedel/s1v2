@@ -13,6 +13,7 @@ Route::get('/cargar_areas', 'SelectController@areas')->name('cargar_areas');
 
 Route::get('/correos_reset', 'UserController@existeCorreo');
 
-// corrección	Comuna === urbes
-// 				Ciudad === comunas
-Route::get('/create_urbe', 'ComunaController@crearViaAjax');
+Route::get('/create_urbe', 'UrbeController@crearViaAjax');
+Route::get('/create_sede', 'SedeController@crearViaAjax');
+Route::get('/create_cargo', 'CargoController@crearViaAjax');
+Route::get('/create_ciudadania', 'CiudadaniaController@crearViaAjax');

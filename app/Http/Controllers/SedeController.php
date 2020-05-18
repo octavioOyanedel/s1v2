@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Sede;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\SedeRequest;
 
 class SedeController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class SedeController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear ciudad via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(SedeRequest $request)
+    {
+        $this->createGenerico($request, new Sede);
+        $sede = Sede::all()->last();
+        if($request->ajax()){
+            return response()->json($sede->id);
+        }
+    }       
 }

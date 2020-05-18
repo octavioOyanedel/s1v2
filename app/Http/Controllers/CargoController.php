@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Cargo;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\CargoRequest;
 
 class CargoController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class CargoController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear cargo via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(CargoRequest $request)
+    {
+        $this->createGenerico($request, new Cargo);
+        $cargo = Cargo::all()->last();
+        if($request->ajax()){
+            return response()->json($cargo->id);
+        }
+    }         
 }

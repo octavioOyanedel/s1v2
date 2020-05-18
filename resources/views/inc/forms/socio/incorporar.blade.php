@@ -57,15 +57,18 @@
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>
 
     <!-- Sede -->
+    <x-enlace-modal label="Sede" />
     <x-select :colecciones="$colecciones" keyColeccion="sedes" objetos="" keyObjeto="" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Área -->
     <x-select-ajax keyObjeto="" objetos="" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="" obligatorio="si"/>
 
     <!-- Cargo -->
+    <x-enlace-modal label="Cargo" />
     <x-select :colecciones="$colecciones" keyColeccion="cargos" objetos="" keyObjeto="" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Nacionalidad -->
+    <x-enlace-modal label="Nacionalidad" />
     <x-select :colecciones="$colecciones" keyColeccion="ciudadanias" objetos="" keyObjeto="" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>       
 
     <!-- Botón -->
