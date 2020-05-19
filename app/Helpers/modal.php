@@ -19,7 +19,13 @@ function obtenerIdFormulario($label)
 		break;
 		case "Nacionalidad":
 			return 'form-nueva-ciudadania';
-		break;	
+		break;
+		case "Comuna":
+			return 'form-nueva-comuna';
+		break;
+		case "Área":
+			return 'form-nueva-area';
+		break;				
 	}
 }
 
@@ -42,6 +48,12 @@ function obtenerRutaFormulario($label)
 		break;
 		case "Nacionalidad":
 			return 'inc.forms.socio.modal.nueva-ciudadania';
+		break;
+		case "Comuna":
+			return 'inc.forms.socio.modal.nueva-comuna';
+		break;
+		case "Área":
+			return 'inc.forms.socio.modal.nueva-area';
 		break;		
 	}
 }

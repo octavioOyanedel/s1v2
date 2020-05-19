@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Comuna;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\ComunaRequest;
 
 class ComunaController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,24 @@ class ComunaController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear comuna via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(ComunaRequest $request)
+    {
+
+        $this->createGenerico($request, new Comuna);
+        $comuna = Comuna::all()->last();
+        if($request->ajax()){
+            return response()->json($comuna->id);
+        }
+    }          
 }

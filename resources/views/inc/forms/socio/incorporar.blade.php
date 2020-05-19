@@ -51,6 +51,7 @@
 
 
     <!-- Comuna -->
+    <x-enlace-modal label="Comuna" />
     <x-select-ajax keyObjeto="" objetos="" nombre="comuna_id" id="comuna_id" label="Comuna" idOld="old_comuna" idEditar="" obligatorio="si"/>
 
     <!-- Dirección -->
@@ -61,6 +62,7 @@
     <x-select :colecciones="$colecciones" keyColeccion="sedes" objetos="" keyObjeto="" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Área -->
+    <x-enlace-modal label="Área" />
     <x-select-ajax keyObjeto="" objetos="" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="" obligatorio="si"/>
 
     <!-- Cargo -->

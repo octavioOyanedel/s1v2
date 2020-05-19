@@ -27,11 +27,14 @@
 						    @break
 						    @case('Nacionalidad')
 						        @include('inc.forms.socio.modal.nueva_ciudadania')
-						    @break							    					    				
-						    @default
-						          
+						    @break
+						    @case('Comuna')
+						        @include('inc.forms.socio.modal.nueva_comuna')
+						    @break						    						    					    				
+						    @case('Área')
+						        @include('inc.forms.socio.modal.nueva_area')
+						    @break							          
 						@endswitch
-						
 						<!-- form nuevo -->
 
 					</div>

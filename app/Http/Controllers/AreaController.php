@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\AreaRequest;
 
 class AreaController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,24 @@ class AreaController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear area via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(AreaRequest $request)
+    {
+
+        $this->createGenerico($request, new Area);
+        $area = Area::all()->last();
+        if($request->ajax()){
+            return response()->json($area->id);
+        }
+    }       
 }

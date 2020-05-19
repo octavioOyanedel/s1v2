@@ -13,5 +13,6 @@
     <x-modal-nuevo label="Sede" colecciones="" keyColeccion="" />
     <x-modal-nuevo label="Cargo" colecciones="" keyColeccion="" />
     <x-modal-nuevo label="Nacionalidad" colecciones="" keyColeccion="" />
-    
+    <x-modal-nuevo label="Comuna" :colecciones="$colecciones" keyColeccion="urbes" />
+    <x-modal-nuevo label="Área" :colecciones="$colecciones" keyColeccion="sedes" />  
 @endsection
