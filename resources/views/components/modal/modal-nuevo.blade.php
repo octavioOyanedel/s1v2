@@ -30,7 +30,7 @@
 						    @break
 						    @case('Comuna')
 						        @include('inc.forms.socio.modal.nueva_comuna')
-						    @break						    						    					    				
+						    @break
 						    @case('Área')
 						        @include('inc.forms.socio.modal.nueva_area')
 						    @break							          
@@ -40,7 +40,13 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Cerrar</button>
-						<button type="submit" class="nuevo-form btn btn-sm btn-primary">Agregar</button>
+						<button type="submit" class="nuevo-form btn btn-sm btn-primary">
+							<span class="mr-1">
+								<div class="spinner-border" role="status">
+									<span class="align-middle sr-only">Guardando...</span>
+								</div>			
+							</span>Agregar
+						</button>
 					</div>
 				</form>
 			</div>

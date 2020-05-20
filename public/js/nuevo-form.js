@@ -1,34 +1,41 @@
 $(window).on('load',function(){
+    // NUEVA CIUDAD
+    // form incorporar
+    //      nombre="urbe_id" id="urbe_id"
+    // form modal
+    //      name="nombre" id="nueva-urbe" 
+    // NUEVA COMUNA
+    // form incorporar
+    //      nombre="comuna_id" id="comuna_id"
+    // form modal
+    //     name="urbe_id" id="urbe-nueva-comuna" 
+    //     name="nombre" id="nueva-comuna" 
+   
+    // 1- limpiar formulario modal
+    limpiarFormularioModal();
 
-    var valor = null;
-    var texto = '';
-
-    // esconde alertas y limpia formulario
-    limpiarFormulario();
-
-    // lógica al hacer clic en enlace agregar campo para que aparezca ventana modal
+    // 2- lógica que agrega o no valor obtenido de form incorporar en form de ventana modal
+    // solo comuna
     $('.enlace-modal-nuevo').click(function(){
-        // esconde alertas y limpia formulario
-        limpiarFormulario();
-        // comprobar si se campo compuesto se creó o se carga desde formulario
-        switch($(this).attr('title')) {
-            case 'Agregar Comuna':
-                procesarSeleccionCampo('urbe_seleccionada', 'nueva_comuna', 'texto_urbe_comuna');
-            break;
-            case 'Agregar Área':
-                procesarSeleccionCampo('sede_seleccionada', 'nueva_area', 'texto_sede_area');
-            break;                              
-        }       
+        limpiarFormularioModal();
+        completarSelectModal($(this).attr('title'));
     });
 
-    // Lógica procesamiento de nuevos campos en form
-    // simples
+    // 5- procesamiento form de ventana modal
     $('#form-nueva-urbe').on('submit',function(event){
         procesarFormulario(event, 'urbe');
     });
 
+    $('#form-nueva-comuna').on('submit',function(event){
+        procesarFormulario(event, 'comuna');        
+    });
+
     $('#form-nueva-sede').on('submit',function(event){
         procesarFormulario(event, 'sede');
+    });
+
+    $('#form-nueva-area').on('submit',function(event){
+        procesarFormulario(event, 'area');        
     });
 
     $('#form-nuevo-cargo').on('submit',function(event){
@@ -39,52 +46,33 @@ $(window).on('load',function(){
         procesarFormulario(event, 'ciudadania');
     });
 
-    // compuestos    
-    $('#form-nueva-comuna').on('submit',function(event){
-        procesarFormulario(event, 'comuna');        
-    });
-
-    $('#form-nueva-area').on('submit',function(event){
-        procesarFormulario(event, 'area');        
-    });       
-
     /************************************************
      * FUNCIONES
-     ************************************************/
+     ************************************************/ 
 
-    function procesarSeleccionCampo(seleccionado, nuevo, texto){ 
-        valor = obtenerElementoCarga(seleccionado).val();
-        if(valor != ''){
-            texto = obtenerElementoCarga(seleccionado).text();
-            if(obtenerTextoElemento(texto, valor) === ''){
-                obtenerElementoValor(nuevo).append('<option value='+valor+' selected>'+texto+'</option>');
-            }else{
-                obtenerElementoValor(nuevo).val(valor).find("option[value="+valor+"]").attr('selected', true);
-            }                                        
-        }
-    }
-
-    function procesarFormulario(event, campo){
+    // 6- procesamiento de formulario
+    function procesarFormulario(event, nombre){
         // detener ejecución de envío de formulario
         event.preventDefault();
         //event.currentTarget.submit(); // continuar ejecución de form
 
         // obtener valor de formulario
-        valor = obtenerElementoValor(campo).val().trim(); 
+        var valor = obtenerValorInputModal(nombre); 
 
         // validación inicial
         if(soloLetras(valor) && existe(valor)){
-            switch(campo) {
-                case 'comuna':
-                    ajaxSimple(valor, event, obtenerRuta(campo), campo, $('#urbe-nueva-comuna option:selected').val());
-                    completarOption('urbe', 'urbe_nueva_seleccionada');
+            $('.spinner-border').fadeIn(1800);
+            switch(nombre) {
+                case 'comuna':                    
+                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('urbe_modal'));
+                    seleccionarOptionEnSelected('urbe_form', obtenerValorSeleccionado('urbe_modal'));
                 break;  
                 case 'area':
-                    ajaxSimple(valor, event, obtenerRuta(campo), campo, $('#sede-nueva-area option:selected').val());
-                    completarOption('sede', 'sede_nueva_seleccionada');
+                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('sede_modal'));
+                    seleccionarOptionEnSelected('sede_form', obtenerValorSeleccionado('sede_modal'));
                 break;                  
                 default:
-                    ajaxSimple(valor, event, obtenerRuta(campo), campo, '');                     
+                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
             }   
             
 
@@ -93,11 +81,12 @@ $(window).on('load',function(){
         }
     }
 
-    function ajaxSimple(valor, event, ruta, campo, id){
+    // 7. ajax
+    function ajaxSimple(valor, event, ruta, nombre, id){
 
         data = null;
 
-        switch(campo) {
+        switch(nombre) {
             case 'comuna':
                 data = {nombre: valor, urbe_id: id}; 
             break; 
@@ -117,9 +106,9 @@ $(window).on('load',function(){
             url: ruta,
             data: data,
             success: function(respuesta){
-                obtenerElementoCarga(campo).append('<option value='+respuesta+' selected>'+valor+'</option>');
+                obtenerSelectFormIncorporar(nombre).append('<option value='+respuesta+' selected>'+valor+'</option>');
                 // event.currentTarget.submit();
-                // seleccionar option que corresponde
+                $('.spinner-border').hide();
                 $('.modal').modal('hide');
             },
             error: function(respuesta){
@@ -127,89 +116,36 @@ $(window).on('load',function(){
             }
         });        
 
+    }    
+
+    // 3- validar para afregar valor a select
+    function completarSelectModal(titulo){
+        switch(titulo) {
+            case 'Agregar Comuna':
+                agregarOptionSeleccionada('urbe_form', 'urbe_modal');
+            break;   
+            case 'Agregar Área':
+                agregarOptionSeleccionada('sede_form', 'sede_modal');
+            break;                                         
+        }             
+    }  
+    // 4- antes de añadir validar si existe en select modal
+    function agregarOptionSeleccionada(nombre_form, nombre_modal){
+        if(obtenerValorSeleccionado(nombre_form) != ''){
+            // comprobar si fue creado: no esta en select
+            if(buscarValorEnSelect(nombre_modal, obtenerValorSeleccionado(nombre_form)) != undefined && buscarValorEnSelect(nombre_modal, obtenerValorSeleccionado(nombre_form)) != ''){
+                // existe entonces seleccionar option que corresponda
+                seleccionarOptionEnSelected(nombre_modal, obtenerValorSeleccionado(nombre_form));
+            }else{
+                // insertar valor y texto a select
+                obtenerSelectModal(nombre_modal).append('<option value='+obtenerValorSeleccionado(nombre_form)+' selected>'+obtenerTextoSeleccionado(nombre_form)+'</option>');  
+            }
+        }
     }
 
-    function completarOption(campo, seleccionado){
-        obtenerElementoCarga(campo).val(obtenerElementoValor(seleccionado).val()).find("option[value="+obtenerElementoValor(seleccionado).val()+"]").attr('selected', true);
-    }
 
-    function obtenerTextoElemento(campo, valor){
-        switch(campo) {
-            case 'texto_urbe_comuna':
-                return $("#urbe-nueva-comuna option[value="+valor+"]").text();
-            break;
-            case 'texto_sede_area':
-                return $("#sede-nueva-area option[value="+valor+"]").text();
-            break;                                              
-        }        
-    }
-
-    function obtenerElementoValor(campo){
-        switch(campo) {
-            case 'urbe':
-                return $('#nueva-urbe');
-            break;
-            case 'sede':
-                return $('#nueva-sede');
-            break;
-            case 'cargo':
-                return $('#nuevo-cargo');
-            break;
-            case 'ciudadania':
-                return $('#nueva-ciudadania');
-            break;
-            case 'comuna':
-                return $('#nueva-comuna');
-            break;
-            case 'area':
-                return $('#nueva-area');
-            break;
-            case 'nueva_comuna':
-                return $('#urbe-nueva-comuna'); 
-            break;
-            case 'nueva_area':
-                return $('#sede-nueva-area'); 
-            break;
-            case 'urbe_nueva_seleccionada':
-                return $('#urbe-nueva-comuna option:selected');
-            break;
-            case 'sede_nueva_seleccionada':
-                return $('#sede-nueva-area option:selected');
-            break;                                                                   
-        }        
-    }
-
-    function obtenerElementoCarga(campo){
-        switch(campo) {
-            case 'urbe':
-                return $('#urbe_id');
-            break;
-            case 'sede':
-                return $('#sede_id');
-            break;
-            case 'cargo':
-                return $('#cargo_id');
-            break;
-            case 'ciudadania':
-                return $('#ciudadania_id');
-            break;
-            case 'comuna':
-                return $('#comuna_id');
-            break;
-            case 'area':
-                return $('#area_id');
-            break;            
-            case 'urbe_seleccionada':
-                return $('#urbe_id option:selected');
-            break;
-            case 'sede_seleccionada':
-                return $('#sede_id option:selected');
-            break;                                                                
-        }        
-    }
-
-    function obtenerRuta(campo){
-        switch(campo) {
+    function obtenerRuta(nombre){
+        switch(nombre) {
             case 'urbe':
                 return '/create_urbe';
             break;
@@ -231,17 +167,152 @@ $(window).on('load',function(){
         }        
     }
 
-    function errorValidacion(mensaje){
-        $('.nuevo-campo-input').addClass('is-invalid');
-        $('.nueva-label').hide();
-        $('.alertas-nuevos').show().text(mensaje);       
+    function obtenerValorSeleccionado(nombre){
+        switch(nombre) {
+            case 'urbe_form':
+                return $('#urbe_id option:selected').val();
+            break;
+            case 'urbe_modal':
+                return $('#urbe-nueva-comuna option:selected').val();
+            break;
+            case 'sede_form':
+                return $('#sede_id option:selected').val();
+            break;
+            case 'sede_modal':
+                return $('#sede-nueva-area option:selected').val();
+            break;                            
+        }            
+    }
+
+    function buscarValorEnSelect(nombre, valor){
+        switch(nombre) {
+            case 'urbe_modal':
+                return $('#urbe-nueva-comuna option[value='+valor+']').val();
+            break;  
+            case 'sede_modal':
+                return $('#sede-nueva-area option[value='+valor+']').val();
+            break;                   
+        }            
+    }
+
+    function seleccionarOptionEnSelected(nombre, valor){
+        switch(nombre) {
+            case 'urbe_modal':
+                return $('#urbe-nueva-comuna option[value='+valor+']').attr('selected', true);
+            break;    
+            case 'urbe_form':
+                return $('#urbe_id option[value='+valor+']').attr('selected', true);
+            break;
+            case 'sede_modal':
+                return $('#sede-nueva-area option[value='+valor+']').attr('selected', true);
+            break;    
+            case 'sede_form':
+                return $('#sede_id option[value='+valor+']').attr('selected', true);
+            break;                                      
+        }            
     }    
 
-    function limpiarFormulario(){
-        $('.nuevo-campo-input').val('');
-        $('.alertas-nuevos').hide();
-        $('.nuevo-campo-input').removeClass('is-invalid');        
-    }       
+    function obtenerTextoSeleccionado(nombre){
+        switch(nombre) {
+            case 'urbe_form':
+                return $('#urbe_id option:selected').text();
+            break;
+            case 'sede_form':
+                return $('#sede_id option:selected').text();
+            break;                           
+        }            
+    }
+
+    function obtenerSelectFormIncorporar(nombre){
+        switch(nombre) {
+            case 'urbe':
+                return $('#urbe_id');
+            break;
+            case 'comuna':
+                return $('#comuna_id');
+            break;
+            case 'sede':
+                return $('#sede_id');
+            break;
+            case 'area':
+                return $('#area_id');
+            break;
+            case 'cargo':
+                return $('#cargo_id');
+            break;
+            case 'ciudadania':
+                return $('#ciudadania_id');
+            break;                                                                                   
+        }    
+    }
+
+    function obtenerSelectModal(nombre){
+        switch(nombre) {
+            case 'urbe_modal':
+                return $('#urbe-nueva-comuna');
+            break;
+            case 'sede_modal':
+                return $('#sede-nueva-area');
+            break;                                                                   
+        }   
+    }
+
+    function obtenerValorSelectModal(nombre){
+        switch(nombre) {
+            case 'urbe_modal':
+                return $('#urbe-nueva-comuna option:selected').val();
+            break;
+            case 'sede_modal':
+                return $('#sede-nueva-area option:selected').val();
+            break;                                                                      
+        }   
+    }    
+
+    function obtenerInputModal(nombre){
+        switch(nombre) {
+            case 'urbe':
+                return $('#nueva-urbe');
+            break;
+            case 'comuna':
+                return $('#nueva-comuna');
+            break;
+            case 'sede':
+                return $('#nueva-sede');
+            break;
+            case 'area':
+                return $('#nueva-area');
+            break;
+            case 'cargo':
+                return $('#nuevo-cargo');
+            break;
+            case 'ciudadania':
+                return $('#nueva-ciudadania');
+            break;                                                                               
+        }   
+    }
+
+    function obtenerValorInputModal(nombre){
+        switch(nombre) {
+            case 'urbe':
+                return $('#nueva-urbe').val().trim();
+            break;
+            case 'comuna':
+                return $('#nueva-comuna').val().trim();
+            break;
+            case 'sede':
+                return $('#nueva-sede').val().trim();
+            break;
+            case 'area':
+                return $('#nueva-area').val().trim();
+            break;
+            case 'cargo':
+                return $('#nuevo-cargo').val().trim();
+            break;
+            case 'ciudadania':
+                return $('#nueva-ciudadania').val().trim();
+            break;                                                                                             
+        }   
+    }   
 
     function cabeceraAjax(){
         $.ajaxSetup({
@@ -266,14 +337,20 @@ $(window).on('load',function(){
         }else{
             return false;
         }
-    }      
+    }         
 
-    function objetoVacio(objeto) {
-        for(var key in objeto) {
-            if(objeto.hasOwnProperty(key))
-                return false;
-        }
-        return true;
-    }     
+    function errorValidacion(mensaje){
+        $('.nuevo-campo-input').addClass('is-invalid');
+        $('.nueva-label').hide();
+        $('.alertas-nuevos').show().text(mensaje);
+        $('.spinner-border').hide();       
+    }    
+
+    function limpiarFormularioModal(){
+        $('.nuevo-campo-input').val('');
+        $('.alertas-nuevos').hide();
+        $('.nuevo-campo-input').removeClass('is-invalid');
+        $('.spinner-border').hide();        
+    }   
 
 });
