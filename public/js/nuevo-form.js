@@ -1,15 +1,4 @@
 $(window).on('load',function(){
-    // NUEVA CIUDAD
-    // form incorporar
-    //      nombre="urbe_id" id="urbe_id"
-    // form modal
-    //      name="nombre" id="nueva-urbe" 
-    // NUEVA COMUNA
-    // form incorporar
-    //      nombre="comuna_id" id="comuna_id"
-    // form modal
-    //     name="urbe_id" id="urbe-nueva-comuna" 
-    //     name="nombre" id="nueva-comuna" 
    
     // 1- limpiar formulario modal
     limpiarFormularioModal();
@@ -323,7 +312,7 @@ $(window).on('load',function(){
     }    
 
     function soloLetras(nombre){
-        var regEx = /^[A-Z a-z]+$/;
+        var regEx = /^[A-Z a-zÑÁÉÍÓÚñáéíóúü]+$/;
         if(nombre.match(regEx)){
             return true;
         }else{

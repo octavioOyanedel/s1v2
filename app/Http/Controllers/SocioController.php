@@ -65,7 +65,7 @@ class SocioController extends Controller
      */
     public function show(Socio $socio)
     {
-        //
+        return view('app.socios.show', compact('socio'));
     }
 
     /**

@@ -17,6 +17,9 @@ function obtenerContenidoTabla($nombre)
 		case "socios":
 			return 'inc.tablas.socios.listar';
 		break;
+		case "ver_socio":
+			return 'inc.tablas.socios.mostrar';
+		break;
 	}
 }
 
@@ -36,6 +39,9 @@ function obtenerCabecerasTablas($nombre)
 		break;	
 		case "usuarios":
 			return array('Nombre'=>'','Correo'=>'','Privilegio'=>'');
+		break;	
+		case "ver_socio":
+			return array('Nombre'=>'nombre1','Género'=>'genero','Fecha de Nacimiento'=>'fecha_nac','N° Contacto'=>'celular','Correo'=>'correo','Ciudad'=>'urbe_id','Comuna'=>'comuna_id','Dirección'=>'direccion','Fecha Ingreso PUCV'=>'fecha_pucv','Sede'=>'sede_id','Área'=>'area_id','Cargo'=>'cargo_id','Anexo'=>'anexo','Fecha Ingreso Sind1'=>'fecha_sind1','N° Socio'=>'numero','Estado Socio'=>'categoria_id','Nacionalidad'=>'ciudadania_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at' );
 		break;			
 	}
 }

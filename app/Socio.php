@@ -4,7 +4,11 @@ namespace App;
 
 use App\Area;
 use App\Sede;
+use App\Urbe;
 use App\Cargo;
+use App\Comuna;
+use App\Categoria;
+use App\Ciudadania;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,6 +28,24 @@ class Socio extends Model
     /*******************************************************************************************
     /************************************ Relaciones *******************************************
     *******************************************************************************************/
+    
+    /**
+     * Relación belongsTo
+     * Esta/e urbe pertenece a un/a socio
+     */
+    public function urbe()
+    {
+        return $this->belongsTo('App\Urbe');
+    }
+
+    /**
+     * Relación belongsTo
+     * Esta/e comuna pertenece a un/a socio
+     */
+    public function comuna()
+    {
+        return $this->belongsTo('App\Comuna');
+    }    
 
     /**
      * Relación belongsTo
@@ -50,7 +72,25 @@ class Socio extends Model
     public function cargo()
     {
         return $this->belongsTo('App\Cargo');
-    }      
+    }
+
+    /**
+     * Relación belongsTo
+     * Esta/e categoria pertenece a un/a socio
+     */
+    public function categoria()
+    {
+        return $this->belongsTo('App\Categoria');
+    }    
+
+    /**
+     * Relación belongsTo
+     * Esta/e ciudadania pertenece a un/a socio
+     */
+    public function ciudadania()
+    {
+        return $this->belongsTo('App\Ciudadania');
+    }            
 
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************

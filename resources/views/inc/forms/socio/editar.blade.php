@@ -50,24 +50,30 @@
     <x-input label="Fecha SIND1" tipo="text" nombre="fecha_sind1" id="fecha_sind1" margen="mb-4" tamano="form-control-sm" :valor="formatoFecha($socio->fecha_sind1)" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
 
     <!-- Ciudad -->
+    <x-enlace-modal label="Ciudad" />
     <x-select :colecciones="$colecciones" keyColeccion="urbes" :objetos="$objetos" keyObjeto="socio" label="Ciudad" nombre="urbe_id" id="urbe_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Comuna -->
+    <x-enlace-modal label="Comuna" />
     <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="comuna_id" id="comuna_id" label="Comuna" idOld="old_comuna" idEditar="editar_comuna" obligatorio="si"/>
 
     <!-- Dirección -->
     <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" :valor="$socio->direccion" placeholder="Ej. Av. Brasil 2950" obligatorio="no"/>
 
     <!-- Sede -->
+    <x-enlace-modal label="Sede" />
     <x-select :colecciones="$colecciones" keyColeccion="sedes" :objetos="$objetos" keyObjeto="socio" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>    
 
     <!-- Área -->
+    <x-enlace-modal label="Área" />
     <x-select-ajax keyObjeto="socio" :objetos="$objetos" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="editar_area" obligatorio="si"/>
 
     <!-- Cargo -->
+    <x-enlace-modal label="Cargo" />
     <x-select :colecciones="$colecciones" keyColeccion="cargos" :objetos="$objetos" keyObjeto="socio" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>
 
     <!-- Nacionalidad -->
+    <x-enlace-modal label="Nacionalidad" />
     <x-select :colecciones="$colecciones" keyColeccion="ciudadanias" :objetos="$objetos" keyObjeto="socio" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>       
 
     <!-- Botón -->
