@@ -37,4 +37,8 @@ function obtenerEnlacesMantenedor($ruta)
 	if($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta)){
 		return array('Área'=>'home','Cargo'=>'home','Ciudad'=>'home','Comuna'=>'home','Nacionalidad'=>'home','Sede'=>'home','Situación'=>'home');
 	}
+	
+	if($ruta === 'buscar'){
+		return array('Algo'=>'home');
+	}	
 }

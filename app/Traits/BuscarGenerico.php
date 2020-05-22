@@ -3,8 +3,10 @@
 namespace App\Traits;
  
 use App\User;
+use App\Socio;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
  
 trait BuscarGenerico {
@@ -32,5 +34,32 @@ trait BuscarGenerico {
     	$modelo = obtenerObjetoModel($tabla_fk);
         return $modelo->orderBy($columna, $orden)
             	->paginate($cantidad)->appends(obtenerAppendsArray($cantidad, $columna, $orden));
+    }
+
+    public static function busquedaModuloSocio($nombre, $apellido, $q){
+        $socios = Socio::orderBy('apellido1','ASC')
+            ->nombres($nombre, $apellido)
+            ->rut($q)
+            ->nombre1($q)
+            ->nombre2($q)
+            ->apellido1($q)
+            ->apellido2($q)            
+            ->genero($q)
+            ->fechaNac($q)
+            ->celular($q)
+            ->correo($q)
+            ->urbe($q)
+            ->comuna($q)
+            ->direccion($q)
+            ->fechaPucv($q)
+            ->sede($q)
+            ->area($q)
+            ->cargo($q)
+            ->anexo($q)
+            ->fechaSind1($q)
+            ->numero($q)
+            ->ciudadania($q)
+            ->get();
+        return $socios;
     }
 }

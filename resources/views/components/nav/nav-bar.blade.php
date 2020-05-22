@@ -12,8 +12,13 @@
 			</ul>
 			<!-- Links -->
 
+			<form method="GET" action="{{ route('buscar') }}" class="form-inline my-2 my-lg-0 ml-auto">
+				
+				<input class="input-buscar form-control form-control-sm" name="q" type="search" placeholder="Buscar" aria-label="Search">
+				<button class="boton-buscar btn btn-sm btn-outline-white my-2" type="submit">Buscar</button>
+			</form>
+
 		</div>
 		<!-- Collapsible content -->
-
 	</nav>
 </div>
