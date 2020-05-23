@@ -6,11 +6,13 @@ use App\Sede;
 use App\Urbe;
 use App\Cargo;
 use App\Socio;
+use App\Categoria;
 use App\Ciudadania;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
 use App\Http\Requests\SocioRequest;
+use App\Http\Requests\FiltroSocioRequest;
 
 class SocioController extends Controller
 {
@@ -117,5 +119,31 @@ class SocioController extends Controller
         $socio->update();        
         $this->deleteGenerico(Socio::findOrFail($socio->id));
         return redirect('home')->with('status', 'Socio Eliminado!');
+    }
+
+    /**
+     * Show the form for filtrar socios.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function formFiltro()
+    {
+        $urbes = Urbe::orderBy('nombre','ASC')->get();
+        $sedes = Sede::orderBy('nombre','ASC')->get();
+        $cargos = Cargo::orderBy('nombre','ASC')->get();
+        $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $colecciones = array('urbes'=>$urbes,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias,'categorias'=>$categorias);
+        return view('app.socios.filtro', compact('colecciones'));
+    }
+
+    /**
+     * Busca socios.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filtrarSocios(FiltroSocioRequest $request)
+    {
+        dd($request);
     }
 }

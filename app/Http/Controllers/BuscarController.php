@@ -30,9 +30,8 @@ class BuscarController extends Controller
 	    	if($socios->count() > 0){
 	    		$this->iterarColeccion($socios, $coleccion);
 	    	}
-  			$coleccion->paginate(2);
+  			$coleccion->paginate(10);
 	    	return view('app.buscar.index', compact('coleccion'));
-	    	//return view('app.buscar.index', compact('resultados'));
     	}else{
     		return back();
     	}

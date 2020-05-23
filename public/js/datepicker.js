@@ -15,4 +15,9 @@ $(window).on('load',function(){
         language: "es"
     });
 
+    $('.rango').datepicker({
+        format: "dd-mm-yyyy",
+        language: "es"
+    });
+
 });

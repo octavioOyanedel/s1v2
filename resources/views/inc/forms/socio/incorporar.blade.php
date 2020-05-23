@@ -49,7 +49,6 @@
     <x-enlace-modal label="Ciudad" />
     <x-select :colecciones="$colecciones" keyColeccion="urbes" objetos="" keyObjeto="" label="Ciudad" nombre="urbe_id" id="urbe_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
-
     <!-- Comuna -->
     <x-enlace-modal label="Comuna" />
     <x-select-ajax keyObjeto="" objetos="" nombre="comuna_id" id="comuna_id" label="Comuna" idOld="old_comuna" idEditar="" obligatorio="si"/>

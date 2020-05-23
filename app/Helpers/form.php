@@ -15,7 +15,7 @@ function obtenerCsrf($nombre)
 	        break;
 	    case "delete":
 	        return 'inc.csrf.delete';
-	        break;	        
+	        break;      
 	    default:
 	        return 'inc.csrf.post';
 	}
@@ -52,7 +52,10 @@ function cargarFormulario($action)
 	        break;
         case "socios.update":
             return 'inc.forms.socio.editar';
-            break;            	                        	                	        	             	        	                               
+            break;
+        case "filtrar_socios":
+            return 'inc.forms.socio.filtrar';
+            break;          	                        	                	        	             	        	                               
 	}
 }
 

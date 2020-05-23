@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Socio;
 use App\Rules\NombreRule;
+use App\Rules\DireccionRule;
 use App\Rules\CampoUnicoRule;
 use App\Rules\ValidarRutRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -44,7 +45,7 @@ class SocioRequest extends FormRequest
                 'fecha_sind1' => 'nullable|date',
                 'comuna_id' => 'required',
                 'urbe_id' => 'nullable',
-                'direccion' => 'nullable',
+                'direccion' => ['nullable', new DireccionRule],
                 'sede_id' => 'required',
                 'area_id' => 'nullable',
                 'cargo_id' => 'required',
@@ -67,7 +68,7 @@ class SocioRequest extends FormRequest
                 'fecha_sind1' => 'nullable|date',
                 'comuna_id' => 'required',
                 'urbe_id' => 'nullable',
-                'direccion' => 'nullable',
+                'direccion' => ['nullable', new DireccionRule],
                 'sede_id' => 'required',
                 'area_id' => 'nullable',
                 'cargo_id' => 'required',
