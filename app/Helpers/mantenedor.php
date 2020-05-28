@@ -35,7 +35,7 @@ function obtenerEnlacesMantenedor($ruta)
 		return array('Privilegio'=>'home');
 	}
 
-	if($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || $ruta === 'buscar' || strpos($ruta, 'filtrar_socios') !== FALSE){
+	if($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || $ruta === 'buscar' || strpos($ruta, 'filtrar_socios') !== FALSE || preg_match('/^mostrar_desvinculado\/([0-9]*)/', $ruta)){
 		return array('Área'=>'home','Cargo'=>'home','Ciudad'=>'home','Comuna'=>'home','Nacionalidad'=>'home','Sede'=>'home','Situación'=>'home');
 	}
 	

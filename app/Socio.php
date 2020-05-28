@@ -180,7 +180,12 @@ class Socio extends Model
     public function scopeGeneralAnd($query, $q, $campo)
     {
         if ($q) {
-            return $query->where($campo,'LIKE',"%$q%");
+            if($q === '1'){
+                return $query->where($campo,'LIKE',"%$q%");
+            }else{
+                return $query->onlyTrashed()->where($campo,'LIKE',"%$q%");
+            }
+            
         }
     }                           
 }

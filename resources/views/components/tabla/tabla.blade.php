@@ -19,22 +19,42 @@
 				</thead>
 				<tbody>
 					@foreach ($coleccion as $item)
+					{{ var_dump($item instanceof App\Socio) }}
 						<tr>
 							<td class="text-center">
-								<a title="Ver" class="p-2 text-primary" href="{{ route($ver,$item->id) }}">
-									<i class="fas fa-eye"></i>
-								</a>
+								@if ($item instanceof App\Socio && $item->categoria_id != 1)
+									<a title="Ver" class="p-2 text-primary" href="{{ route('mostrar_desvinculado',['id'=>$item->id]) }}">
+										<i class="fas fa-eye"></i>
+									</a>	
+								@else
+									<a title="Ver" class="p-2 text-primary" href="{{ route($ver,$item->id) }}">
+										<i class="fas fa-eye"></i>
+									</a>								
+								@endif
+
 							</td>
 							<td class="text-center">
-								<a title="Editar" class="p-2 text-warning" href="{{ route($editar,$item->id) }}">
-									<i class="fas fa-pen"></i>
-								</a>
+								@if ($item instanceof App\Socio && $item->categoria_id != 1)
+									<a title="Editar no disponible, primero debe reincorporar socio." class="p-2 grey-text">
+										<i class="fas fa-pen"></i>
+									</a>	
+								@else
+									<a title="Editar" class="p-2 text-warning" href="{{ route($editar,$item->id) }}">
+										<i class="fas fa-pen"></i>
+									</a>							
+								@endif								
 							</td>
 							<!-- data-target permite distinguir modal -->
 							<td class="text-center">
-								<a title="Eliminar" class="p-2 text-danger" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
-									<i class="fas fa-trash"></i>
-								</a>
+								@if ($item instanceof App\Socio && $item->categoria_id != 1)
+									<a title="Reincorporar" class="p-2 text-success" href="#">
+										<i class="fas fa-plus-circle"></i>
+									</a>	
+								@else
+									<a title="Eliminar" class="p-2 text-danger" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
+										<i class="fas fa-trash"></i>
+									</a>							
+								@endif		
 							</td>
 							<!-- Ventana modal  -->
 							<x-modal :id="$item->id" :titulo="$tituloModal" csrf="delete" :action="$actionModal" :texto="$textoModal" :anexos="$anexos"/>						

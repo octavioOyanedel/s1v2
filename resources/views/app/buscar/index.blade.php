@@ -6,7 +6,7 @@
 
 	@if (count($coleccion) > 0)
 		
-		{{ dd($coleccion) }}
+
 
 		<!-- Paginación -->
 		<div class="paginacion mt-4">

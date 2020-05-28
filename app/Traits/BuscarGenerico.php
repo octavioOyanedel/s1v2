@@ -71,7 +71,6 @@ trait BuscarGenerico {
             ->generalAnd($request->urbe_id,'urbe_id')
             ->generalAnd($request->comuna_id,'comuna_id')
             ->generalAnd($request->direccion,'direccion')
-            ->generalAnd($request->ciudadania_id,'ciudadania_id')
             ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
             ->generalAnd($request->sede_id,'sede_id')
             ->generalAnd($request->area_id,'area_id')

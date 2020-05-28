@@ -150,6 +150,18 @@ class SocioController extends Controller
         $coleccion = $this->busquedaFiltroSocios($request)->paginate(10);       
         $total = $coleccion->total();
         return view('home', compact('coleccion', 'total', 'anexos'));
-
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Socio  $socio
+     * @return \Illuminate\Http\Response
+     */
+    public function mostrarDesvinculado($id)
+    {
+        $socio = Socio::onlyTrashed()->where('id',$id)->first();
+        return view('app.socios.show', compact('socio'));
+    }
+
 }
