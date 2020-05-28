@@ -26,19 +26,15 @@ class BuscarController extends Controller
 	    	if(count(separarNombreApellido($request->q)) > 1){
 	    		$apellido = separarNombreApellido($request->q)['apellido'];
 	    	}
-	    	$socios = $this->busquedaModuloSocio($nombre, $apellido, $general);
+	    	$socios = $this->busquedaGeneral($nombre, $apellido, $general);
 	    	if($socios->count() > 0){
 	    		$this->iterarColeccion($socios, $coleccion);
 	    	}
   			$coleccion->paginate(10);
-	    	return view('app.buscar.index', compact('coleccion'));
+	    	return view('app.buscar.index', compact('coleccion','general'));
     	}else{
     		return back();
     	}
-
-
-
-        //
     } 
 
     public function iterarColeccion($coleccionModulo, &$coleccionFinal){

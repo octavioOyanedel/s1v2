@@ -40,22 +40,22 @@ class HomeController extends Controller
         switch ($columna) {
             case 'urbe_id':
                 $coleccion = $this->buscarParaFiltradoJoin('urbes', 'socios', 'nombre', $cantidad, $columna, $orden);
-                break;
-             case 'sede_id':
+            break;
+            case 'sede_id':
                 $coleccion = $this->buscarParaFiltradoJoin('sedes', 'socios', 'nombre', $cantidad, $columna, $orden);
-                break;  
-             case 'cargo_id':
+            break;  
+            case 'cargo_id':
                 $coleccion = $this->buscarParaFiltradoJoin('cargos', 'socios', 'nombre', $cantidad, $columna, $orden);
-                break;
-             case 'ciudadania_id':
+            break;
+            case 'ciudadania_id':
                 $coleccion = $this->buscarParaFiltradoJoin('ciudadanias', 'socios', 'nombre', $cantidad, $columna, $orden);
-                break;
-             case 'categoria_id':
+            break;
+            case 'categoria_id':
                 $coleccion = $this->buscarParaFiltradoJoin('categorias', 'socios', 'nombre', $cantidad, $columna, $orden);
-                break;                                                      
+            break;                                                      
             default:
                 $coleccion = $this->buscarParaFiltrado('socios', $cantidad, $columna, $orden);
-                break;
+            break;
         } 
                    
         $total = $coleccion->total();

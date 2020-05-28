@@ -129,202 +129,58 @@ class Socio extends Model
     }
 
     /**
-     * scope busqueda nombre
+     * scope busqueda general
      */
-    public function scopeNombre1($query, $q)
+    public function scopeGeneral($query, $q, $campo)
     {
         if ($q) {
-            return $query->orWhere('nombre1', '=', $q);
+            return $query->orWhere($campo, '=', $q);
         }
     }
 
     /**
-     * scope busqueda nombre2
+     * scope busqueda fecha 
      */
-    public function scopeNombre2($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('nombre2', '=', $q);
-        }
-    }
-
-    /**
-     * scope busqueda apellido
-     */
-    public function scopeApellido1($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('apellido1', '=', $q);
-        }
-    }
-
-    /**
-     * scope busqueda apellido2
-     */
-    public function scopeApellido2($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('apellido2', '=', $q);
-        }
-    }
-
-    /**
-     * scope busqueda rut
-     */
-    public function scopeRut($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('rut', '=', $q);
-        }
-    }
-
-    /**
-     * scope busqueda género
-     */
-    public function scopeGenero($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('genero', '=', $q);
-        }
-    }  
-
-    /**
-     * scope busqueda fecha nacimiento
-     */
-    public function scopeFechaNac($query, $q)
+    public function scopeFecha($query, $q, $campo)
     {
         if ($q && esFormatoFecha($q)) {
-            return $query->orWhere('fecha_nac', '=', formatoFecha($q));
+            return $query->orWhere($campo, '=', formatoFecha($q));
         }
     }
 
     /**
-     * scope busqueda celular
+     * scope busqueda unión (join)
      */
-    public function scopeCelular($query, $q)
+    public function scopeUnion($query, $q, $tabla2, $tabla2_id, $tabla1_id, $tabla2_campo)
     {
         if ($q) {
-            return $query->orWhere('celular','LIKE',"%$q%");
+            return $query->join($tabla2,$tabla2_id,'=',$tabla1_id)->orWhere($tabla2_campo,'LIKE',"%$q%");
         }
-    } 
+    }   
 
     /**
-     * scope busqueda correo
+     * scope busqueda fecha 
      */
-    public function scopeCorreo($query, $q)
+    public function scopeRangoFecha($query, $inicio, $fin, $campo)
     {
-        if ($q) {
-            return $query->orWhere('correo','LIKE',"%$q%");
+        if($inicio != null && $fin != null){
+            return $query->whereBetween($campo, [formatoFecha($inicio),formatoFecha($fin)]);
+        }
+        if($inicio != null && $fin === null){
+            return $query->where($campo,'>=',$inicio);
+        }
+        if($inicio === null && $fin != null){
+            return $query->where($campo,'<=',$fin);
         }
     }
 
     /**
-     * scope busqueda urbe
+     * scope busqueda general
      */
-    public function scopeUrbe($query, $q)
+    public function scopeGeneralAnd($query, $q, $campo)
     {
         if ($q) {
-            return $query->join('urbes','socios.urbe_id','=','urbes.id')->orWhere('urbes.nombre','LIKE',"%$q%");
+            return $query->where($campo,'LIKE',"%$q%");
         }
-    }     
-
-    /**
-     * scope busqueda comuna
-     */
-    public function scopeComuna($query, $q)
-    {
-        if ($q) {
-            return $query->join('comunas','socios.comuna_id','=','comunas.id')->orWhere('comunas.nombre','LIKE',"%$q%");
-        }
-    }    
-
-    /**
-     * scope busqueda dirección
-     */
-    public function scopeDireccion($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('direccion','LIKE',"%$q%");
-        }
-    }
-
-    /**
-     * scope busqueda fecha pucv
-     */
-    public function scopeFechaPucv($query, $q)
-    {
-        if ($q && esFormatoFecha($q)) {
-            return $query->orWhere('fecha_pucv', '=', formatoFecha($q));
-        }
-    }
-
-    /**
-     * scope busqueda sede
-     */
-    public function scopeSede($query, $q)
-    {
-        if ($q) {
-            return $query->join('sedes','socios.sede_id','=','sedes.id')->orWhere('sedes.nombre','LIKE',"%$q%");
-        }
-    } 
-
-    /**
-     * scope busqueda area
-     */
-    public function scopeArea($query, $q)
-    {
-        if ($q) {
-            return $query->join('areas','socios.area_id','=','areas.id')->orWhere('areas.nombre','LIKE',"%$q%");
-        }
-    }
-
-    /**
-     * scope busqueda cargo
-     */
-    public function scopeCargo($query, $q)
-    {
-        if ($q) {
-            return $query->join('cargos','socios.cargo_id','=','cargos.id')->orWhere('cargos.nombre','LIKE',"%$q%");
-        }
-    } 
-
-    /**
-     * scope busqueda anexo
-     */
-    public function scopeAnexo($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('anexo','LIKE',"%$q%");
-        }
-    }
-
-    /**
-     * scope busqueda fecha sind1
-     */
-    public function scopeFechaSind1($query, $q)
-    {
-        if ($q && esFormatoFecha($q)) {
-            return $query->orWhere('fecha_sind1', '=', formatoFecha($q));
-        }
-    } 
-
-    /**
-     * scope busqueda numero socio
-     */
-    public function scopeNumero($query, $q)
-    {
-        if ($q) {
-            return $query->orWhere('numero','LIKE',"%$q%");
-        }
-    }
-
-    /**
-     * scope busqueda nacionalidad
-     */
-    public function scopeCiudadania($query, $q)
-    {
-        if ($q) {
-            return $query->join('ciudadanias','socios.ciudadania_id','=','ciudadanias.id')->orWhere('ciudadanias.nombre','LIKE',"%$q%");
-        }
-    }                        
+    }                           
 }

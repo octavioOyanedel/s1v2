@@ -144,6 +144,12 @@ class SocioController extends Controller
      */
     public function filtrarSocios(FiltroSocioRequest $request)
     {
-        dd($request);
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $categorias->pull('0'); //quitar activo
+        $anexos = array('categorias'=>$categorias);
+        $coleccion = $this->busquedaFiltroSocios($request)->paginate(10);       
+        $total = $coleccion->total();
+        return view('home', compact('coleccion', 'total', 'anexos'));
+
     }
 }
