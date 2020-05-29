@@ -24,7 +24,18 @@
 					<option value="Dama" {{ estaSelected(old($nombre), 'Dama') }}>Dama</option>
 					<option value="Varón" {{ estaSelected(old($nombre), 'Varón') }}>Varón</option>
 				@endif		        
-		        @break
+		    @break
+		    @case('tipo_categoria')
+				@if ($keyObjeto != '')
+					<option value="solo_activos" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'solo_activos') }}>Solo Socios Activos</option>
+					<option value="todos" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'todos') }}>Todos los Socios(activos/desvinculados)</option>
+					<option value="solo_desvinculados" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'solo_desvinculados') }}>Solo Socios Desvinculados</option>
+				@else
+					<option value="solo_activos" {{ estaSelected(old($nombre), 'solo_activos') }}>Solo Socios Activos</option>
+					<option value="todos" {{ estaSelected(old($nombre), 'todos') }}>Todos los Socios (activos más desvinculados)</option>
+					<option value="solo_desvinculados" {{ estaSelected(old($nombre), 'solo_desvinculados') }}>Solo Socios Desvinculados</option>
+				@endif		        
+		    @break		    
 			@case('comuna_id')
 				<option value="" selected>...</option>
 			@break

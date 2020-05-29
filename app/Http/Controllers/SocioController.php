@@ -133,6 +133,7 @@ class SocioController extends Controller
         $cargos = Cargo::orderBy('nombre','ASC')->get();
         $ciudadanias = Ciudadania::orderBy('nombre','ASC')->get();
         $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $categorias->pull('0'); //quitar activo
         $colecciones = array('urbes'=>$urbes,'sedes'=>$sedes,'cargos'=>$cargos,'ciudadanias'=>$ciudadanias,'categorias'=>$categorias);
         return view('app.socios.filtro', compact('colecciones'));
     }
@@ -144,10 +145,14 @@ class SocioController extends Controller
      */
     public function filtrarSocios(FiltroSocioRequest $request)
     {
+        $cantidad = obtenerCantidad($request);
+        $columna = obtenerColumna($request);
+        $orden = obtenerOrden($request);
+        
         $categorias = Categoria::orderBy('nombre','ASC')->get();
         $categorias->pull('0'); //quitar activo
         $anexos = array('categorias'=>$categorias);
-        $coleccion = $this->busquedaFiltroSocios($request)->paginate(10);       
+        $coleccion = $this->busquedaFiltroSocios($request)->paginate(10)->appends(obtenerAppendsArray($cantidad, $columna, $orden));       
         $total = $coleccion->total();
         return view('home', compact('coleccion', 'total', 'anexos'));
     }

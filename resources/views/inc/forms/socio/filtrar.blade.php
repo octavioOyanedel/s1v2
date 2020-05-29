@@ -4,14 +4,26 @@
 
     @include('layouts.inc.mensajes.obligatorio')
 
-	<!-- Rango fecha nacimiento -->
-	<x-rango-fecha label="Fecha Ingreso Sind1" inicio="fecha_sind1_ini" fin="fecha_sind1_fin"/>
+    <!-- Estado categoría socio -->
+    <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Estado Socio" nombre="tipo_categoria" id="tipo_categoria" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
-	<!-- Categoría socio -->
-    <x-select :colecciones="$colecciones" keyColeccion="categorias" objetos="" keyObjeto="" label="Estado Socio" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="no"  nuevo="si"/>
+    <div class="depende-categoria-filtro">
+        <!-- Motivo desvinculación -->
+        <x-select :colecciones="$colecciones" keyColeccion="categorias" objetos="" keyObjeto="" label="Motivo Desvinculación" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="no"  nuevo="si"/>
+
+        <!-- Rango fecha desvinculación -->
+        <x-rango-fecha label="Fecha Desvinculación" inicio="fecha_desv_ini" fin="fecha_desv_fin"/>      
+    </div>
+
+
+	<!-- Rango fecha ingreso sind1 -->
+	<x-rango-fecha label="Fecha Ingreso Sind1" inicio="fecha_sind1_ini" fin="fecha_sind1_fin"/>
 
 	<!-- Rango fecha nacimiento -->
 	<x-rango-fecha label="Fecha de Nacimiento" inicio="fecha_nac_ini" fin="fecha_nac_fin"/>
+
+    <!-- Rango fecha ingreso pucv -->
+    <x-rango-fecha label="Fecha Ingreso PUCV" inicio="fecha_pucv_ini" fin="fecha_pucv_fin"/>      
 
     <!-- Género -->
     <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Género" nombre="genero" id="genero" tamano="custom-select-sm" obligatorio="no"  nuevo="no"/>
@@ -27,9 +39,6 @@
 
     <!-- Nacionalidad -->
     <x-select :colecciones="$colecciones" keyColeccion="ciudadanias" objetos="" keyObjeto="" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="no" nuevo="si"/>    
-
-    <!-- Rango fecha nacimiento -->
-	<x-rango-fecha label="Fecha Ingreso PUCV" inicio="fecha_pucv_ini" fin="fecha_pucv_fin"/>  
 
     <!-- Sede -->
     <x-select :colecciones="$colecciones" keyColeccion="sedes" objetos="" keyObjeto="" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="no" nuevo="si"/>

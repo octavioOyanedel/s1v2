@@ -19,7 +19,6 @@
 				</thead>
 				<tbody>
 					@foreach ($coleccion as $item)
-					{{ var_dump($item instanceof App\Socio) }}
 						<tr>
 							<td class="text-center">
 								@if ($item instanceof App\Socio && $item->categoria_id != 1)

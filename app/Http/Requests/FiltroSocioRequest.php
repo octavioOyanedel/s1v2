@@ -25,6 +25,9 @@ class FiltroSocioRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo_categoria' => 'required',
+            'fecha_desv_ini' => 'nullable|date',
+            'fecha_desv_fin' => 'nullable|date',
             'fecha_sind1_ini' => 'nullable|date',
             'fecha_sind1_fin' => 'nullable|date',
             'categoria_id' => 'nullable',

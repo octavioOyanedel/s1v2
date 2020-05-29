@@ -14,3 +14,4 @@
 <script src="{{ asset('datepicker/bootstrap-datepicker.es.min.js') }}" defer></script>
 <script src="{{ asset('js/datepicker.js') }}" defer></script>
 <script src="{{ asset('js/nuevo-form.js') }}" defer></script>
+<script src="{{ asset('js/filtro-socios.js') }}" defer></script>

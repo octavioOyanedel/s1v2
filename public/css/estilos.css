@@ -77,6 +77,24 @@ div.contenedor-form {
 	transform: translate(-50%, 0);
 }
 
+/******************************************************
+ * contenedor resultados ******************************
+ *****************************************************/
+div.contenedor-resultados {
+	margin: 0px 400px;
+}
+
+span.objeto-tipo {
+	background-color: green;
+	color: white;
+	padding: 5px 8px;	
+	border-radius: 10px;
+}
+
+.icono-editar {
+	font-size: 16px !important;
+}
+
 label {
 	font-weight: bold;
 }
@@ -170,8 +188,8 @@ div.contenedor-form-login {
     	text-align: center;
     }
 
-	div.contenedor-form-login, div.contenedor-form {
-		width: 100%;
+	div.contenedor-form-login, div.contenedor-form, div.contenedor-resultados {
+		margin: 0px 5px;
 	}
 
 	button.boton-buscar, input.input-buscar {

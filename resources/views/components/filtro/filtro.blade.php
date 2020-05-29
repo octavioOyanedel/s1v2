@@ -1,6 +1,7 @@
 <div>
+
 	<div class="alert" role="alert">
-		<form method="GET" action="{{ route($action) }}">
+		<form method="GET" action="{{ route(Request()->path()) }}">
 			<div class="contenedor-filtro">
 				<div clas="excel"><span class="total-filtro">{{ $total }}</span><i><a href="">Exportar planilla excel.</a></i></div>
 				<div class="cantidad">

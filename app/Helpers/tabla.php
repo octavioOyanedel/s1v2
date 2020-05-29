@@ -59,3 +59,21 @@ function formatearCampoVacioTabla($valor)
         return $valor;
     }
 }
+
+/**
+ * Descripción: obtener ruta para carga dinámica de ncontenido tabla
+ * Entrada/s: string nombre de enlace
+ * Salida: arreglo asociativo con nombre y clase
+ */
+function obtenerRutaEditar($nombre)
+{
+	switch ($nombre) {
+		case "Datos de Socio":
+			return 'socios.edit';
+		break;
+		case "Datos de Usuario":
+			return 'usuarios.edit';
+		break;		
+
+	}
+}

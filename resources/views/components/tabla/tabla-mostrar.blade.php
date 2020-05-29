@@ -1,5 +1,10 @@
 <div>
-	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
+	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}
+
+		<a title="Editar" class="p-2 text-warning icono-editar" href="{{ route(obtenerRutaEditar($titulo),$objeto->id) }}">
+			<i class="fas fa-pen"></i>
+		</a>	
+	</p>
 
 	<div class="table-responsive centrar-tabla">
 		<table class="table table-striped table-hover table-sm">

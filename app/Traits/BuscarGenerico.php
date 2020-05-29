@@ -43,39 +43,73 @@ trait BuscarGenerico {
             ->general($q, 'nombre2')
             ->general($q, 'apellido1')
             ->general($q, 'apellido2')
-            ->general($q, 'genero')
+            ->general($q, 'direccion')
             ->fecha($q, 'fecha_nac')
             ->general($q, 'celular')
             ->general($q, 'correo')
-            ->union($q, 'urbes', 'urbes.id', 'socios.urbe_id', 'urbes.nombre')
-            ->union($q, 'comunas', 'comunas.id', 'socios.comuna_id', 'comunas.nombre')
-            ->general($q, 'direccion')
             ->fecha($q, 'fecha_pucv')
-            ->union($q, 'sedes', 'sedes.id', 'socios.sede_id', 'sedes.nombre')
-            ->union($q, 'areas', 'areas.id', 'socios.area_id', 'areas.nombre')
-            ->union($q, 'cargos', 'cargos.id', 'socios.cargo_id', 'cargos.nombre')
             ->general($q, 'anexo')
             ->fecha($q, 'fecha_sind1')
-            ->general($q, 'numero')
-            ->union($q, 'ciudadanias', 'ciudadanias.id', 'socios.ciudadania_id', 'ciudadanias.nombre')
+            ->general($q, 'numero')          
             ->get();
         return $socios;
     }
 
     public static function busquedaFiltroSocios(FiltroSocioRequest $request){
-        $socios = Socio::orderBy('apellido1','ASC')
-            ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
-            ->generalAnd($request->categoria_id,'categoria_id')
-            ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
-            ->generalAnd($request->genero,'genero')
-            ->generalAnd($request->urbe_id,'urbe_id')
-            ->generalAnd($request->comuna_id,'comuna_id')
-            ->generalAnd($request->direccion,'direccion')
-            ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
-            ->generalAnd($request->sede_id,'sede_id')
-            ->generalAnd($request->area_id,'area_id')
-            ->generalAnd($request->cargo_id,'cargo_id')
-            ->get();
-        return $socios;
+
+        switch ($request->tipo_categoria) {
+            case 'solo_activos':
+                $socios = Socio::orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->generalAnd($request->ciudadania_id,'ciudadania_id')
+                    ->get();
+                return $socios;
+            break;
+            case 'todos':
+                $socios = Socio::withTrashed()->orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_desv_ini, $request->fecha_desv_fin, 'deleted_at')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->get();
+                return $socios;
+            break;
+            case 'solo_desvinculados':
+                $socios = Socio::onlyTrashed()->orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_desv_ini, $request->fecha_desv_fin, 'deleted_at')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->get();
+                return $socios;
+            break;
+            
+        }
     }
 }
