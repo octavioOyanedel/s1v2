@@ -143,11 +143,124 @@ class SocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function filtrarSocios(Request $request)
+    public function filtrarSocios(FiltroSocioRequest $request)
     {
-        //dd($request);
-        //return redirect()->action('HomeController@index');
-        return redirect()->route('home', ['cantidad' => 1]);
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $categorias->pull('0'); //quitar activo
+        $anexos = array('categorias'=>$categorias);
+        $coleccion = null;
+        switch ($request->tipo_categoria) {
+            case 'solo_activos':
+                $coleccion = Socio::orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->generalAnd($request->ciudadania_id,'ciudadania_id')
+                    ->paginate(10)->appends([
+                        'tipo_categoria' => $request->tipo_categoria,
+                        'categoria_id' => $request->categoria_id,
+                        'fecha_desv_ini' => $request->fecha_desv_ini,
+                        'fecha_desv_fin' => $request->fecha_desv_fin,
+                        'fecha_sind1_ini' => $request->fecha_sind1_ini,
+                        'fecha_sind1_fin' => $request->fecha_sind1_fin,
+                        'fecha_nac_ini' => $request->fecha_nac_ini,
+                        'fecha_nac_fin' => $request->fecha_nac_fin,
+                        'fecha_pucv_ini' => $request->fecha_pucv_ini,
+                        'fecha_pucv_fin' => $request->fecha_pucv_fin,
+                        'genero' => $request->genero,
+                        'urbe_id' => $request->urbe_id,
+                        'comuna_id' => $request->comuna_id,
+                        'direccion' => $request->direccion,
+                        'ciudadania_id' => $request->ciudadania_id,
+                        'sede_id' => $request->sede_id,
+                        'area_id' => $request->area_id,
+                        'cargo_id' => $request->cargo_id,
+                    ]);    
+            break;
+            case 'todos':
+                $coleccion = Socio::withTrashed()->orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_desv_ini, $request->fecha_desv_fin, 'deleted_at')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->paginate(10)->appends([
+                        'tipo_categoria' => $request->tipo_categoria,
+                        'categoria_id' => $request->categoria_id,
+                        'fecha_desv_ini' => $request->fecha_desv_ini,
+                        'fecha_desv_fin' => $request->fecha_desv_fin,
+                        'fecha_sind1_ini' => $request->fecha_sind1_ini,
+                        'fecha_sind1_fin' => $request->fecha_sind1_fin,
+                        'fecha_nac_ini' => $request->fecha_nac_ini,
+                        'fecha_nac_fin' => $request->fecha_nac_fin,
+                        'fecha_pucv_ini' => $request->fecha_pucv_ini,
+                        'fecha_pucv_fin' => $request->fecha_pucv_fin,
+                        'genero' => $request->genero,
+                        'urbe_id' => $request->urbe_id,
+                        'comuna_id' => $request->comuna_id,
+                        'direccion' => $request->direccion,
+                        'ciudadania_id' => $request->ciudadania_id,
+                        'sede_id' => $request->sede_id,
+                        'area_id' => $request->area_id,
+                        'cargo_id' => $request->cargo_id,
+                    ]);    
+
+            break;
+            case 'solo_desvinculados':
+                $coleccion = Socio::onlyTrashed()->orderBy('apellido1','ASC')
+                    ->rangoFecha($request->fecha_desv_ini, $request->fecha_desv_fin, 'deleted_at')
+                    ->rangoFecha($request->fecha_sind1_ini, $request->fecha_sind1_fin, 'fecha_sind1')
+                    ->generalAnd($request->categoria_id,'categoria_id')
+                    ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+                    ->generalAnd($request->genero,'genero')
+                    ->generalAnd($request->urbe_id,'urbe_id')
+                    ->generalAnd($request->comuna_id,'comuna_id')
+                    ->generalAnd($request->direccion,'direccion')
+                    ->rangoFecha($request->fecha_pucv_ini, $request->fecha_pucv_fin, 'fecha_pucv')
+                    ->generalAnd($request->sede_id,'sede_id')
+                    ->generalAnd($request->area_id,'area_id')
+                    ->generalAnd($request->cargo_id,'cargo_id')
+                    ->paginate(10)->appends([
+                        'tipo_categoria' => $request->tipo_categoria,
+                        'categoria_id' => $request->categoria_id,
+                        'fecha_desv_ini' => $request->fecha_desv_ini,
+                        'fecha_desv_fin' => $request->fecha_desv_fin,
+                        'fecha_sind1_ini' => $request->fecha_sind1_ini,
+                        'fecha_sind1_fin' => $request->fecha_sind1_fin,
+                        'fecha_nac_ini' => $request->fecha_nac_ini,
+                        'fecha_nac_fin' => $request->fecha_nac_fin,
+                        'fecha_pucv_ini' => $request->fecha_pucv_ini,
+                        'fecha_pucv_fin' => $request->fecha_pucv_fin,
+                        'genero' => $request->genero,
+                        'urbe_id' => $request->urbe_id,
+                        'comuna_id' => $request->comuna_id,
+                        'direccion' => $request->direccion,
+                        'ciudadania_id' => $request->ciudadania_id,
+                        'sede_id' => $request->sede_id,
+                        'area_id' => $request->area_id,
+                        'cargo_id' => $request->cargo_id,
+                    ]);    
+            break;
+            
+        } 
+          
+        $total = $coleccion->total();
+        return view('app.socios.resultados', compact('coleccion', 'total', 'anexos'));
     }
 
     /**

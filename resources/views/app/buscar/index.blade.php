@@ -4,8 +4,8 @@
 
 	
 <div class="contenedor-form">
-	@if (count($coleccion) > 0)
-		<p class="text-center h4 mb-4">{{ $total }} Resultados, búsqueda: <i>"{{ $general }}"</i></p>
+	<p class="text-center h4 mb-4">@if (count($coleccion) > 0){{ $total }} @endif Resultados, búsqueda: <i>"{{ $q }}"</i></p>
+	@if (count($coleccion) > 0)	
 		<div class="table-responsive">
 			<table class="table">
 			@foreach ($coleccion as $objeto)
@@ -19,7 +19,7 @@
 		</div>
 		<!-- Paginación -->
 		<div class="paginacion mt-4">
-				
+
 		</div>
 	@else
 		@include('layouts.inc.mensajes.busqueda')

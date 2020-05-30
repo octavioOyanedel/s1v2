@@ -3,41 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Socio;
 use Illuminate\Http\Request;
-use App\Traits\BuscarGenerico;
 use Illuminate\Support\Collection;
 
 class BuscarController extends Controller
 {
-	use BuscarGenerico;
     /**
-     * Buscar.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Buscar.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function buscar(Request $request)
     {
-    	$nombre = '';
-    	$apellido = '';
-    	$general = $request->q;
-    	$coleccion = new Collection;
-    	if($general != ''){
-	    	$nombre = separarNombreApellido($request->q)['nombre'];
-	    	if(count(separarNombreApellido($request->q)) > 1){
-	    		$apellido = separarNombreApellido($request->q)['apellido'];
-	    	}
-	    	$socios = $this->busquedaGeneral($nombre, $apellido, $general);
-	    	if($socios->count() > 0){
-	    		$this->iterarColeccion($socios, $coleccion);
-	    	}
-  			$total = count($coleccion);
-	    	return view('app.buscar.index', compact('coleccion','general','total'));
-    	}else{
-    		return back();
-    	}
+        $nombre = '';
+        $apellido = '';
+        $q = $request->q;
+        $coleccion = new Collection;
+        $socios = null;
+        
+        if($q != ''){
+            $nombre = separarNombreApellido($q)['nombre'];
+            if(count(separarNombreApellido($q)) > 1){
+                $apellido = separarNombreApellido($q)['apellido'];
+            }
+            $socios = Socio::orderBy('apellido1','ASC')
+                ->nombres($nombre, $apellido)
+                ->general($q, 'rut')
+                ->general($q, 'nombre1')
+                ->general($q, 'nombre2')
+                ->general($q, 'apellido1')
+                ->general($q, 'apellido2')
+                ->general($q, 'direccion')
+                ->fecha($q, 'fecha_nac')
+                ->general($q, 'celular')
+                ->general($q, 'correo')
+                ->fecha($q, 'fecha_pucv')
+                ->general($q, 'anexo')
+                ->fecha($q, 'fecha_sind1')
+                ->general($q, 'numero')          
+                ->get();
+            if($socios->count() > 0){
+                $this->iterarColeccion($socios, $coleccion);
+            }
+            $total = count($coleccion);
+            $coleccion->paginate(5);
+            return view('app.buscar.index', compact('coleccion','q','total'));
+        }else{
+            return back();
+        }
     } 
 
-    public function iterarColeccion($coleccionModulo, &$coleccionFinal){
+    public function iterarColeccion($coleccionModulo, &$coleccionFinal)
+    {
     	foreach ($coleccionModulo as $item) {
     		$coleccionFinal->push($item);
     	}    	

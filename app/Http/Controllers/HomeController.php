@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Socio;
 use App\Categoria;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
+use App\Http\Requests\FiltroSocioRequest;
 
 class HomeController extends Controller
 {
@@ -27,40 +29,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request, $cantidad = null)
+    public function index()
     {
-        //dd($cantidad);
-        $cantidad = obtenerCantidad($request);
-        $columna = obtenerColumna($request);
-        $orden = obtenerOrden($request);
+
         $categorias = Categoria::orderBy('nombre','ASC')->get();
         $categorias->pull('0'); //quitar activo
         $anexos = array('categorias'=>$categorias);
-        $coleccion = null;
-        
-        switch ($columna) {
-            case 'urbe_id':
-                $coleccion = $this->buscarParaFiltradoJoin('urbes', 'socios', 'nombre', $cantidad, $columna, $orden);
-            break;
-            case 'sede_id':
-                $coleccion = $this->buscarParaFiltradoJoin('sedes', 'socios', 'nombre', $cantidad, $columna, $orden);
-            break;  
-            case 'cargo_id':
-                $coleccion = $this->buscarParaFiltradoJoin('cargos', 'socios', 'nombre', $cantidad, $columna, $orden);
-            break;
-            case 'ciudadania_id':
-                $coleccion = $this->buscarParaFiltradoJoin('ciudadanias', 'socios', 'nombre', $cantidad, $columna, $orden);
-            break;
-            case 'categoria_id':
-                $coleccion = $this->buscarParaFiltradoJoin('categorias', 'socios', 'nombre', $cantidad, $columna, $orden);
-            break;                                                      
-            default:
-                $coleccion = $this->buscarParaFiltrado('socios', $cantidad, $columna, $orden);
-            break;
-        } 
-                   
+        $coleccion = Socio::orderBy('created_at','DESC')->paginate(10);                     
         $total = $coleccion->total();
-
         return view('home', compact('coleccion', 'total', 'anexos'));
     }
 }

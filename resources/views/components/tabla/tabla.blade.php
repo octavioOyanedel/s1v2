@@ -3,7 +3,7 @@
 
 	@if ($total > 0)
 		<!-- Filtro tabla -->
-		<x-filtro :action="$actionFiltro" :filtro="$filtro" :total="$total" />
+		<x-filtro action="" filtro="" :total="$total" />
 
 	    <div class="table-responsive">
 			<table class="table table-striped table-hover table-sm">
@@ -68,7 +68,9 @@
 			{{ $coleccion->links() }}			
 		</div>
 	@else
-		@include('layouts.inc.mensajes.busqueda')
+		<div class="contenedor-form">
+			@include('layouts.inc.mensajes.busqueda')
+		</div>
 	@endif
 
 
