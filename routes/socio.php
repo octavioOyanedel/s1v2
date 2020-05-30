@@ -15,3 +15,5 @@ Route::get('/form_filtro_socios', 'SocioController@formFiltro')->name('form_filt
 Route::get('/filtrar_socios', 'SocioController@filtrarSocios')->name('filtrar_socios');
 
 Route::get('/mostrar_desvinculado/{id}', 'SocioController@mostrarDesvinculado')->name('mostrar_desvinculado');
+
+

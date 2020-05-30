@@ -143,18 +143,11 @@ class SocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function filtrarSocios(FiltroSocioRequest $request)
+    public function filtrarSocios(Request $request)
     {
-        $cantidad = obtenerCantidad($request);
-        $columna = obtenerColumna($request);
-        $orden = obtenerOrden($request);
-        
-        $categorias = Categoria::orderBy('nombre','ASC')->get();
-        $categorias->pull('0'); //quitar activo
-        $anexos = array('categorias'=>$categorias);
-        $coleccion = $this->busquedaFiltroSocios($request)->paginate(10)->appends(obtenerAppendsArray($cantidad, $columna, $orden));       
-        $total = $coleccion->total();
-        return view('home', compact('coleccion', 'total', 'anexos'));
+        //dd($request);
+        //return redirect()->action('HomeController@index');
+        return redirect()->route('home', ['cantidad' => 1]);
     }
 
     /**

@@ -27,8 +27,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index(Request $request, $cantidad = null)
     {
+        //dd($cantidad);
         $cantidad = obtenerCantidad($request);
         $columna = obtenerColumna($request);
         $orden = obtenerOrden($request);

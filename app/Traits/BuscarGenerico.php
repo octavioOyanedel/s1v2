@@ -55,7 +55,7 @@ trait BuscarGenerico {
         return $socios;
     }
 
-    public static function busquedaFiltroSocios(FiltroSocioRequest $request){
+    public static function busquedaFiltroSocios(Request $request){
 
         switch ($request->tipo_categoria) {
             case 'solo_activos':
