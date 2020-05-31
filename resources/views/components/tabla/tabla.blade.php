@@ -46,7 +46,7 @@
 							<!-- data-target permite distinguir modal -->
 							<td class="text-center">
 								@if ($item instanceof App\Socio && $item->categoria_id != 1)
-									<a title="Reincorporar" class="p-2 text-success" href="#">
+									<a title="Reincorporar" class="p-2 text-success" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
 										<i class="fas fa-plus-circle"></i>
 									</a>	
 								@else

@@ -5,6 +5,9 @@
 		    @case('nombre1')
 		        {{ $objeto['nombre1'] }} {{ $objeto['nombre2'] }} {{ $objeto['apellido1'] }} {{ $objeto['apellido2'] }}
 		    @break
+		    @case('rut')
+		        {{ formatoRut($objeto->rut) }}
+		    @break			    
 		    @case('urbe_id')
 		        {{ $objeto->urbe->nombre }}
 		    @break
@@ -25,7 +28,7 @@
 		    @break
 		    @case('ciudadania_id')
 		        {{ $objeto->ciudadania->nombre }}
-		    @break			    	  		    		    		    		    	    
+		    @break		    	    	  		    		    		    		    	    
 		    @default
 		    	{{ $objeto[$nombre] }}
 		@endswitch

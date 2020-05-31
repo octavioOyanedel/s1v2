@@ -8,6 +8,7 @@ use App\Cargo;
 use App\Socio;
 use App\Categoria;
 use App\Ciudadania;
+use App\Traits\LogGenerico;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
@@ -17,6 +18,7 @@ use App\Http\Requests\FiltroSocioRequest;
 class SocioController extends Controller
 {
     use CrudGenerico;
+    use LogGenerico;
     use BuscarGenerico;    
     /**
      * Display a listing of the resource.
@@ -274,5 +276,21 @@ class SocioController extends Controller
         $socio = Socio::onlyTrashed()->where('id',$id)->first();
         return view('app.socios.show', compact('socio'));
     }
+
+    /**
+     * Reincorporar socio.
+     *
+     * @param  \App\Socio  $socio
+     * @return \Illuminate\Http\Response
+     */
+    public function reincorporar($id)
+    {
+        $socio = Socio::onlyTrashed()->where('id',$id)->first();
+        $socio->categoria_id = 1;
+        $socio->deleted_at = null;
+        $socio->update(); 
+        $this->logGenerico('Socio reincorporado: '.' nombre1 = '.$socio->nombre1.', apellido1 = '.$socio->apellido1.', rut = '.$socio->rut.', id = '.$socio->id);        
+        return redirect('home')->with('status', 'Socio Reincorporado!');        
+    }    
 
 }

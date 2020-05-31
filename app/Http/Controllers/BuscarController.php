@@ -27,7 +27,7 @@ class BuscarController extends Controller
             if(count(separarNombreApellido($q)) > 1){
                 $apellido = separarNombreApellido($q)['apellido'];
             }
-            $socios = Socio::orderBy('apellido1','ASC')
+            $socios = Socio::withTrashed()->orderBy('apellido1','ASC')
                 ->nombres($nombre, $apellido)
                 ->general($q, 'rut')
                 ->general($q, 'nombre1')

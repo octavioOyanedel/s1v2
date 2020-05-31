@@ -16,4 +16,4 @@ Route::get('/form_filtro_socios', 'SocioController@formFiltro')->name('form_filt
 
 Route::get('/filtrar_socios', 'SocioController@filtrarSocios')->name('filtrar_socios');
 
-
+Route::post('/reincorporar/{id}', 'SocioController@reincorporar')->name('reincorporar');

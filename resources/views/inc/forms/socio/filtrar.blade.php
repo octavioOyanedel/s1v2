@@ -7,14 +7,11 @@
     <!-- Estado categoría socio -->
     <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Estado Socio" nombre="tipo_categoria" id="tipo_categoria" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
-    <div class="depende-categoria-filtro">
-        <!-- Motivo desvinculación -->
-        <x-select :colecciones="$colecciones" keyColeccion="categorias" objetos="" keyObjeto="" label="Motivo Desvinculación" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="no"  nuevo="si"/>
+    <!-- Motivo desvinculación -->
+    <x-select :colecciones="$colecciones" keyColeccion="categorias" objetos="" keyObjeto="" label="Motivo Desvinculación" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="no"  nuevo="si"/>
 
-        <!-- Rango fecha desvinculación -->
-        <x-rango-fecha label="Fecha Desvinculación" inicio="fecha_desv_ini" fin="fecha_desv_fin"/>      
-    </div>
-
+    <!-- Rango fecha desvinculación -->
+    <x-rango-fecha label="Fecha Desvinculación" inicio="fecha_desv_ini" fin="fecha_desv_fin"/>      
 
 	<!-- Rango fecha ingreso sind1 -->
 	<x-rango-fecha label="Fecha Ingreso Sind1" inicio="fecha_sind1_ini" fin="fecha_sind1_fin"/>

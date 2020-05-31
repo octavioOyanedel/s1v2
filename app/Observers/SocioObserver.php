@@ -43,4 +43,15 @@ class SocioObserver
         $texto = obtenerTexto(array(), $socio->toArray(), 'eliminar_socio');  
         $this->logGenerico('Socio eliminado: '.$texto);
     }    
+
+    /**
+     * Handle the user "restored" event.
+     *
+     * @param  \App\Socio  $socio
+     * @return void
+     */
+    public function restored(Socio $socio)
+    {
+        dd($socio);
+    }    
 }
