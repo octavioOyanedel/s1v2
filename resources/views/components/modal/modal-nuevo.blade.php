@@ -12,7 +12,8 @@
 				<form id="{{ obtenerIdFormulario($label) }}" method="post">
 					@include(obtenerCsrf('post'))
 					<div class="modal-body">
-						@include('layouts.inc.mensajes.obligatorio')
+						
+    					<x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio" />						
 
 						<!-- form nuevo -->
 						@switch($label)

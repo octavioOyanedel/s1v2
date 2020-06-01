@@ -19,7 +19,11 @@ form, form input, form select, form select option {
  * alertas*********************************************
  *****************************************************/
 .alert {
-	font-size: 14px !important;
+	font-size: 14px !important;	
+}
+
+.enlaces-ver > *{
+	display: inline-block;
 }
 
 .breadcrumb {
@@ -81,7 +85,7 @@ div.contenedor-form {
  * contenedor resultados ******************************
  *****************************************************/
 div.contenedor-resultados {
-	margin: 0px 400px;
+
 }
 
 span.objeto-tipo {

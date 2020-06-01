@@ -4,7 +4,7 @@
 
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
-    @include('layouts.inc.mensajes.obligatorio')
+    <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio" />
     @include('layouts.inc.mensajes.requisitos_pass')
 
     <!-- Password actual-->

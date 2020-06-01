@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Socio;
+use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -21,7 +22,11 @@ class BuscarController extends Controller
         $q = $request->q;
         $coleccion = new Collection;
         $socios = null;
-        
+
+        $categorias = Categoria::orderBy('nombre','ASC')->get();
+        $categorias->pull('0'); //quitar activo
+        $anexos = array('categorias'=>$categorias);
+
         if($q != ''){
             $nombre = separarNombreApellido($q)['nombre'];
             if(count(separarNombreApellido($q)) > 1){
@@ -48,7 +53,7 @@ class BuscarController extends Controller
             }
             $total = count($coleccion);
             $coleccion->paginate(5);
-            return view('app.buscar.index', compact('coleccion','q','total'));
+            return view('app.buscar.index', compact('coleccion','q','total','anexos'));
         }else{
             return back();
         }

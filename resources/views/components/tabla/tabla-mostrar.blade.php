@@ -1,9 +1,10 @@
 <div>
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}
 		@if ($objeto->deleted_at === null)
-		<a title="Editar" class="p-2 text-warning icono-editar" href="{{ route(obtenerRutaEditar($titulo),$objeto->id) }}">
-			<i class="fas fa-pen"></i>
-		</a>			@endif
+			<div class="text-center enlaces-ver">
+				<x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="socios.edit" :id="$objeto->id"/>
+			</div>				
+		@endif
 
 	</p>
 
@@ -16,4 +17,5 @@
 			</tbody>
 		</table>
 	</div>
+
 </div>

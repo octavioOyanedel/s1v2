@@ -20,46 +20,67 @@
 				<tbody>
 					@foreach ($coleccion as $item)
 						<tr>
+							<!-- ver -->
 							<td class="text-center">
-								@if ($item instanceof App\Socio && $item->categoria_id != 1)
-									<a title="Ver" class="p-2 text-primary" href="{{ route('mostrar_desvinculado',['id'=>$item->id]) }}">
-										<i class="fas fa-eye"></i>
-									</a>	
-								@else
-									<a title="Ver" class="p-2 text-primary" href="{{ route($ver,$item->id) }}">
-										<i class="fas fa-eye"></i>
-									</a>								
-								@endif
-
+								@switch($contenido)
+								    @case('usuarios')
+								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="usuarios.show" :id="$item->id"/>
+								    @break
+								    @case('socios')
+										@if ($item instanceof App\Socio && $item->categoria_id != 1)
+											<x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="mostrar_desvinculado" :id="$item->id"/>
+										@else
+								        	<x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="socios.show" :id="$item->id"/>
+								        @endif
+								    @break								    
+								@endswitch							
 							</td>
+							<!-- editar -->
 							<td class="text-center">
-								@if ($item instanceof App\Socio && $item->categoria_id != 1)
-									<a title="Editar no disponible, primero debe reincorporar socio." class="p-2 grey-text">
-										<i class="fas fa-pen"></i>
-									</a>	
-								@else
-									<a title="Editar" class="p-2 text-warning" href="{{ route($editar,$item->id) }}">
-										<i class="fas fa-pen"></i>
-									</a>							
-								@endif								
+								@switch($contenido)
+								    @case('usuarios')
+								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="usuarios.edit" :id="$item->id"/>
+								    @break
+								    @case('socios')
+										@if ($item instanceof App\Socio && $item->categoria_id != 1)
+											<x-enlace-accion titulo="No habilitado, antes reincorporar." color="grey-text" icono="fa-pen" ruta="" id=""/>
+										@else
+								        	<x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="socios.edit" :id="$item->id"/>
+								        @endif								        
+								    @break								    
+								@endswitch						
 							</td>
-							<!-- data-target permite distinguir modal -->
+							<!-- eliminar: data-target permite distinguir modal -->
 							<td class="text-center">
-								@if ($item instanceof App\Socio && $item->categoria_id != 1)
-									<a title="Reincorporar" class="p-2 text-success" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
-										<i class="fas fa-plus-circle"></i>
-									</a>	
-								@else
-									<a title="Eliminar" class="p-2 text-danger" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
-										<i class="fas fa-trash"></i>
-									</a>							
-								@endif		
+								@switch($contenido)
+								    @case('usuarios')
+								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
+								    @break
+								    @case('socios')
+										@if ($item instanceof App\Socio && $item->categoria_id != 1)
+											<x-enlace-accion titulo="Reincorporar" color="text-success" icono="fa-plus-circle" ruta="" :id="$item->id"/>
+										@else
+								        	<x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>
+								        @endif									        							        
+								    @break								    
+								@endswitch		
 							</td>
-							<!-- Ventana modal  -->
-							<x-modal :id="$item->id" :titulo="$tituloModal" csrf="delete" :action="$actionModal" :texto="$textoModal" :anexos="$anexos"/>						
 							@include(obtenerContenidoTabla($contenido))
 						</tr>
-					@endforeach				
+						<!-- ventanas modales -->
+						@switch($contenido)
+						    @case('usuarios')
+						        <x-modal :id="$item->id" titulo="Eliminar Usuario" csrf="delete" action="usuarios.destroy" :anexos="$anexos"/>					        
+						    @break
+						    @case('socios')
+								@if ($item instanceof App\Socio && $item->categoria_id != 1)
+									<x-modal :id="$item->id" titulo="Reincorporar Socio" csrf="post" action="reincorporar" anexos=""/>
+								@else
+						        	<x-modal :id="$item->id" titulo="Eliminar Socio" csrf="delete" action="socios.destroy" :anexos="$anexos"/>	
+						        @endif							    						        
+						    @break								    
+						@endswitch												
+					@endforeach		
 				</tbody>			
 			</table>
 		</div>

@@ -2,7 +2,7 @@
 
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
-    @include('layouts.inc.mensajes.obligatorio')
+    <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio" />
 
     <!-- Estado categoría socio -->
     <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Estado Socio" nombre="tipo_categoria" id="tipo_categoria" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>

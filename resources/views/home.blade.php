@@ -3,6 +3,6 @@
 @section('content')
 
     <!-- Tabla socios -->
-	<x-tabla :coleccion="$coleccion" contenido="socios" titulo="Socios" alinear="text-center" :total="$total" ver="socios.show" editar="socios.edit" filtro="socios" actionFiltro="home" tituloModal="Eliminar Socio" actionModal="socios.destroy" textoModal="a este socio?. De ser así, seleccione una categoría para registrar motivo de desvinculación." :anexos="$anexos"/>
+	<x-tabla :coleccion="$coleccion" contenido="socios" titulo="Socios" alinear="text-center" :total="$total" :anexos="$anexos"/>
 
 @endsection

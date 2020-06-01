@@ -8,7 +8,7 @@
 
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
-    @include('layouts.inc.mensajes.obligatorio')
+    <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio" />
 
     <!-- Rut -->
     <x-input label="Rut" tipo="text" nombre="rut" id="rut" margen="mb-4" tamano="form-control-sm" :valor="$socio->rut" placeholder="Ej. 11222333k" obligatorio="si"/>

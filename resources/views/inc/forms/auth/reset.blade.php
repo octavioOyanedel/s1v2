@@ -5,11 +5,11 @@
 	@if (session('status'))
 		<div class="alert alert-success" role="alert">
 		    {{ session('status') }}
-
 		</div>
 	@endif
+
+	<x-mensaje alerta="info" alinear="text-center" icono="alerta" mensaje="reset_correo" />	
 	
-    @include('layouts.inc.mensajes.obligatorio')
 	<!-- Correo -->
 	<x-input label="no" tipo="email" nombre="email" id="email" margen="mb-4" tamano="" valor="" placeholder="Correo" obligatorio="si"/>
     <!-- Sign in button -->

@@ -11,46 +11,26 @@
 				</div>
 				<form action="{{ route($action, $id) }}" method="post">
 
-				@switch($titulo)
-					@case('Reincorporar Socio')
-						@include(obtenerCsrf('post'))
-					@break
-					@default
-					    @include(obtenerCsrf($csrf))									        
-				@endswitch	
-					
+					@include(obtenerCsrf($csrf))									        			
 
 					<div class="modal-body">
+
 						@switch($titulo)
 						    @case('Eliminar Usuario')
-								<!-- Mensaje autoeliminación de usuario o borrado normal de registro-->
-								@if ($anexos === '' && (int)$id === Auth::user()->id)
-									<div class="alert alert-danger text-center" role="alert">
-										<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>Si elimina su cuenta de usuario la aplicación se cerrará y no podrá ingresar nuevamente. ¿Está seguro/a que desea eliminar su cuenta de usuario?				
-									</div>
+						    	@if ( (int)$id === Auth::user()->id)
+									<x-mensaje alerta="danger" alinear="text-center" icono="alerta" mensaje="eliminar_mismo_usuario" />
 								@else
-									<div class="alert alert-warning text-center" role="alert">
-										<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>¿Estás seguro/a que desea eliminar {{ $texto }}				
-									</div>							
-								@endif
+									<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="eliminar_usuario_normal" />
+								@endif								
 					        @break
 						    @case('Eliminar Socio')
-								<!-- Desvinculación de socio -->
-								@if ($anexos != '' || $anexos != null)
-									<div class="alert alert-warning text-center" role="alert">
-										<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>¿Estás seguro/a que desea eliminar {{ $texto }}
-									</div>									
-									<div class="">
-										<!-- Categoria -->
-										<x-select :colecciones="$anexos" keyColeccion="categorias" objetos="" keyObjeto="" label="Categoría" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="si" nuevo="no"/>
-									</div> 				
-								@endif	
+								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="eliminar_socio" />
+								<!-- Categoria -->
+								<x-select :colecciones="$anexos" keyColeccion="categorias" objetos="" keyObjeto="" label="Categoría" nombre="categoria_id" id="categoria_id" tamano="custom-select-sm" obligatorio="si" nuevo="no"/>
 					        @break
-						    @case('Reincorporar Socio')
-								<div class="alert alert-warning text-center" role="alert">
-									<strong><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;</strong>¿Estás seguro/a que desea reincorporar este socio?
-								</div>	
-					        @break				        
+					        @case('Reincorporar Socio')
+								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="reincorporar_socio" />
+					        @break	
 						@endswitch		
 					</div>
 					<div class="modal-footer">
