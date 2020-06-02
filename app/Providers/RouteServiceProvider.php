@@ -56,7 +56,23 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAjaxRoutes();
 
+        $this->mapCargaRoutes();
+
         //
+    }
+
+    /**
+     * Define las rutas de cargas familiares.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapCargaRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/carga.php'));
     }
 
     /**

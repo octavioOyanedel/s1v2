@@ -19,7 +19,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'socios':
-			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE){
+			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE || $ruta === 'cargas/create'){
 			    return 'active';
 			}	
 		break;			
@@ -44,7 +44,8 @@ function obtenerEnlacesNav($nombre)
 			return array('Listar'=>'usuarios.index','Crear'=>'usuarios.create');
 		break;		
 		case "socios":
-			return array('Listar'=>'home','Incorporar'=>'socios.create','Filtrar'=>'form_filtro_socios');
-		break;				
+			return array('Listar'=>'home','Incorporar'=>'socios.create','Filtrar'=>'form_filtro_socios','Agregar Carga'=>'cargas.create','Agregar Estudio'=>'home');
+		break;
+				
 	}
 }
