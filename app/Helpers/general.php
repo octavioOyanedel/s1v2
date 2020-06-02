@@ -17,6 +17,24 @@ function formatoFecha($fecha)
 }
 
 /**
+ * Descripción: cambiar formato fecha y hora
+ * Entrada/s: string fecha hora
+ * Salida: string fecha formateada yyyy-mm-dd hh:mm:ss o dd-mm-yyyy hh:mm:ss
+ */
+function formatoFechaHora($fecha)
+{
+    if($fecha != null && $fecha != ''){
+		$date = substr($fecha,0,10);
+		$hora = substr($fecha,11,8);
+		$date = formatoFecha($date);
+		return $date.' '.$hora;
+    }else{
+        return null;
+    }
+
+}
+
+/**
  * Descripción: es formato fecha
  * Entrada/s: string fecha
  * Salida: boolean

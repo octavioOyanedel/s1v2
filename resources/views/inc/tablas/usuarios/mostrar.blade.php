@@ -7,7 +7,13 @@
 		    @break
 		    @case('privilegio_id')
 		        {{ $objeto->privilegio->nombre }}
-		    @break		    
+		    @break
+		    @case('created_at')
+		        {{ formatoFechaHora($objeto->created_at) }}
+		    @break
+		    @case('updated_at')
+		        {{ formatoFechaHora($objeto->updated_at) }}
+		    @break	    
 		    @default
 		    	{{ $objeto[$nombre] }}
 		@endswitch

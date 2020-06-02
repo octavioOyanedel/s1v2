@@ -28,7 +28,28 @@
 		    @break
 		    @case('ciudadania_id')
 		        {{ $objeto->ciudadania->nombre }}
-		    @break		    	    	  		    		    		    		    	    
+		    @break		    
+		    @case('fecha_nac')
+		        {{ formatoFecha($objeto->fecha_nac) }}
+		    @break
+		    @case('fecha_pucv')
+		        {{ formatoFecha($objeto->fecha_pucv) }}
+		    @break
+		    @case('fecha_sind1')
+		        {{ formatoFecha($objeto->fecha_sind1) }}
+		    @break				    
+		    @case('created_at')
+		        {{ formatoFechaHora($objeto->created_at) }}
+		    @break		    
+		    @case('created_at')
+		        {{ formatoFechaHora($objeto->created_at) }}
+		    @break
+		    @case('updated_at')
+		        {{ formatoFechaHora($objeto->updated_at) }}
+		    @break
+		    @case('deleted_at')
+		        {{ formatoFechaHora($objeto->deleted_at) }}
+		    @break			    
 		    @default
 		    	{{ $objeto[$nombre] }}
 		@endswitch

@@ -48,9 +48,23 @@ class BuscarController extends Controller
                 ->fecha($q, 'fecha_sind1')
                 ->general($q, 'numero')          
                 ->get();
+
+            $usuarios = User::orderBy('apellido1','ASC')
+                ->general($q, 'nombre1')
+                ->general($q, 'nombre2')
+                ->general($q, 'apellido1')
+                ->general($q, 'apellido2')
+                ->general($q, 'email')         
+                ->get();
+
             if($socios->count() > 0){
                 $this->iterarColeccion($socios, $coleccion);
             }
+
+            if($usuarios->count() > 0){
+                $this->iterarColeccion($usuarios, $coleccion);
+            }      
+
             $total = count($coleccion);
             $coleccion->paginate(5);
             return view('app.buscar.index', compact('coleccion','q','total','anexos'));

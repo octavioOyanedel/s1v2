@@ -26,6 +26,9 @@
 						    @case($objeto instanceof App\Socio)
 								@include('inc.tablas.socios.buscar.socio')
 						    @break
+						    @case($objeto instanceof App\User)
+								@include('inc.tablas.usuarios.buscar.usuario')
+						    @break						    
 						@endswitch
 					@endforeach	
 					</table>

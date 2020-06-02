@@ -72,4 +72,19 @@ class User extends Authenticatable
         //verdadero ya que si es un valor único
         return true;
     }
+
+    /*******************************************************************************************
+    /******************************* Consultas búsqueda general ********************************
+    /*******************************************************************************************
+    
+    /**
+     * scope busqueda general
+     */
+    public function scopeGeneral($query, $q, $campo)
+    {
+        if ($q) {
+            return $query->orWhere($campo, 'LIKE', "%$q%");
+        }
+    }
+
 }
