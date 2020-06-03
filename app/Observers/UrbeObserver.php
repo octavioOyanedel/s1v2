@@ -16,8 +16,8 @@ class UrbeObserver
      */
     public function created(Urbe $urbe)
     {
-        $texto = obtenerTexto(array(), $urbe->toArray(), '');  
-        $this->logGenerico('Ciudad creada: '.$texto);
+        //$texto = obtenerTexto(array(), $urbe->toArray(), '');  
+        //$this->logGenerico('Ciudad creada: '.$texto);
     }
 
     /**

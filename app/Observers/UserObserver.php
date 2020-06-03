@@ -17,8 +17,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $texto = obtenerTexto(array(), $user->toArray(), 'crear_usuario');  
-        $this->logGenerico('Usuario creado: '.$texto);
+        //$texto = obtenerTexto(array(), $user->toArray(), 'crear_usuario');  
+        //$this->logGenerico('Usuario creado: '.$texto);
     }
 
     /**

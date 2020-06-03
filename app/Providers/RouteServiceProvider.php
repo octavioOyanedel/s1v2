@@ -58,7 +58,23 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapCargaRoutes();
 
+        $this->mapParentescoRoutes();
+
         //
+    }
+
+    /**
+     * Define las rutas de cargas familiares.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapParentescoRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/parentesco.php'));
     }
 
     /**

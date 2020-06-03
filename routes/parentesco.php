@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Rutas de Cargas Familiares
+| Rutas de Parentescos
 |--------------------------------------------------------------------------|
 */
 
-Route::resource('/cargas', 'CargaController');
+Route::resource('/parentescos', 'ParentescoController');

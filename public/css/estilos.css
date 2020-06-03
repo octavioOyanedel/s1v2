@@ -11,14 +11,20 @@ form, form input, form select, form select option {
 }
 
 /******************************************************
- * modal **********************************************
+ * select2 ********************************************
  *****************************************************/
+ul li.select2-results__option.select2-results__option--selectable {
+	font-size: 14px !important;	
+}
 
+.select2 {
+	margin-bottom: 24px !important;
+}
 
 /******************************************************
  * alertas*********************************************
  *****************************************************/
-.alert {
+.alert, ul li.select2-results__option.select2-results__option--selectable {
 	font-size: 14px !important;	
 }
 
@@ -38,7 +44,7 @@ button.close {
 /******************************************************
  * tabla***********************************************
  *****************************************************/
-table tbody tr td{
+table tbody tr td {
 	font-size: 14px !important;
 }
 

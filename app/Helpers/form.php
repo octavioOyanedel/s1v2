@@ -55,7 +55,10 @@ function cargarFormulario($action)
             break;
         case "filtrar_socios":
             return 'inc.forms.socio.filtrar';
-            break;          	                        	                	        	             	        	                               
+            break;
+        case "cargas.store":
+            return 'inc.forms.carga.agregar';
+            break;                      	                        	                	        	             	        	                               
 	}
 }
 

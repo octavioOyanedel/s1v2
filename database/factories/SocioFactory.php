@@ -11,7 +11,7 @@ $factory->define(Socio::class, function (Faker $faker) {
         'nombre1' => $faker->firstName(),
         'nombre2' => $faker->firstName(),
         'apellido1' => $faker->lastName(),
-        'apellido1' => $faker->lastName(),
+        'apellido2' => $faker->lastName(),
         'genero' => $faker->randomElement(['Dama' ,'Varón']),
         'fecha_nac' => $faker->dateTimeBetween('-69 years', '-20 years'),
         'celular' => $faker->numberBetween($min = 955555555, $max = 999999999),

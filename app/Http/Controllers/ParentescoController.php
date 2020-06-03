@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Carga;
-use App\Socio;
 use App\Parentesco;
 use Illuminate\Http\Request;
-use App\Http\Requests\CargaRequest;
 
-class CargaController extends Controller
+class ParentescoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class CargaController extends Controller
      */
     public function index()
     {
-        dd('index cargas');
+        //
     }
 
     /**
@@ -27,10 +24,7 @@ class CargaController extends Controller
      */
     public function create()
     {
-        $parentescos = Parentesco::orderBy('nombre','ASC')->get();
-        $socios = Socio::orderBy('apellido1','ASC')->get();
-        $colecciones = array('parentescos'=>$parentescos,'socios'=>$socios);
-        return view('app.cargas.create', compact('colecciones'));
+        //
     }
 
     /**
@@ -39,18 +33,18 @@ class CargaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CargaRequest $request)
+    public function store(Request $request)
     {
-        dd($request);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Carga  $carga
+     * @param  \App\Parentesco  $parentesco
      * @return \Illuminate\Http\Response
      */
-    public function show(Carga $carga)
+    public function show(Parentesco $parentesco)
     {
         //
     }
@@ -58,10 +52,10 @@ class CargaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Carga  $carga
+     * @param  \App\Parentesco  $parentesco
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carga $carga)
+    public function edit(Parentesco $parentesco)
     {
         //
     }
@@ -70,10 +64,10 @@ class CargaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Carga  $carga
+     * @param  \App\Parentesco  $parentesco
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carga $carga)
+    public function update(Request $request, Parentesco $parentesco)
     {
         //
     }
@@ -81,10 +75,10 @@ class CargaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Carga  $carga
+     * @param  \App\Parentesco  $parentesco
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carga $carga)
+    public function destroy(Parentesco $parentesco)
     {
         //
     }
