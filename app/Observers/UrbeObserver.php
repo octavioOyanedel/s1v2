@@ -28,7 +28,7 @@ class UrbeObserver
      */
     public function updated(Urbe $urbe)
     {
-        $texto = obtenerTexto($urbe->getOriginal(), $urbe->toArray(), '');
+        $texto = obtenerTexto($urbe->getOriginal(), $urbe->toArray(), 'crear_urbe');
         $this->logGenerico('Datos de ciudad editada: '.$texto);   
     }
 

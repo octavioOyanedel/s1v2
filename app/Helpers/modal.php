@@ -25,7 +25,10 @@ function obtenerIdFormulario($label)
 		break;
 		case "Área":
 			return 'form-nueva-area';
-		break;				
+		break;
+		case "Parentesco":
+			return 'form-nuevo-parentesco';
+		break;					
 	}
 }
 
@@ -54,6 +57,9 @@ function obtenerRutaFormulario($label)
 		break;
 		case "Área":
 			return 'inc.forms.socio.modal.nueva-area';
-		break;		
+		break;
+		case "Parentesco":
+			return 'inc.forms.socio.modal.nuevo-parentesco';
+		break;			
 	}
 }

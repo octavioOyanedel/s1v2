@@ -27,7 +27,7 @@
     <x-input label="Fecha Nacimiento" tipo="text" nombre="fecha_nac" id="fecha_nac" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/> 
 
     <!-- Parentesco -->
-    <!-- modal nuevo -->
+    <x-enlace-modal label="Parentesco" />
     <x-select :colecciones="$colecciones" keyColeccion="parentescos" objetos="" keyObjeto="" label="Parentesco" nombre="parentesco_id" id="parentesco_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>       
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	

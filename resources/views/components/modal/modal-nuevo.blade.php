@@ -34,7 +34,10 @@
 						    @break
 						    @case('Área')
 						        @include('inc.forms.socio.modal.nueva_area')
-						    @break							          
+						    @break
+						    @case('Parentesco')
+						        @include('inc.forms.socio.modal.nuevo_parentesco')
+						    @break						    						          
 						@endswitch
 						<!-- form nuevo -->
 

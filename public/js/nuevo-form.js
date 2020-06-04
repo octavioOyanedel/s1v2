@@ -35,6 +35,10 @@ $(window).on('load',function(){
         procesarFormulario(event, 'ciudadania');
     });
 
+    $('#form-nuevo-parentesco').on('submit',function(event){
+        procesarFormulario(event, 'parentesco');
+    });    
+
     /************************************************
      * FUNCIONES
      ************************************************/ 
@@ -152,7 +156,10 @@ $(window).on('load',function(){
             break;
             case 'area':
                 return '/create_area';
-            break;                                              
+            break;
+            case 'parentesco':
+                return '/create_parentesco';
+            break;                                                      
         }        
     }
 
@@ -231,7 +238,10 @@ $(window).on('load',function(){
             break;
             case 'ciudadania':
                 return $('#ciudadania_id');
-            break;                                                                                   
+            break;
+            case 'parentesco':
+                return $('#parentesco_id');
+            break;                                                                                              
         }    
     }
 
@@ -276,7 +286,10 @@ $(window).on('load',function(){
             break;
             case 'ciudadania':
                 return $('#nueva-ciudadania');
-            break;                                                                               
+            break;
+            case 'parentesco':
+                return $('#nuevo-parentesco');
+            break;                                                                             
         }   
     }
 
@@ -299,7 +312,10 @@ $(window).on('load',function(){
             break;
             case 'ciudadania':
                 return $('#nueva-ciudadania').val().trim();
-            break;                                                                                             
+            break;   
+            case 'parentesco':
+                return $('#nuevo-parentesco').val().trim();
+            break;                                                                                                         
         }   
     }   
 

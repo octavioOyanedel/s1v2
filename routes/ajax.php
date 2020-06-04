@@ -20,3 +20,4 @@ Route::get('/create_cargo', 'CargoController@crearViaAjax');
 Route::get('/create_ciudadania', 'CiudadaniaController@crearViaAjax');
 Route::get('/create_comuna', 'ComunaController@crearViaAjax');
 Route::get('/create_area', 'AreaController@crearViaAjax');
+Route::get('/create_parentesco', 'ParentescoController@crearViaAjax');

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Parentesco;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\ParentescoRequest;
 
 class ParentescoController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +38,7 @@ class ParentescoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -82,4 +85,23 @@ class ParentescoController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear parentesco via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(ParentescoRequest $request)
+    {
+        $this->createGenerico($request, new Parentesco);
+        $parentesco = Parentesco::all()->last();
+        if($request->ajax()){
+            return response()->json($parentesco->id);
+        }
+    }      
 }

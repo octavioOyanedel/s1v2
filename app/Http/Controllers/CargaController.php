@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Carga;
 use App\Socio;
 use App\Parentesco;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\CargaRequest;
 
 class CargaController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +43,9 @@ class CargaController extends Controller
      */
     public function store(CargaRequest $request)
     {
-        dd($request);
+        $request['fecha_nac'] = formatoFecha($request->fecha_nac);
+        $this->createGenerico($request, new Carga);
+        return redirect('home')->with('status', 'Carga Familiar Agregada!'); 
     }
 
     /**
