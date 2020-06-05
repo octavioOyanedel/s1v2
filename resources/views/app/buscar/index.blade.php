@@ -28,7 +28,10 @@
 						    @break
 						    @case($objeto instanceof App\User)
 								@include('inc.tablas.usuarios.buscar.usuario')
-						    @break						    
+						    @break
+						    @case($objeto instanceof App\Carga)
+								@include('inc.tablas.cargas.buscar.carga')
+						    @break								        
 						@endswitch
 					@endforeach	
 					</table>

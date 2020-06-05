@@ -7,6 +7,7 @@ use App\Traits\LogGenerico;
 
 class ParentescoObserver
 {
+    use LogGenerico;
     /**
      * Handle the parentesco "created" event.
      *
@@ -15,7 +16,7 @@ class ParentescoObserver
      */
     public function created(Parentesco $parentesco)
     {
-        $texto = obtenerTexto(array(), $cargo->toArray(), 'crear_parentesco');  
+        $texto = obtenerTexto(array(), $parentesco->toArray(), 'crear_parentesco');  
         $this->logGenerico('Parentesco creado: '.$texto);
     }
 
@@ -27,8 +28,8 @@ class ParentescoObserver
      */
     public function updated(Parentesco $parentesco)
     {
-        $texto = obtenerTexto($cargo->getOriginal(), $cargo->toArray(), '');
-        $this->logGenerico('Datos de parentesco editado: '.$texto);  
+        //$texto = obtenerTexto($parentesco->getOriginal(), $parentesco->toArray(), '');
+        //$this->logGenerico('Datos de parentesco editado: '.$texto);  
     }
 
     /**
@@ -39,8 +40,8 @@ class ParentescoObserver
      */
     public function deleted(Parentesco $parentesco)
     {
-        $texto = obtenerTexto(array(), $cargo->toArray(), '');  
-        $this->logGenerico('Parentesco eliminado: '.$texto);
+        //$texto = obtenerTexto(array(), $parentesco->toArray(), '');  
+        //$this->logGenerico('Parentesco eliminado: '.$texto);
     }
 
     /**

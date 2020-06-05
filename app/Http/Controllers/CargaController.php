@@ -56,7 +56,8 @@ class CargaController extends Controller
      */
     public function show(Carga $carga)
     {
-        //
+        $objeto = $carga;
+        return view('app.cargas.show', compact('objeto'));
     }
 
     /**
@@ -67,7 +68,11 @@ class CargaController extends Controller
      */
     public function edit(Carga $carga)
     {
-        //
+        $parentescos = Parentesco::orderBy('nombre','ASC')->get();
+        $socios = Socio::orderBy('apellido1','ASC')->get();
+        $colecciones = array('parentescos'=>$parentescos,'socios'=>$socios);
+        $objetos = array('carga' => $carga);
+        return view('app.cargas.edit', compact('colecciones','objetos'));
     }
 
     /**
@@ -77,9 +82,12 @@ class CargaController extends Controller
      * @param  \App\Carga  $carga
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carga $carga)
+    public function update(CargaRequest $request, Carga $carga)
     {
-        //
+        // cambio de formato por datepicker
+        $request['fecha_nac'] = formatoFecha($request->fecha_nac);
+        $this->updateGenerico($request, $carga);
+        return redirect('home')->with('status', 'Carga Familiar Actualizada!');     
     }
 
     /**
@@ -90,6 +98,7 @@ class CargaController extends Controller
      */
     public function destroy(Carga $carga)
     {
-        //
+        $this->deleteGenerico($carga);
+        return redirect('home')->with('status', 'Carga Familiar Eliminada!');
     }
 }

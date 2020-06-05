@@ -58,7 +58,10 @@ function cargarFormulario($action)
             break;
         case "cargas.store":
             return 'inc.forms.carga.agregar';
-            break;                      	                        	                	        	             	        	                               
+            break;
+        case "cargas.update":
+            return 'inc.forms.carga.editar';
+            break;                   	                        	                	        	             	        	                               
 	}
 }
 

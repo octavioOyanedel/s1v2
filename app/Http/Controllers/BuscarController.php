@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Carga;
 use App\Socio;
 use App\Categoria;
 use Illuminate\Http\Request;
@@ -50,11 +51,22 @@ class BuscarController extends Controller
                 ->get();
 
             $usuarios = User::orderBy('apellido1','ASC')
+                ->nombres($nombre, $apellido)
                 ->general($q, 'nombre1')
                 ->general($q, 'nombre2')
                 ->general($q, 'apellido1')
                 ->general($q, 'apellido2')
                 ->general($q, 'email')         
+                ->get();
+
+            $cargas = Carga::orderBy('apellido1','ASC')
+                ->nombres($nombre, $apellido)
+                ->general($q, 'nombre1')
+                ->general($q, 'nombre2')
+                ->general($q, 'apellido1')
+                ->general($q, 'apellido2')
+                ->general($q, 'rut') 
+                ->fecha($q, 'fecha_nac')        
                 ->get();
 
             if($socios->count() > 0){
@@ -64,6 +76,10 @@ class BuscarController extends Controller
             if($usuarios->count() > 0){
                 $this->iterarColeccion($usuarios, $coleccion);
             }      
+
+            if($cargas->count() > 0){
+                $this->iterarColeccion($cargas, $coleccion);
+            }            
 
             $total = count($coleccion);
             $coleccion->paginate(5);

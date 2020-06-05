@@ -30,7 +30,10 @@
 					        @break
 					        @case('Reincorporar Socio')
 								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="reincorporar_socio" />
-					        @break	
+					        @break
+					        @case('Eliminar Carga Familiar')
+								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="eliminar_carga" />
+					        @break						        	
 						@endswitch		
 					</div>
 					<div class="modal-footer">

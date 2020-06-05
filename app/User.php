@@ -76,7 +76,17 @@ class User extends Authenticatable
     /*******************************************************************************************
     /******************************* Consultas búsqueda general ********************************
     /*******************************************************************************************
-    
+
+    /**
+     * scope busqueda nombres
+     */
+    public function scopeNombres($query, $nombre, $apellido)
+    {
+        if ($nombre && $apellido) {
+            return $query->where('nombre1', '=', $nombre)->where('apellido1', '=', $apellido);
+        }
+    }   
+     
     /**
      * scope busqueda general
      */

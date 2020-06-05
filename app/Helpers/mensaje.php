@@ -40,6 +40,9 @@ function obtenerMensaje($nombre)
 		break;
 		case "reincorporar_socio":
 			return '¿Está seguro/a que desea reincorporar a este socio?';
-		break;				
+		break;
+		case "eliminar_carga":
+			return '¿Está seguro/a que desea eliminar a esta carga familiar?';
+		break;						
 	}
 }

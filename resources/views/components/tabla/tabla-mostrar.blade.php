@@ -2,7 +2,7 @@
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}
 		@if ($objeto->deleted_at === null)
 			<div class="text-center enlaces-ver">
-				<x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="socios.edit" :id="$objeto->id"/>
+				<x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="cargas.edit" :id="$objeto->id"/>
 			</div>				
 		@endif
 

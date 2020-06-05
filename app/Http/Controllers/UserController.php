@@ -117,7 +117,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $id_log = Auth::user()->id;
-        //dd($id.' - '.$id_log);
         $this->deleteGenerico(User::findOrFail($id));
         if((int)$id === $id_log){
             return redirect('login');

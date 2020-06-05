@@ -28,7 +28,8 @@ class CargaObserver
      */
     public function updated(Carga $carga)
     {
-        //
+        $texto = obtenerTexto($carga->getOriginal(), $carga->toArray(), 'editar_carga');
+        $this->logGenerico('Datos de carga familiar editada: '.$texto);   
     }
 
     /**
@@ -39,7 +40,8 @@ class CargaObserver
      */
     public function deleted(Carga $carga)
     {
-        //
+        $texto = obtenerTexto(array(), $carga->toArray(), 'eliminar_carga');  
+        $this->logGenerico('Carga familiar eliminada: '.$texto);
     }
 
     /**
