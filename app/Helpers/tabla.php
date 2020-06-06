@@ -22,7 +22,10 @@ function obtenerContenidoTabla($nombre)
 		break;
 		case "ver_carga":
 			return 'inc.tablas.cargas.mostrar';
-		break;		
+		break;
+		case "cargas":
+			return 'inc.tablas.cargas.listar';
+		break;				
 	}
 }
 
@@ -46,6 +49,9 @@ function obtenerCabecerasTablas($nombre)
 		case "ver_socio":
 			return array('Nombre'=>'nombre1','Rut'=>'rut','Género'=>'genero','Fecha de Nacimiento'=>'fecha_nac','N° Contacto'=>'celular','Correo'=>'correo','Ciudad'=>'urbe_id','Comuna'=>'comuna_id','Dirección'=>'direccion','Fecha Ingreso PUCV'=>'fecha_pucv','Sede'=>'sede_id','Área'=>'area_id','Cargo'=>'cargo_id','Anexo'=>'anexo','Fecha Ingreso Sind1'=>'fecha_sind1','N° Socio'=>'numero','Estado Socio'=>'categoria_id','Nacionalidad'=>'ciudadania_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at','Fecha de Desvinculación'=>'deleted_at');
 		break;
+		case "cargas":
+			return array('Socio Responsable'=>'','Nombre Carga'=>'','Rut'=>'','Fecha de Nacimiento'=>'text-center','Parentesco'=>'');
+		break;		
 		case "ver_carga":
 			return array('Socio'=>'socio_id','Nombre'=>'nombre1','Rut'=>'rut','Fecha de Nacimiento'=>'fecha_nac','Parentesco'=>'parentesco_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at',);
 		break;						

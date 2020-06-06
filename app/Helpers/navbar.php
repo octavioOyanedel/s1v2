@@ -19,10 +19,15 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'socios':
-			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE || $ruta === 'cargas/create'){
+			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE){
 			    return 'active';
 			}	
-		break;			
+		break;	
+		case 'cargas':
+			if ($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta)){
+			    return 'active';
+			}	
+		break;				
 		default:
 			return '';
 			break;
@@ -44,7 +49,10 @@ function obtenerEnlacesNav($nombre)
 			return array('Listar'=>'usuarios.index','Crear'=>'usuarios.create');
 		break;		
 		case "socios":
-			return array('Listar'=>'home','Incorporar'=>'socios.create','Filtrar'=>'form_filtro_socios','Agregar Carga'=>'cargas.create','Agregar Estudio'=>'home');
+			return array('Listar'=>'home','Incorporar'=>'socios.create','Filtrar'=>'form_filtro_socios');
+		break;
+		case "cargas":
+			return array('Listar'=>'cargas.index','Agregar'=>'cargas.create','Filtrar'=>'home');
 		break;
 				
 	}

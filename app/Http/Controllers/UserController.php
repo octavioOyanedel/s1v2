@@ -21,25 +21,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $cantidad = obtenerCantidad($request);
-        $columna = obtenerColumna($request);
-        $orden = obtenerOrden($request);
-        $coleccion = null;
 
-        switch ($columna) {
-            case 'privilegio_id':
-                $coleccion = $this->buscarParaFiltradoJoin('privilegios', 'users', 'nombre', $cantidad, $columna, $orden);
-                break;
-            
-            default:
-                $coleccion = $this->buscarParaFiltrado('users', $cantidad, $columna, $orden);
-                break;
-        }
-
+        $coleccion = User::orderBy('created_at','DESC')->paginate(10); 
         $total = $coleccion->total();
-
         return view('app.usuarios.index', compact('coleccion', 'total'));
     }
 

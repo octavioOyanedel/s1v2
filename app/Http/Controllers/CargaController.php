@@ -19,7 +19,9 @@ class CargaController extends Controller
      */
     public function index()
     {
-        dd('index cargas');
+        $coleccion = Carga::orderBy('created_at','DESC')->paginate(10); 
+        $total = $coleccion->total();
+        return view('app.cargas.index', compact('coleccion', 'total'));
     }
 
     /**
@@ -87,7 +89,7 @@ class CargaController extends Controller
         // cambio de formato por datepicker
         $request['fecha_nac'] = formatoFecha($request->fecha_nac);
         $this->updateGenerico($request, $carga);
-        return redirect('home')->with('status', 'Carga Familiar Actualizada!');     
+        return redirect('cargas')->with('status', 'Carga Familiar Actualizada!');     
     }
 
     /**
@@ -99,6 +101,6 @@ class CargaController extends Controller
     public function destroy(Carga $carga)
     {
         $this->deleteGenerico($carga);
-        return redirect('home')->with('status', 'Carga Familiar Eliminada!');
+        return redirect('cargas')->with('status', 'Carga Familiar Eliminada!');
     }
 }

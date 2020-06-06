@@ -32,7 +32,10 @@
 										@else
 								        	<x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="socios.show" :id="$item->id"/>
 								        @endif
-								    @break								    
+								    @break
+								    @case('cargas')
+								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="cargas.show" :id="$item->id"/>
+								    @break								    								    
 								@endswitch							
 							</td>
 							<!-- editar -->
@@ -47,7 +50,10 @@
 										@else
 								        	<x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="socios.edit" :id="$item->id"/>
 								        @endif								        
-								    @break								    
+								    @break
+								    @case('cargas')
+								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="cargas.edit" :id="$item->id"/>
+								    @break								    								    
 								@endswitch						
 							</td>
 							<!-- eliminar: data-target permite distinguir modal -->
@@ -62,7 +68,10 @@
 										@else
 								        	<x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>
 								        @endif									        							        
-								    @break								    
+								    @break
+								    @case('cargas')
+								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
+								    @break								    							    
 								@endswitch		
 							</td>
 							@include(obtenerContenidoTabla($contenido))
@@ -78,7 +87,10 @@
 								@else
 						        	<x-modal :id="$item->id" titulo="Eliminar Socio" csrf="delete" action="socios.destroy" :anexos="$anexos"/>	
 						        @endif							    						        
-						    @break								    
+						    @break
+						    @case('cargas')
+						        <x-modal :id="$item->id" titulo="Eliminar Carga Familiar" csrf="delete" action="cargas.destroy" anexos=""/>					        
+						    @break						 							    
 						@endswitch												
 					@endforeach		
 				</tbody>			
