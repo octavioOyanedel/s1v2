@@ -103,9 +103,9 @@ class LogController extends Controller
     public function registrarEnvioReset(Request $request)
     {
         $correo = $request->parametro;
-        $usuario = $this->buscarObjetoGenerico(new User, 'email', $correo);  
+        $usuario = $this->buscarObjetoGenerico(new User, 'email', $correo); 
         if($request->ajax()){            
-            $this->logGenerico('Envío de correo para recuperar contraseña.', $usuario);
+            $this->logGenerico('Envío de correo para recuperar contraseña.', $usuario->id);
             return response()->json('ok'); 
         }
         return response()->json('error');

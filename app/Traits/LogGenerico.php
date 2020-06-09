@@ -17,7 +17,7 @@ trait LogGenerico {
         $log->ip = obtenerIp();
         $log->navegador = obtenerBrowser();
         $log->sistema = obtenerSistemaOperativo();
-        $log->user_id = ($id === Auth::user()->id) ? null : Auth::user()->id;
+        $log->user_id = ($id === null) ? Auth::user()->id : $id;
         $log->save();
     }
 

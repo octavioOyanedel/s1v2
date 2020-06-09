@@ -14,7 +14,7 @@
 			<a title="{{ $titulo }}" class="p-2 {{ $color }}" data-toggle="modal" data-target="#ventanaModal{{ $id }}">
 				<i class="fas {{ $icono }}"></i>
 			</a>
-	    @break	    
+	    @break	 
 	    @default
 			<a title="{{ $titulo }}" class="p-2 {{ $color }}" href="{{ route($ruta ,$id) }}">
 				<i class="fas {{ $icono }}"></i>

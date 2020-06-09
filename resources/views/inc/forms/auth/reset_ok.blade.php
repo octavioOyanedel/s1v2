@@ -19,4 +19,9 @@
 
     <!-- Botón -->
     <button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>
+
+    <div>
+        <!-- Volver -->
+        <a href="{{ route('login') }}">Volver a iniciar sesión</a>
+    </div>    
 </form>

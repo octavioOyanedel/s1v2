@@ -85,7 +85,10 @@ function obtenerRutaEditar($nombre)
 		break;
 		case "Datos de Usuario":
 			return 'usuarios.edit';
-		break;		
+		break;
+		case "Datos de Carga Familiar":
+			return 'cargas.edit';
+		break;				
 
 	}
 }

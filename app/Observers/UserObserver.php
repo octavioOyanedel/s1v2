@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\User;
-use App\Traits\logGenerico;
+use App\Traits\LogGenerico;
 use Illuminate\Support\Facades\Auth;
 
 class UserObserver
@@ -31,7 +31,7 @@ class UserObserver
     {
         //cambio de contraseña
         if($user->password != $user->getOriginal('password')){
-            $this->logGenerico('Cambio de contraseña.');
+            $this->logGenerico('Cambio de contraseña.', $user->id);
         }else{
             $texto = obtenerTexto($user->getOriginal(), $user->toArray(), 'editar_usuario');
             if($texto != ''){
