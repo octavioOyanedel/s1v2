@@ -24,7 +24,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'cargas':
-			if ($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta) || strpos($ruta, 'filtrar_cargas') !== FALSE){
+			if ($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_cargas' || strpos($ruta, 'filtrar_cargas') !== FALSE){
 			    return 'active';
 			}	
 		break;				
