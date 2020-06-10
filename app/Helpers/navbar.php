@@ -24,7 +24,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'cargas':
-			if ($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta)){
+			if ($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta) || strpos($ruta, 'filtrar_cargas') !== FALSE){
 			    return 'active';
 			}	
 		break;				
@@ -52,7 +52,7 @@ function obtenerEnlacesNav($nombre)
 			return array('Listar'=>'home','Incorporar'=>'socios.create','Filtrar'=>'form_filtro_socios');
 		break;
 		case "cargas":
-			return array('Listar'=>'cargas.index','Agregar'=>'cargas.create','Filtrar'=>'home');
+			return array('Listar'=>'cargas.index','Agregar'=>'cargas.create','Filtrar'=>'form_filtro_cargas');
 		break;
 				
 	}

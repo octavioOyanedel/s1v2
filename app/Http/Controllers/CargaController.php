@@ -103,4 +103,31 @@ class CargaController extends Controller
         $this->deleteGenerico($carga);
         return redirect('cargas')->with('status', 'Carga Familiar Eliminada!');
     }
+
+    /**
+     * Show the form for filtrar socios.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function formFiltro()
+    {
+        $parentescos = Parentesco::orderBy('nombre','ASC')->get();
+
+        $hijos = new Parentesco; $hijos['id'] = -1; $hijos['nombre'] = 'Hijos (hijo/a)'; $parentescos->push($hijos);
+        $padres = new Parentesco; $padres['id'] = -2; $padres['nombre'] = 'Padres (padre/madre)'; $parentescos->push($padres);
+        $abuelos = new Parentesco; $abuelos['id'] = -3; $abuelos['nombre'] = 'Abuelos (abuelo/a)'; $parentescos->push($abuelos);                      
+        $parentescos->push($hijos);
+        $colecciones = array('parentescos'=>$parentescos);
+        return view('app.cargas.filtro', compact('colecciones'));
+    }
+
+    /**
+     * Busca cargas familiares.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filtrarCargas(Request $request)
+    {
+        dd($request);
+    }
 }

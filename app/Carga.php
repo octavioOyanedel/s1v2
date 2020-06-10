@@ -14,7 +14,7 @@ class Carga extends Model
      * @var array
      */
     protected $fillable = [
-        'rut', 'nombre1', 'nombre2', 'apellido1', 'apellido2', 'fecha_nac', 'socio_id', 'parentesco_id',
+        'id','rut', 'nombre1', 'nombre2', 'apellido1', 'apellido2', 'fecha_nac', 'socio_id', 'parentesco_id',
     ];
 
     /*******************************************************************************************

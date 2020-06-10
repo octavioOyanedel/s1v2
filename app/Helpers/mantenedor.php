@@ -39,7 +39,7 @@ function obtenerEnlacesMantenedor($ruta)
 		return array('Área'=>'home','Cargo'=>'home','Ciudad'=>'home','Comuna'=>'home','Nacionalidad'=>'home','Sede'=>'home','Situación'=>'home');
 	}
 	
-	if($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta)){
+	if($ruta === 'cargas' || $ruta === 'cargas/create' || preg_match('/^cargas\/([0-9]*)\/edit/', $ruta) || preg_match('/^cargas\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_cargas'){
 		return array('Parentesco'=>'home');
 	}	
 }

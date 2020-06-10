@@ -61,7 +61,10 @@ function cargarFormulario($action)
             break;
         case "cargas.update":
             return 'inc.forms.carga.editar';
-            break;                   	                        	                	        	             	        	                               
+            break;
+        case "filtrar_cargas":
+            return 'inc.forms.carga.filtrar';
+            break;                              	                        	                	        	             	        	                               
 	}
 }
 
