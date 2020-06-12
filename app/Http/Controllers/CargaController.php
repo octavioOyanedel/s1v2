@@ -8,6 +8,7 @@ use App\Parentesco;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\CargaRequest;
+use App\Http\Requests\FiltroCargaRequest;
 
 class CargaController extends Controller
 {
@@ -126,8 +127,20 @@ class CargaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function filtrarCargas(Request $request)
+    public function filtrarCargas(FiltroCargaRequest $request)
     {
-        dd($request);
+        $coleccion = Carga::orderBy('apellido1','ASC')
+            ->rangoFecha($request->fecha_nac_ini, $request->fecha_nac_fin, 'fecha_nac')
+            ->rangoEdades($request->edad_ini, $request->edad_fin)
+            ->generalAnd($request->parentesco_id,'parentesco_id')
+            ->paginate(10)->appends([
+            'fecha_nac_ini' => $request->fecha_nac_ini,
+            'fecha_nac_fin' => $request->fecha_nac_fin,
+            'edad_ini' => $request->edad_ini,
+            'edad_fin' => $request->edad_fin,
+            'parentesco_id' => $request->parentesco_id,
+            ]);    
+        $total = $coleccion->total();
+        return view('app.cargas.resultados', compact('coleccion', 'total'));
     }
 }

@@ -17,12 +17,12 @@ function obtenerIcono($nombre)
 
 /**
  * Descripción: obtener mensaje de alerta
- * Entrada/s: string nombre 
+ * Entrada/s: string mensaje 
  * Salida: string mensaje
  */
-function obtenerMensaje($nombre)
+function obtenerMensaje($mensaje)
 {
-	switch ($nombre) {
+	switch ($mensaje) {
 		case "reset_correo":
 			return 'Se enviará enlace de recuperación a cuenta de correo registrada en sistema. Si no recuerda email contactarse con administrador.';
 		break;		
@@ -43,6 +43,9 @@ function obtenerMensaje($nombre)
 		break;
 		case "eliminar_carga":
 			return '¿Está seguro/a que desea eliminar a esta carga familiar?';
-		break;						
+		break;
+		case "rango_fecha_edades":
+			return 'Edad mínima 0 (no ha cumplido primer año). Edad final debe ser mayor a edad inicial';
+		break;									
 	}
 }

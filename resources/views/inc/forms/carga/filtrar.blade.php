@@ -2,7 +2,7 @@
 
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
-    <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio" />
+    <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="rango_fecha_edades" />
 
 	<!-- Rango fecha nacimiento -->
 	<x-rango-fecha label="Fecha de Nacimiento" inicio="fecha_nac_ini" fin="fecha_nac_fin"/>

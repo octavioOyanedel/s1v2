@@ -61,5 +61,26 @@ function separarNombreApellido($q)
 		}
 	}
 	return $arreglo;
+}
 
+/**
+ * Descripción: resta edad a año actual
+ * Entrada/s: string fecha
+ * Salida: fecha modificada 
+ */
+function fechaRangoEdad($edad)
+{
+	$year = (int)date('Y') - (int)$edad;
+	return (string)$year.'-'.date('m').'-'.date('d');
+}
+
+/**
+ * Descripción: resta edad a año actual y setea comienzo de año
+ * Entrada/s: string fecha
+ * Salida: fecha modificada 
+ */
+function fechaRangoEdadIgualIni($edad)
+{
+	$year = (int)date('Y') - (int)$edad;
+	return (string)$year.'-01-01';
 }
