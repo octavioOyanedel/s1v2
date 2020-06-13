@@ -47,16 +47,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        User::observe(UserObserver::class);
-        Socio::observe(SocioObserver::class);
-        Urbe::observe(UrbeObserver::class);
-        Comuna::observe(ComunaObserver::class);
-        Sede::observe(SedeObserver::class);
-        Area::observe(AreaObserver::class);
-        Cargo::observe(CargoObserver::class);
-        Ciudadania::observe(CiudadaniaObserver::class);
-        Carga::observe(CargaObserver::class);
-        Parentesco::observe(ParentescoObserver::class);
+        //User::observe(UserObserver::class);
+        //Socio::observe(SocioObserver::class);
+        //Urbe::observe(UrbeObserver::class);
+        //Comuna::observe(ComunaObserver::class);
+        //Sede::observe(SedeObserver::class);
+        //Area::observe(AreaObserver::class);
+        //Cargo::observe(CargoObserver::class);
+        //Ciudadania::observe(CiudadaniaObserver::class);
+        //Carga::observe(CargaObserver::class);
+        //Parentesco::observe(ParentescoObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SocioSeeder::class);
         $this->call(ParentescoSeeder::class);
         $this->call(CargaSeeder::class);
+        $this->call(GradoSeeder::class);
+        $this->call(EstablecimientoSeeder::class);
+        $this->call(FaseSeeder::class);
+        $this->call(TituloSeeder::class);
+        $this->call(EstudioSeeder::class);
     }
 }
