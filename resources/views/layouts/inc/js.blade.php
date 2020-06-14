@@ -18,3 +18,4 @@
 <script src="{{ asset('js/nuevo-form.js') }}" defer></script>
 <script src="{{ asset('js/filtro-socios.js') }}" defer></script>
 <script src="{{ asset('js/select2.js') }}" defer></script>
+<script src="{{ asset('js/ajax-select-estudio.js') }}" defer></script>

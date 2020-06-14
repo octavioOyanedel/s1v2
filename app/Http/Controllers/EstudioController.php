@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Fase;
+use App\Grado;
+use App\Socio;
 use App\Estudio;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,11 @@ class EstudioController extends Controller
      */
     public function create()
     {
-        //
+        $socios = Socio::orderBy('apellido1','ASC')->get();
+        $grados = Grado::orderBy('nombre','ASC')->get();
+        $fases = Fase::orderBy('nombre','ASC')->get();
+        $colecciones = array('socios'=>$socios,'grados'=>$grados,'fases'=>$fases);
+        return view('app.estudios.create', compact('colecciones'));
     }
 
     /**
@@ -35,7 +42,7 @@ class EstudioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

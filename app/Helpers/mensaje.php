@@ -29,6 +29,9 @@ function obtenerMensaje($mensaje)
 		case "campos_obligatorio":
 			return '* Campos obligatorios.';
 		break;
+		case "campos_obligatorio_rut":
+			return '* Campos obligatorios. Para buscar RUT en campo obligatorio Socio utilizar formato con puntos y guión. Ej. 11.222.333-k';
+		break;
 		case "eliminar_mismo_usuario":
 			return 'Si elimina su cuenta de usuario la aplicación se cerrará y no podrá ingresar nuevamente. ¿Está seguro/a que desea eliminar su cuenta de usuario?';
 		break;

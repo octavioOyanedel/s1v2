@@ -64,7 +64,10 @@ function cargarFormulario($action)
             break;
         case "filtrar_cargas":
             return 'inc.forms.carga.filtrar';
-            break;                              	                        	                	        	             	        	                               
+            break; 
+        case "estudios.store":
+            return 'inc.forms.estudio.agregar';
+            break;                                        	                        	                	        	             	        	                               
 	}
 }
 

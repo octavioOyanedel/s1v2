@@ -40,15 +40,9 @@ $(window).on('load',function(){
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), 0);
 	});
 
-
-
 	function ajax(elemento, nombre, id_padre, id_hijo){
 
-		$.ajaxSetup({
-			headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}}
-		);
+		cabeceraAjax();
 
 		$.ajax({
 			method: 'GET',
@@ -72,6 +66,14 @@ $(window).on('load',function(){
 			}
 		});		
 
+	}
+
+	function cabeceraAjax(){
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}}
+		);
 	}
 
 	function comprobarValor(valor) {
