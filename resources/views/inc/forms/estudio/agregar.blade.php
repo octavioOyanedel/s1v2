@@ -18,11 +18,11 @@
 
     <!-- Estado -->
     {{-- <x-enlace-modal label="Comuna" /> --}}
-    <x-select-ajax keyObjeto="" objetos="" nombre="fase_id" id="fase_id" label="Estado Estudio" idOld="old_fase" idEditar="" obligatorio="si"/>
+    <x-select :colecciones="$colecciones" keyColeccion="fases" objetos="" keyObjeto="" label="Estado Estudio" nombre="fase_id" id="fase_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Título -->
     {{-- <x-enlace-modal label="Comuna" /> --}}
-    <x-select-ajax keyObjeto="" objetos="" nombre="titulo_id" id="titulo_id" label="Título" idOld="old_titulo" idEditar="" obligatorio="si"/>        
+    <x-select-ajax keyObjeto="" objetos="" nombre="titulo_id" id="titulo_id" label="Título" idOld="old_titulo" idEditar="" obligatorio="no"/>        
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	

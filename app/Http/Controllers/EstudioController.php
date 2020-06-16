@@ -7,6 +7,7 @@ use App\Grado;
 use App\Socio;
 use App\Estudio;
 use Illuminate\Http\Request;
+use App\Http\Requests\EstudioRequest;
 
 class EstudioController extends Controller
 {
@@ -40,7 +41,7 @@ class EstudioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EstudioRequest $request)
     {
         dd($request);
     }

@@ -136,7 +136,6 @@ $(window).on('load',function(){
         }
     }
 
-
     function obtenerRuta(nombre){
         switch(nombre) {
             case 'urbe':

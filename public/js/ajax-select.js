@@ -65,7 +65,6 @@ $(window).on('load',function(){
 				console.log('error');
 			}
 		});		
-
 	}
 
 	function cabeceraAjax(){
