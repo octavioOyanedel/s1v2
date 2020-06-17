@@ -43,7 +43,10 @@
 						    @break
 						    @case('Estado')
 						        @include('inc.forms.estudio.modal.nueva_fase')
-						    @break							  							    				    						          
+						    @break	
+						    @case('Institución')
+						        @include('inc.forms.estudio.modal.nuevo_establecimiento')
+						    @break								    						  							    				    						          
 						@endswitch
 						<!-- form nuevo -->
 

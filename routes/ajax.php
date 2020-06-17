@@ -28,3 +28,4 @@ Route::get('/create_area', 'AreaController@crearViaAjax');
 Route::get('/create_parentesco', 'ParentescoController@crearViaAjax');
 Route::get('/create_grado', 'GradoController@crearViaAjax');
 Route::get('/create_fase', 'FaseController@crearViaAjax');
+Route::get('/create_institucion', 'EstablecimientoController@crearViaAjax');

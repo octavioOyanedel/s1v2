@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Establecimiento;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\EstablecimientoRequest;
 
 class EstablecimientoController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class EstablecimientoController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear area via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(EstablecimientoRequest $request)
+    {
+        $this->createGenerico($request, new Establecimiento);
+        $establecimiento = Establecimiento::all()->last();
+        if($request->ajax()){
+            return response()->json($establecimiento->id);
+        }
+    }        
 }

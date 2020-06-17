@@ -10,4 +10,5 @@
     <!-- Modal nuevo registro -->
 	<x-modal-nuevo label="Nivel" colecciones="" keyColeccion="" />
 	<x-modal-nuevo label="Estado" colecciones="" keyColeccion="" />
+	<x-modal-nuevo label="Institución" :colecciones="$colecciones" keyColeccion="grados" />
 @endsection

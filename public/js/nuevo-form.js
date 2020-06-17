@@ -45,7 +45,11 @@ $(window).on('load',function(){
 
     $('#form-nuevo-estado').on('submit',function(event){
         procesarFormulario(event, 'estado');
-    });  
+    }); 
+
+    $('#form-nuevo-establecimiento').on('submit',function(event){
+        procesarFormulario(event, 'establecimiento');
+    });   
 
     /************************************************
      * FUNCIONES
@@ -71,7 +75,11 @@ $(window).on('load',function(){
                 case 'area':
                     ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('sede_modal'));
                     seleccionarOptionEnSelected('sede_form', obtenerValorSeleccionado('sede_modal'));
-                break;                  
+                break;  
+                case 'establecimiento':
+                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('grado_modal'));
+                    seleccionarOptionEnSelected('grado_form', obtenerValorSeleccionado('grado_modal'));
+                break;                                      
                 default:
                     ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
             }   
@@ -93,7 +101,10 @@ $(window).on('load',function(){
             break; 
             case 'area':
                 data = {nombre: valor, sede_id: id}; 
-            break;              
+            break;
+            case 'establecimiento':
+                data = {nombre: valor, grado_id: id}; 
+            break;                                
             default:
                 data = {nombre: valor};                      
         }  
@@ -127,7 +138,10 @@ $(window).on('load',function(){
             break;   
             case 'Agregar Área':
                 agregarOptionSeleccionada('sede_form', 'sede_modal');
-            break;                                         
+            break;   
+            case 'Agregar Institución':
+                agregarOptionSeleccionada('grado_form', 'grado_modal');
+            break;                                                    
         }             
     }  
     // 4- antes de añadir validar si existe en select modal
@@ -172,7 +186,10 @@ $(window).on('load',function(){
             break;     
             case 'estado':
                 return '/create_fase';
-            break;                                                           
+            break;  
+            case 'establecimiento':
+                return '/create_institucion';
+            break;                                                                       
         }        
     }
 
@@ -189,7 +206,13 @@ $(window).on('load',function(){
             break;
             case 'sede_modal':
                 return $('#sede-nueva-area option:selected').val();
-            break;                            
+            break;
+            case 'grado_form':
+                return $('#grado_id option:selected').val();
+            break;
+            case 'grado_modal':
+                return $('#grado-nuevo-establecimiento option:selected').val();
+            break;                                
         }            
     }
 
@@ -200,7 +223,10 @@ $(window).on('load',function(){
             break;  
             case 'sede_modal':
                 return $('#sede-nueva-area option[value='+valor+']').val();
-            break;                   
+            break;  
+            case 'grado_modal':
+                return $('#grado-nuevo-establecimiento option[value='+valor+']').val();
+            break;                    
         }            
     }
 
@@ -217,7 +243,13 @@ $(window).on('load',function(){
             break;    
             case 'sede_form':
                 return $('#sede_id option[value='+valor+']').attr('selected', true);
-            break;                                      
+            break;    
+            case 'grado_modal':
+                return $('#grado-nuevo-establecimiento option[value='+valor+']').attr('selected', true);
+            break;    
+            case 'grado_form':
+                return $('#grado_id option[value='+valor+']').attr('selected', true);
+            break;                                     
         }            
     }    
 
@@ -228,7 +260,10 @@ $(window).on('load',function(){
             break;
             case 'sede_form':
                 return $('#sede_id option:selected').text();
-            break;                           
+            break;  
+            case 'grado_form':
+                return $('#grado_id option:selected').text();
+            break;                        
         }            
     }
 
@@ -260,7 +295,10 @@ $(window).on('load',function(){
             break; 
             case 'estado':
                 return $('#fase_id');
-            break;                                                                                                            
+            break;   
+            case 'establecimiento':
+                return $('#grado_id');
+            break;                                                                                                             
         }    
     }
 
@@ -271,7 +309,10 @@ $(window).on('load',function(){
             break;
             case 'sede_modal':
                 return $('#sede-nueva-area');
-            break;                                                                   
+            break; 
+            case 'grado_modal':
+                return $('#grado-nuevo-establecimiento');
+            break;                                                                    
         }   
     }
 
@@ -282,7 +323,10 @@ $(window).on('load',function(){
             break;
             case 'sede_modal':
                 return $('#sede-nueva-area option:selected').val();
-            break;                                                                      
+            break;    
+            case 'grado_modal':
+                return $('#grado-nuevo-establecimiento option:selected').val();
+            break;                                                                                
         }   
     }    
 
@@ -314,7 +358,10 @@ $(window).on('load',function(){
             break;    
             case 'estado':
                 return $('#nueva-fase');
-            break;                                                                                                      
+            break;   
+            case 'establecimiento':
+                return $('#nuevo-establecimiento');
+            break;                                                                                                       
         }   
     }
 
@@ -346,7 +393,10 @@ $(window).on('load',function(){
             break;         
             case 'estado':
                 return $('#nueva-fase').val().trim();
-            break;                                                                                                               
+            break; 
+            case 'establecimiento':
+                return $('#nuevo-establecimiento').val().trim();
+            break;                                                                                                                              
         }   
     }   
 

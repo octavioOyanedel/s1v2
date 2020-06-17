@@ -13,7 +13,7 @@
     <x-select :colecciones="$colecciones" keyColeccion="grados" objetos="" keyObjeto="" label="Nivel Académico" nombre="grado_id" id="grado_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Institución -->
-    {{-- <x-enlace-modal label="Comuna" /> --}}
+    <x-enlace-modal label="Institución" />
     <x-select-ajax keyObjeto="" objetos="" nombre="establecimiento_id" id="establecimiento_id" label="Institución" idOld="old_establecimiento" idEditar="" obligatorio="si"/>
 
     <!-- Estado -->
