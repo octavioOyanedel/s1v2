@@ -1,18 +1,18 @@
 $(window).on('load',function(){
 
 	// Desabilitar selects
-	bloquearSelect($('#establecimiento_id'));
-	bloquearSelect($('#titulo_id'));
+	// bloquearSelect($('#establecimiento_id'));
+	// bloquearSelect($('#titulo_id'));
 
 	// Desbloquear si existe variable old
 	if($('#old_establecimiento').val() != ''){
-		desbloquearSelect($('#establecimiento_id'));
+		// desbloquearSelect($('#establecimiento_id'));
 		// Cargar establecimientos old
 		ajax($('#establecimiento_id'), 'establecimientos', $('#grado_id option:selected').val(), 0, $('#old_establecimiento').val()); 
 	}
 
 	if($('#old_titulo').val() != ''){
-		desbloquearSelect($('#titulo_id'));
+		// desbloquearSelect($('#titulo_id'));
 		// Cargar titulos old
 		ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), $('#establecimiento_id option:selected').val(), $('#old_titulo').val());
 	}
@@ -28,10 +28,11 @@ $(window).on('load',function(){
 		}
 		// Desbloquear establecimiento
 		if(comprobarValor($('#grado_id option:selected').val())){
-			desbloquearSelect($('#establecimiento_id'));
+			// desbloquearSelect($('#establecimiento_id'));
 			ajax($('#establecimiento_id'), 'establecimientos', $('#grado_id option:selected').val(), 0, $('#old_establecimiento').val());
+			ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), 0, 0);
 		}else{
-			bloquearSelect($('#establecimiento_id'));		
+			// bloquearSelect($('#establecimiento_id'));		
 		}
 	});
 
@@ -39,13 +40,26 @@ $(window).on('load',function(){
 	$('#establecimiento_id').change(function(){
 		// Desbloquear titulos
 		if(comprobarValor($('#grado_id option:selected').val()) && comprobarValor($('#establecimiento_id option:selected').val())){
-			desbloquearSelect($('#titulo_id'));
+			// desbloquearSelect($('#titulo_id'));
 			ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), $('#establecimiento_id option:selected').val(), $('#old_titulo').val());
 		}else{
-			bloquearSelect($('#titulo_id'));		
+			// bloquearSelect($('#titulo_id'));		
 		}
-
 	});	
+
+	// Estado (fase)
+	$('#fase_id').change(function(){
+		// Desbloquear titulos
+		if(comprobarValor($('#fase_id option:selected').val())){
+			if($('#fase_id option:selected').val() != 5){
+				// bloquearSelect($('#titulo_id'));
+				ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), 0, 0);	
+			}else{
+				// desbloquearSelect($('#titulo_id'));			
+				ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), $('#establecimiento_id option:selected').val(), $('#old_titulo').val());				
+			}
+		}
+	});		
 
 	function ajax(elemento, nombre, grado_id, establecimiento_id, old){
 

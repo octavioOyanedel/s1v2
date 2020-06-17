@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Grado;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\GradoRequest;
 
 class GradoController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class GradoController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear cargo via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(GradoRequest $request)
+    {
+        $this->createGenerico($request, new Grado);
+        $grado = Grado::all()->last();
+        if($request->ajax()){
+            return response()->json($grado->id);
+        }
+    }         
 }

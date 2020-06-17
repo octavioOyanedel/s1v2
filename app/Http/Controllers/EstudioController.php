@@ -6,11 +6,17 @@ use App\Fase;
 use App\Grado;
 use App\Socio;
 use App\Estudio;
+use App\Traits\LogGenerico;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Traits\BuscarGenerico;
 use App\Http\Requests\EstudioRequest;
 
 class EstudioController extends Controller
 {
+    use CrudGenerico;
+    use LogGenerico;
+    use BuscarGenerico;     
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +49,8 @@ class EstudioController extends Controller
      */
     public function store(EstudioRequest $request)
     {
-        dd($request);
+        $this->createGenerico($request, new Estudio);
+        return redirect('estudios/create')->with('status', 'Estudio Registrado!');         
     }
 
     /**

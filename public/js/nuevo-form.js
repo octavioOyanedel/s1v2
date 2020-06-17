@@ -39,6 +39,14 @@ $(window).on('load',function(){
         procesarFormulario(event, 'parentesco');
     });    
 
+    $('#form-nuevo-nivel').on('submit',function(event){
+        procesarFormulario(event, 'nivel');
+    });
+
+    $('#form-nuevo-estado').on('submit',function(event){
+        procesarFormulario(event, 'estado');
+    });  
+
     /************************************************
      * FUNCIONES
      ************************************************/ 
@@ -111,7 +119,7 @@ $(window).on('load',function(){
 
     }    
 
-    // 3- validar para afregar valor a select
+    // 3- validar para agregar valor a select
     function completarSelectModal(titulo){
         switch(titulo) {
             case 'Agregar Comuna':
@@ -158,7 +166,13 @@ $(window).on('load',function(){
             break;
             case 'parentesco':
                 return '/create_parentesco';
-            break;                                                      
+            break;
+            case 'nivel':
+                return '/create_grado';
+            break;     
+            case 'estado':
+                return '/create_fase';
+            break;                                                           
         }        
     }
 
@@ -240,7 +254,13 @@ $(window).on('load',function(){
             break;
             case 'parentesco':
                 return $('#parentesco_id');
-            break;                                                                                              
+            break;
+            case 'nivel':
+                return $('#grado_id');
+            break; 
+            case 'estado':
+                return $('#fase_id');
+            break;                                                                                                            
         }    
     }
 
@@ -288,7 +308,13 @@ $(window).on('load',function(){
             break;
             case 'parentesco':
                 return $('#nuevo-parentesco');
-            break;                                                                             
+            break;
+            case 'nivel':
+                return $('#nuevo-nivel');
+            break;    
+            case 'estado':
+                return $('#nueva-fase');
+            break;                                                                                                      
         }   
     }
 
@@ -314,7 +340,13 @@ $(window).on('load',function(){
             break;   
             case 'parentesco':
                 return $('#nuevo-parentesco').val().trim();
-            break;                                                                                                         
+            break;
+            case 'nivel':
+                return $('#nuevo-nivel').val().trim();
+            break;         
+            case 'estado':
+                return $('#nueva-fase').val().trim();
+            break;                                                                                                               
         }   
     }   
 

@@ -3,23 +3,29 @@
 namespace App\Providers;
 
 use App\Area;
+use App\Fase;
 use App\Sede;
 use App\Urbe;
 use App\User;
 use App\Carga;
 use App\Cargo;
+use App\Grado;
 use App\Socio;
 use App\Comuna;
+use App\Estudio;
 use App\Ciudadania;
 use App\Parentesco;
 use App\Observers\AreaObserver;
+use App\Observers\FaseObserver;
 use App\Observers\SedeObserver;
 use App\Observers\UrbeObserver;
 use App\Observers\UserObserver;
 use App\Observers\CargaObserver;
 use App\Observers\CargoObserver;
+use App\Observers\GradoObserver;
 use App\Observers\SocioObserver;
 use App\Observers\ComunaObserver;
+use App\Observers\EstudioObserver;
 use Illuminate\Support\Collection;
 use App\Observers\CiudadaniaObserver;
 use App\Observers\ParentescoObserver;
@@ -47,16 +53,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        //User::observe(UserObserver::class);
-        //Socio::observe(SocioObserver::class);
-        //Urbe::observe(UrbeObserver::class);
-        //Comuna::observe(ComunaObserver::class);
-        //Sede::observe(SedeObserver::class);
-        //Area::observe(AreaObserver::class);
-        //Cargo::observe(CargoObserver::class);
-        //Ciudadania::observe(CiudadaniaObserver::class);
-        //Carga::observe(CargaObserver::class);
-        //Parentesco::observe(ParentescoObserver::class);
+        User::observe(UserObserver::class);
+        Socio::observe(SocioObserver::class);
+        Urbe::observe(UrbeObserver::class);
+        Comuna::observe(ComunaObserver::class);
+        Sede::observe(SedeObserver::class);
+        Area::observe(AreaObserver::class);
+        Cargo::observe(CargoObserver::class);
+        Ciudadania::observe(CiudadaniaObserver::class);
+        Carga::observe(CargaObserver::class);
+        Parentesco::observe(ParentescoObserver::class);
+        Estudio::observe(EstudioObserver::class);
+        Grado::observe(GradoObserver::class);
+        Fase::observe(FaseObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

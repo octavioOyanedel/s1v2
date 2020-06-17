@@ -28,38 +28,13 @@ function obtenerIdFormulario($label)
 		break;
 		case "Parentesco":
 			return 'form-nuevo-parentesco';
-		break;					
+		break;
+		case "Nivel":
+			return 'form-nuevo-nivel';
+		break;
+		case "Estado":
+			return 'form-nuevo-estado';
+		break;											
 	}
 }
 
-/**
- * Descripción: obtener ruta de formulario
- * Entrada/s: string nombre de label
- * Salida: string con ruta de formulario
- */
-function obtenerRutaFormulario($label)
-{
-	switch ($label) {
-		case "Ciudad":
-			return 'inc.forms.socio.modal.nueva_urbe';
-		break;
-		case "Sede":
-			return 'inc.forms.socio.modal.nueva_sede';
-		break;
-		case "Cargo":
-			return 'inc.forms.socio.modal.nuevo-cargo';
-		break;
-		case "Nacionalidad":
-			return 'inc.forms.socio.modal.nueva-ciudadania';
-		break;
-		case "Comuna":
-			return 'inc.forms.socio.modal.nueva-comuna';
-		break;
-		case "Área":
-			return 'inc.forms.socio.modal.nueva-area';
-		break;
-		case "Parentesco":
-			return 'inc.forms.socio.modal.nuevo-parentesco';
-		break;			
-	}
-}

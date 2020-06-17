@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Fase;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\FaseRequest;
 
 class FaseController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class FaseController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear cargo via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(FaseRequest $request)
+    {
+        $this->createGenerico($request, new Fase);
+        $fase = Fase::all()->last();
+        if($request->ajax()){
+            return response()->json($fase->id);
+        }
+    }     
 }

@@ -112,7 +112,10 @@ function filtrarCampos($array, $nombre) {
         break;    
         case 'crear_ciudadania':
             $keys = array('_token', 'updated_at', 'created_at');
-        break;    
+        break;
+        case 'crear':
+            $keys = array('_token', 'updated_at', 'created_at');
+        break;             
             default: 
             $keys = array('created_at','updated_at');                                                   
     }

@@ -36,8 +36,14 @@
 						        @include('inc.forms.socio.modal.nueva_area')
 						    @break
 						    @case('Parentesco')
-						        @include('inc.forms.socio.modal.nuevo_parentesco')
-						    @break						    						          
+						        @include('inc.forms.carga.modal.nuevo_parentesco')
+						    @break
+						    @case('Nivel')
+						        @include('inc.forms.estudio.modal.nuevo_nivel')
+						    @break
+						    @case('Estado')
+						        @include('inc.forms.estudio.modal.nueva_fase')
+						    @break							  							    				    						          
 						@endswitch
 						<!-- form nuevo -->
 

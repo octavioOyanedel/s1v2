@@ -26,3 +26,5 @@ Route::get('/create_ciudadania', 'CiudadaniaController@crearViaAjax');
 Route::get('/create_comuna', 'ComunaController@crearViaAjax');
 Route::get('/create_area', 'AreaController@crearViaAjax');
 Route::get('/create_parentesco', 'ParentescoController@crearViaAjax');
+Route::get('/create_grado', 'GradoController@crearViaAjax');
+Route::get('/create_fase', 'FaseController@crearViaAjax');

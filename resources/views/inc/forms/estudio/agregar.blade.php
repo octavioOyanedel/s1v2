@@ -9,7 +9,7 @@
     <x-select2 :colecciones="$colecciones" keyColeccion="socios" objetos="" keyObjeto="" label="Socio" nombre="socio_id" id="socio_id" tamano="custom-select-sm" obligatorio="si" />
 
      <!-- Nivel académico -->
-    {{-- <x-enlace-modal label="Ciudad" /> --}}
+    <x-enlace-modal label="Nivel" />
     <x-select :colecciones="$colecciones" keyColeccion="grados" objetos="" keyObjeto="" label="Nivel Académico" nombre="grado_id" id="grado_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Institución -->
@@ -17,7 +17,7 @@
     <x-select-ajax keyObjeto="" objetos="" nombre="establecimiento_id" id="establecimiento_id" label="Institución" idOld="old_establecimiento" idEditar="" obligatorio="si"/>
 
     <!-- Estado -->
-    {{-- <x-enlace-modal label="Comuna" /> --}}
+    <x-enlace-modal label="Estado" />
     <x-select :colecciones="$colecciones" keyColeccion="fases" objetos="" keyObjeto="" label="Estado Estudio" nombre="fase_id" id="fase_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Título -->
