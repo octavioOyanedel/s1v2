@@ -21,7 +21,7 @@
     <x-select :colecciones="$colecciones" keyColeccion="fases" objetos="" keyObjeto="" label="Estado Estudio" nombre="fase_id" id="fase_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Título -->
-    {{-- <x-enlace-modal label="Comuna" /> --}}
+    <x-enlace-modal label="Título" />
     <x-select-ajax keyObjeto="" objetos="" nombre="titulo_id" id="titulo_id" label="Título" idOld="old_titulo" idEditar="" obligatorio="no"/>        
 
     <!-- Botón -->

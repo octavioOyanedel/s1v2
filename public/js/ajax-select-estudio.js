@@ -70,7 +70,7 @@ $(window).on('load',function(){
                 data = {id: grado_id}; 
             break; 
             case 'titulos':
-                data = {id1: grado_id, id2: establecimiento_id}; 
+                data = {id: grado_id}; 
             break;                          
         }  
 

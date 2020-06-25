@@ -15,7 +15,6 @@ class UpdateTitulosTable extends Migration
     {
         Schema::table('titulos', function (Blueprint $table) {
             $table->foreign('grado_id')->references('id')->on('grados')->onUpdate('cascade')->onDelete('set null');
-            $table->foreign('establecimiento_id')->references('id')->on('establecimientos')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

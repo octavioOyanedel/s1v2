@@ -54,7 +54,7 @@ class SelectController extends Controller
     public function titulos(Request $request)
     {
         if($request->ajax()){
-            return response()->json(Titulo::where([['grado_id','=',$request->id1],['establecimiento_id','=',$request->id2]])->pluck('id','nombre'));
+            return response()->json(Titulo::where('grado_id','=',$request->id)->pluck('id','nombre'));
         }
     }        
 }

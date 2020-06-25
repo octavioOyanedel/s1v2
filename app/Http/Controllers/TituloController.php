@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Titulo;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\TituloRequest;
 
 class TituloController extends Controller
 {
+    use CrudGenerico;
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +85,23 @@ class TituloController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear area via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(TituloRequest $request)
+    {
+        $this->createGenerico($request, new Titulo);
+        $titulo = Titulo::all()->last();
+        if($request->ajax()){
+            return response()->json($titulo->id);
+        }
+    }            
 }

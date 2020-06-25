@@ -11,17 +11,17 @@ class TituloSeeder extends Seeder
      */
     public function run()
     {
-		App\Titulo::create(['nombre' => 'Ingeniero de Ejecucíon Informatica', 'grado_id' => 5, 'establecimiento_id' => 1]);
-		App\Titulo::create(['nombre' => 'Ingeniero Electrónico con Mención en Computación Y Redes', 'grado_id' => 4, 'establecimiento_id' => 1]);
-		App\Titulo::create(['nombre' => 'Ingeniero Agronomo', 'grado_id' => 5, 'establecimiento_id' => 1]);
-		App\Titulo::create(['nombre' => 'Ciencias Agronomicas Y Ambientales', 'grado_id' => 7, 'establecimiento_id' => 1]);
-		App\Titulo::create(['nombre' => 'Administración de Empresas', 'grado_id' => 4, 'establecimiento_id' => 1]);
-		App\Titulo::create(['nombre' => 'Contador Auditor', 'grado_id' => 4, 'establecimiento_id' => 2]);
-		App\Titulo::create(['nombre' => 'Enfermera', 'grado_id' => 5, 'establecimiento_id' => 2]);
-		App\Titulo::create(['nombre' => 'Secretaria', 'grado_id' => 4, 'establecimiento_id' => 2]);
-		// App\Titulo::create(['nombre' => 'Técnico Universitario en Control de Alimentos', 'grado_id' => 5, 'establecimiento_id' => 1]);
-		// App\Titulo::create(['nombre' => 'Programador de Aplicaciones Computacionales', 'grado_id' => 4, 'establecimiento_id' => 1]);
-		// App\Titulo::create(['nombre' => 'Asistente Social', 'grado_id' => 5, 'establecimiento_id' => 1]);
+		App\Titulo::create(['nombre' => 'Ingeniero de Ejecucíon Informatica', 'grado_id' => 5]);
+		App\Titulo::create(['nombre' => 'Ingeniero Electrónico con Mención en Computación Y Redes', 'grado_id' => 4]);
+		App\Titulo::create(['nombre' => 'Ingeniero Agronomo', 'grado_id' => 5]);
+		App\Titulo::create(['nombre' => 'Ciencias Agronomicas Y Ambientales', 'grado_id' => 7]);
+		App\Titulo::create(['nombre' => 'Administración de Empresas', 'grado_id' => 4]);
+		App\Titulo::create(['nombre' => 'Contador Auditor', 'grado_id' => 4]);
+		App\Titulo::create(['nombre' => 'Enfermera', 'grado_id' => 5]);
+		App\Titulo::create(['nombre' => 'Secretaria', 'grado_id' => 4]);
+		// App\Titulo::create(['nombre' => 'Técnico Universitario en Control de Alimentos', 'grado_id' => 5]);
+		// App\Titulo::create(['nombre' => 'Programador de Aplicaciones Computacionales', 'grado_id' => 4]);
+		// App\Titulo::create(['nombre' => 'Asistente Social', 'grado_id' => 5]);
 		// App\Titulo::create(['nombre' => 'Periodista', 'grado_id' => 5, 'establecimiento_id' => 1]);
 		// App\Titulo::create(['nombre' => 'Técnico en Análisis Químico', 'grado_id' => 4, 'establecimiento_id' => 1]);
 		// App\Titulo::create(['nombre' => 'Ingeniería de Ejecución en Informática', 'grado_id' => 5, 'establecimiento_id' => 1]);

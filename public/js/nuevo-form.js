@@ -51,6 +51,10 @@ $(window).on('load',function(){
         procesarFormulario(event, 'establecimiento');
     });   
 
+    $('#form-nuevo-titulo').on('submit',function(event){
+        procesarFormulario(event, 'titulo');
+    });   
+
     /************************************************
      * FUNCIONES
      ************************************************/ 
@@ -79,7 +83,11 @@ $(window).on('load',function(){
                 case 'establecimiento':
                     ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('grado_modal'));
                     seleccionarOptionEnSelected('grado_form', obtenerValorSeleccionado('grado_modal'));
-                break;                                      
+                break;     
+                case 'titulo':
+                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('titulo_modal'));
+                    seleccionarOptionEnSelected('titulo_form', obtenerValorSeleccionado('titulo_modal'));
+                break;                                                     
                 default:
                     ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
             }   
@@ -104,7 +112,10 @@ $(window).on('load',function(){
             break;
             case 'establecimiento':
                 data = {nombre: valor, grado_id: id}; 
-            break;                                
+            break;       
+            case 'titulo':
+                data = {nombre: valor, grado_id: id}; 
+            break;                            
             default:
                 data = {nombre: valor};                      
         }  
@@ -141,7 +152,10 @@ $(window).on('load',function(){
             break;   
             case 'Agregar Institución':
                 agregarOptionSeleccionada('grado_form', 'grado_modal');
-            break;                                                    
+            break;   
+            case 'Agregar Título':
+                agregarOptionSeleccionada('titulo_form', 'titulo_modal');
+            break;                                                                
         }             
     }  
     // 4- antes de añadir validar si existe en select modal
@@ -189,7 +203,10 @@ $(window).on('load',function(){
             break;  
             case 'establecimiento':
                 return '/create_institucion';
-            break;                                                                       
+            break;   
+            case 'titulo':
+                return '/create_titulo';
+            break;                                                                                  
         }        
     }
 
@@ -212,7 +229,13 @@ $(window).on('load',function(){
             break;
             case 'grado_modal':
                 return $('#grado-nuevo-establecimiento option:selected').val();
-            break;                                
+            break;   
+            case 'titulo_form':
+                return $('#grado_id option:selected').val();
+            break;
+            case 'titulo_modal':
+                return $('#grado-nuevo-titulo option:selected').val();
+            break;                                              
         }            
     }
 
@@ -226,7 +249,10 @@ $(window).on('load',function(){
             break;  
             case 'grado_modal':
                 return $('#grado-nuevo-establecimiento option[value='+valor+']').val();
-            break;                    
+            break; 
+            case 'titulo_modal':
+                return $('#grado-nuevo-titulo option[value='+valor+']').val();
+            break;                     
         }            
     }
 
@@ -249,7 +275,13 @@ $(window).on('load',function(){
             break;    
             case 'grado_form':
                 return $('#grado_id option[value='+valor+']').attr('selected', true);
-            break;                                     
+            break;   
+            case 'titulo_modal':
+                return $('#grado-nuevo-titulo option[value='+valor+']').attr('selected', true);
+            break;    
+            case 'titulo_form':
+                return $('#grado_id option[value='+valor+']').attr('selected', true);
+            break;                                                 
         }            
     }    
 
@@ -263,7 +295,10 @@ $(window).on('load',function(){
             break;  
             case 'grado_form':
                 return $('#grado_id option:selected').text();
-            break;                        
+            break;   
+            case 'titulo_form':
+                return $('#grado_id option:selected').text();
+            break;                       
         }            
     }
 
@@ -297,8 +332,11 @@ $(window).on('load',function(){
                 return $('#fase_id');
             break;   
             case 'establecimiento':
-                return $('#grado_id');
-            break;                                                                                                             
+                return $('#establecimiento_id');
+            break;    
+            case 'titulo':
+                return $('#titulo_id');
+            break;                                                                                                                       
         }    
     }
 
@@ -312,7 +350,10 @@ $(window).on('load',function(){
             break; 
             case 'grado_modal':
                 return $('#grado-nuevo-establecimiento');
-            break;                                                                    
+            break;      
+            case 'titulo_modal':
+                return $('#grado-nuevo-titulo');
+            break;                                                                 
         }   
     }
 
@@ -326,7 +367,10 @@ $(window).on('load',function(){
             break;    
             case 'grado_modal':
                 return $('#grado-nuevo-establecimiento option:selected').val();
-            break;                                                                                
+            break;        
+            case 'titulo_modal':
+                return $('#grado-nuevo-titulo option:selected').val();
+            break;                                                                             
         }   
     }    
 
@@ -361,7 +405,10 @@ $(window).on('load',function(){
             break;   
             case 'establecimiento':
                 return $('#nuevo-establecimiento');
-            break;                                                                                                       
+            break;
+            case 'titulo':
+                return $('#nuevo-titulo');
+            break;                                                                                                                     
         }   
     }
 
@@ -396,7 +443,10 @@ $(window).on('load',function(){
             break; 
             case 'establecimiento':
                 return $('#nuevo-establecimiento').val().trim();
-            break;                                                                                                                              
+            break;
+            case 'titulo':
+                return $('#nuevo-titulo').val().trim();
+            break;                                                                                                                                            
         }   
     }   
 

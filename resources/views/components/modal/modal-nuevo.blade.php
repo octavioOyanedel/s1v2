@@ -46,7 +46,10 @@
 						    @break	
 						    @case('Institución')
 						        @include('inc.forms.estudio.modal.nuevo_establecimiento')
-						    @break								    						  							    				    						          
+						    @break		
+						    @case('Título')
+						        @include('inc.forms.estudio.modal.nuevo_titulo')
+						    @break								    						    						  							    				    						          
 						@endswitch
 						<!-- form nuevo -->
 

@@ -37,7 +37,10 @@ function obtenerIdFormulario($label)
 		break;	
 		case "Institución":
 			return 'form-nuevo-establecimiento';
-		break;												
+		break;
+		case "Título":
+			return 'form-nuevo-titulo';
+		break;														
 	}
 }
 

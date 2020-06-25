@@ -12,6 +12,6 @@ class Titulo extends Model
     * @var array
     */
     protected $fillable = [
-        'grado_id','establecimiento_id','nombre',
+        'grado_id','nombre',
     ];  
 }

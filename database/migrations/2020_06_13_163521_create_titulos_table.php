@@ -17,8 +17,7 @@ class CreateTitulosTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');
-            $table->unsignedInteger('grado_id')->nullable(); //set null
-            $table->unsignedInteger('establecimiento_id')->nullable(); //set null            
+            $table->unsignedInteger('grado_id')->nullable(); //set null        
             $table->string('nombre');
             $table->timestamps();
         });
