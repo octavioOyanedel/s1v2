@@ -84,3 +84,24 @@ function fechaRangoEdadIgualIni($edad)
 	$year = (int)date('Y') - (int)$edad;
 	return (string)$year.'-01-01';
 }
+
+/**
+ * Descripción: comprueba si registro es nulo e imprime - en tablas
+ * Entrada/s: string registro
+ * Salida: string registro o -
+ */
+function existeRegistro($registro, $campo)
+{
+	if($registro != null || $registro != ''){
+		switch ($campo) {
+			case 'value':				
+				break;		
+			default:
+				return $registro->nombre;
+				break;
+		}
+		return $registro->nombre;
+	}else{
+		return 'Sin '.$campo;
+	}
+}

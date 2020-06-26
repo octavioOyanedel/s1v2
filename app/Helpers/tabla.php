@@ -25,7 +25,10 @@ function obtenerContenidoTabla($nombre)
 		break;
 		case "cargas":
 			return 'inc.tablas.cargas.listar';
-		break;				
+		break;	
+		case "estudios":
+			return 'inc.tablas.estudios.listar';
+		break;							
 	}
 }
 
@@ -54,6 +57,9 @@ function obtenerCabecerasTablas($nombre)
 		break;		
 		case "ver_carga":
 			return array('Socio'=>'socio_id','Nombre'=>'nombre1','Rut'=>'rut','Fecha de Nacimiento'=>'fecha_nac','Parentesco'=>'parentesco_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at',);
+		break;	
+		case "estudios":
+			return array('Nivel Académico'=>'','Institución'=>'','Estado Estudio'=>'','Título'=>'');
 		break;						
 	}
 }

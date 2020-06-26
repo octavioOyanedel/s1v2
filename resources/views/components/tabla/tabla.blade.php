@@ -12,6 +12,11 @@
 						<th></th>
 		                <th></th>
 		                <th></th>
+		                {{-- icono estudios --}}
+		                @if ($contenido === 'socios')
+		                	<th></th>
+		                @endif
+		                
 						@foreach (obtenerCabecerasTablas($contenido) as $nombre => $clase)
 							<th class="{{ $clase }}"><b>{{ $nombre }}</b></th>
 						@endforeach	                
@@ -35,7 +40,10 @@
 								    @break
 								    @case('cargas')
 								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="cargas.show" :id="$item->id"/>
-								    @break								    								    
+								    @break		
+								    @case('estudios')
+								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="estudios.show" :id="$item->id"/>
+								    @break									    						    								    
 								@endswitch							
 							</td>
 							<!-- editar -->
@@ -53,7 +61,10 @@
 								    @break
 								    @case('cargas')
 								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="cargas.edit" :id="$item->id"/>
-								    @break								    								    
+								    @break
+								    @case('estudios')
+								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="estudios.edit" :id="$item->id"/>
+								    @break									    							    								    
 								@endswitch						
 							</td>
 							<!-- eliminar: data-target permite distinguir modal -->
@@ -71,9 +82,18 @@
 								    @break
 								    @case('cargas')
 								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
-								    @break								    							    
+								    @break	
+								    @case('estudios')
+								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
+								    @break									    							    							    
 								@endswitch		
 							</td>
+			                {{-- icono estudios --}}
+			                @if ($contenido === 'socios')
+			                	<td>
+			                		<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$item->id"/>
+			                	</td>
+			                @endif							
 							@include(obtenerContenidoTabla($contenido))
 						</tr>
 						<!-- ventanas modales -->
@@ -90,7 +110,10 @@
 						    @break
 						    @case('cargas')
 						        <x-modal :id="$item->id" titulo="Eliminar Carga Familiar" csrf="delete" action="cargas.destroy" anexos=""/>					        
-						    @break						 							    
+						    @break	
+						    @case('estudios')
+						        <x-modal :id="$item->id" titulo="Eliminar Estudio Realizado" csrf="delete" action="estudios.destroy" anexos=""/>					        
+						    @break								    					 							    
 						@endswitch												
 					@endforeach		
 				</tbody>			

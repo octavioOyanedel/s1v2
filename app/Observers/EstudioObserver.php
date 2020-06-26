@@ -28,7 +28,8 @@ class EstudioObserver
      */
     public function updated(Estudio $estudio)
     {
-        //
+        $texto = obtenerTexto($estudio->getOriginal(), $estudio->toArray(), 'editar_carga');
+        $this->logGenerico('Datos de estudio realizado editados: '.$texto); 
     }
 
     /**

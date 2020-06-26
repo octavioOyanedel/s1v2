@@ -19,7 +19,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;	
 		case 'socios':
-			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE || $ruta === 'estudios/create'){
+			if ($ruta === 'home' || $ruta === 'socios/create' || preg_match('/^socios\/([0-9]*)\/edit/', $ruta) || preg_match('/^socios\/([0-9]*)/', $ruta) || $ruta === 'form_filtro_socios' || strpos($ruta, 'filtrar_socios') !== FALSE || $ruta === 'estudios/create' || preg_match('/^estudios\/([0-9]*)\/edit/', $ruta) || $ruta === 'estudios'){
 			    return 'active';
 			}	
 		break;	

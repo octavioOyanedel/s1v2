@@ -4,7 +4,10 @@
 <select class="form-control form-control-sm mb-4" name="grado_id" id="grado-nuevo-titulo" required>
 	<option value="">...</option>
 	@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item) 
-		<option value="{{ $item->id }}">{{ $item->nombre }}</option>
+		{{-- Quitar de la lista a ed. básica --}}
+		@if ($item->id != 1)
+			<option value="{{ $item->id }}">{{ $item->nombre }}</option>
+		@endif		
 	@endforeach
 </select>
 

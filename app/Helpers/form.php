@@ -67,7 +67,10 @@ function cargarFormulario($action)
             break; 
         case "estudios.store":
             return 'inc.forms.estudio.agregar';
-            break;                                        	                        	                	        	             	        	                               
+            break;   
+        case "estudios.update":
+            return 'inc.forms.estudio.editar';
+            break;                                       	                        	                	        	             	        	                               
 	}
 }
 

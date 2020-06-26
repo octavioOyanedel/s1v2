@@ -31,6 +31,7 @@ function esActiveMantenedor($ruta, $titulo)
  */
 function obtenerEnlacesMantenedor($ruta)
 {
+
 	if(preg_match('/^usuario\/([0-9]*)\/edit/', $ruta) || $ruta === 'password/form/editar' || preg_match('/^usuarios\/([0-9]*)/', $ruta) || $ruta === 'usuarios' || $ruta === 'usuarios/create'){
 		return array('Privilegio'=>'home');
 	}
@@ -43,7 +44,7 @@ function obtenerEnlacesMantenedor($ruta)
 		return array('Parentesco'=>'home');
 	}	
 
-	if($ruta === 'estudios/create'){
+	if($ruta === 'estudios/create' || preg_match('/^estudios\/([0-9]*)\/edit/', $ruta) || $ruta === 'estudios'){
 		return array('Nivel académico'=>'home','Institución'=>'home','Estado'=>'home','Título'=>'home');
 	}		
 }

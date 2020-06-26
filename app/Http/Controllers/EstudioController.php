@@ -22,9 +22,11 @@ class EstudioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $coleccion = Estudio::where('socio_id',$request->id)->orderBy('created_at','DESC')->paginate(15); 
+        $total = $coleccion->total();
+        return view('app.estudios.index', compact('coleccion', 'total'));
     }
 
     /**
@@ -72,7 +74,11 @@ class EstudioController extends Controller
      */
     public function edit(Estudio $estudio)
     {
-        //
+        $grados = Grado::orderBy('nombre','ASC')->get();
+        $fases = Fase::orderBy('nombre','ASC')->get();
+        $objetos = array('estudio' => $estudio);
+        $colecciones = array('grados'=>$grados,'fases'=>$fases);
+        return view('app.estudios.edit', compact('colecciones','objetos'));        
     }
 
     /**
@@ -82,9 +88,10 @@ class EstudioController extends Controller
      * @param  \App\Estudio  $estudio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Estudio $estudio)
+    public function update(EstudioRequest $request, Estudio $estudio)
     {
-        //
+        $this->updateGenerico($request, $estudio);
+        return redirect('home')->with('status', 'Estudio Realizado Actualizada!');
     }
 
     /**

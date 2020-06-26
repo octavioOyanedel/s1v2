@@ -16,6 +16,14 @@ $(window).on('load',function(){
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#old_area').val());
 	}
 
+	if(comprobarValor($('#old_establecimiento').val())){
+		ajax($('#establecimiento_id'), 'establecimientos', $('#grado_id option:selected').val(), $('#old_establecimiento').val());
+	}
+
+	if(comprobarValor($('#old_titulo').val())){
+		ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), $('#old_titulo').val());
+	}
+
 	// 2 - Agregar comprobación de valor editar y llamar a petición AJAX
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
@@ -28,6 +36,14 @@ $(window).on('load',function(){
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#editar_area').val());
 	}
 
+	if(comprobarValor($('#editar_establecimiento').val())){
+		ajax($('#establecimiento_id'), 'establecimientos', $('#grado_id option:selected').val(), $('#editar_establecimiento').val());
+	}
+
+	if(comprobarValor($('#editar_titulo').val())){
+		ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), $('#editar_titulo').val());
+	}	
+
 	// 3 - llamada a ajax mientras ocurra evento change en select padres
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
@@ -39,6 +55,11 @@ $(window).on('load',function(){
 	$('#sede_id').change(function(){
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), 0);
 	});
+
+	$('#grado_id').change(function(){
+		ajax($('#establecimiento_id'), 'establecimientos', $('#grado_id option:selected').val(), 0);
+		ajax($('#titulo_id'), 'titulos', $('#grado_id option:selected').val(), 0);
+	});	
 
 	function ajax(elemento, nombre, id_padre, id_hijo){
 
@@ -95,6 +116,12 @@ $(window).on('load',function(){
 			case 'areas':
 				return '/cargar_areas';
 			break;
+			case 'establecimientos':
+				return '/cargar_establecimientos';
+			break;			
+			case 'titulos':
+				return '/cargar_titulos';
+			break;					
 		}
 	}
 

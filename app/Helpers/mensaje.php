@@ -49,6 +49,9 @@ function obtenerMensaje($mensaje)
 		break;
 		case "rango_fecha_edades":
 			return 'Edad mínima 0 (no ha cumplido primer año). Edad final debe ser mayor a edad inicial';
+		break;		
+		case "eliminar_estudio":
+			return '¿Está seguro/a que desea eliminar a este estudio realizado?';
 		break;									
 	}
 }

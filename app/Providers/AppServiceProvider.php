@@ -12,9 +12,11 @@ use App\Cargo;
 use App\Grado;
 use App\Socio;
 use App\Comuna;
+use App\Titulo;
 use App\Estudio;
 use App\Ciudadania;
 use App\Parentesco;
+use App\Establecimiento;
 use App\Observers\AreaObserver;
 use App\Observers\FaseObserver;
 use App\Observers\SedeObserver;
@@ -25,12 +27,14 @@ use App\Observers\CargoObserver;
 use App\Observers\GradoObserver;
 use App\Observers\SocioObserver;
 use App\Observers\ComunaObserver;
+use App\Observers\TituloObserver;
 use App\Observers\EstudioObserver;
 use Illuminate\Support\Collection;
 use App\Observers\CiudadaniaObserver;
 use App\Observers\ParentescoObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\EstablecimientoObserver;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class AppServiceProvider extends ServiceProvider
@@ -65,7 +69,9 @@ class AppServiceProvider extends ServiceProvider
         Parentesco::observe(ParentescoObserver::class);
         Estudio::observe(EstudioObserver::class);
         Grado::observe(GradoObserver::class);
+        Establecimiento::observe(EstablecimientoObserver::class);
         Fase::observe(FaseObserver::class);
+        Titulo::observe(TituloObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.
