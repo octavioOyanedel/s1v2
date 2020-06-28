@@ -15,6 +15,7 @@
 		                {{-- icono estudios --}}
 		                @if ($contenido === 'socios')
 		                	<th></th>
+		                	<th></th>
 		                @endif
 		                
 						@foreach (obtenerCabecerasTablas($contenido) as $nombre => $clase)
@@ -93,6 +94,9 @@
 			                	<td>
 			                		<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$item->id"/>
 			                	</td>
+			                	<td>
+			                		<x-enlace-accion titulo="Cargas Familiares" color="purple-text" icono="fa-users" ruta="cargas_listar" :id="$item->id"/>
+			                	</td>			                	
 			                @endif							
 							@include(obtenerContenidoTabla($contenido))
 						</tr>

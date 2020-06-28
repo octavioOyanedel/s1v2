@@ -26,6 +26,19 @@ class CargaController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listar(Request $request)
+    {
+        // dd($request);
+        $coleccion = Carga::where('socio_id',$request->id)->orderBy('created_at','DESC')->paginate(15); 
+        $total = $coleccion->total();
+        return view('app.cargas.list', compact('coleccion', 'total'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

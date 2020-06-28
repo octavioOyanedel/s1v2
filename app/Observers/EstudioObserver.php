@@ -40,7 +40,8 @@ class EstudioObserver
      */
     public function deleted(Estudio $estudio)
     {
-        //
+        $texto = obtenerTexto(array(), $estudio->toArray(), '');  
+        $this->logGenerico('Estudio realizado eliminado: '.$texto);
     }
 
     /**

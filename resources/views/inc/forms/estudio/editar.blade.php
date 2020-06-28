@@ -2,7 +2,6 @@
     $estudio = obtenerObjeto($objetos, 'estudio');
 @endphp
 
-{{ var_dump($estudio->establecimiento_id) }}
 <form id="{{ $id }}" class="border border-light p-5" method="{{ $metodo }}" action="{{ route($action, $estudio) }}">
 
 	@include(obtenerCsrf($csrf))

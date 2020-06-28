@@ -102,6 +102,9 @@ class EstudioController extends Controller
      */
     public function destroy(Estudio $estudio)
     {
-        //
+        // dd($estudio);
+        $id = $estudio->socio_id;
+        $this->deleteGenerico($estudio);
+        return back()->with('status', 'Estudio realizado Eliminado!');  
     }
 }

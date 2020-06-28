@@ -10,6 +10,10 @@ form, form input, form select, form select option {
 	font-size: 14px !important;
 }
 
+i.fas {
+	width: 15px !important;
+}
+
 /******************************************************
  * select2 ********************************************
  *****************************************************/
