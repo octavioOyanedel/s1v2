@@ -3,6 +3,6 @@
 @section('content')
 
     <!-- Tabla estudios -->
-	<x-tabla :coleccion="$coleccion" contenido="estudios" titulo="Estudios Realizados" alinear="text-center" :total="$total" anexos="" />
+	<x-tabla :coleccion="$coleccion" contenido="estudios" titulo="Estudios Realizados" alinear="text-center" :total="$total" :anexos="$socio" />
     
 @endsection

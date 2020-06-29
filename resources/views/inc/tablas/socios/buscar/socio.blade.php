@@ -44,7 +44,31 @@
         @endif	
 	</td>
 	<!-- cuadrar otros resultados reg. contables -->
-	<td>otro</td>
+	<td class="text-center">
+		<!-- socios -->
+		@if ($objeto instanceof App\Socio && $objeto->categoria_id != 1)
+			<x-enlace-accion titulo="No habilitado, antes reincorporar." color="grey-text" icono="fa-user-graduate" ruta="" id=""/>
+		@else
+			@if ($objeto->estudios->count() != 0)
+				<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$objeto->id"/>
+			@else
+				<x-enlace-accion titulo="Sin Estudios Realizados" color="grey-text" icono="fa-user-graduate" ruta="estudios.create" :id="$objeto->id"/>
+			@endif		
+	    @endif							
+	</td>
+
+	<td class="text-center">
+		<!-- socios -->
+		@if ($objeto instanceof App\Socio && $objeto->categoria_id != 1)
+			<x-enlace-accion titulo="No habilitado, antes reincorporar." color="grey-text" icono="fa-users" ruta="" id=""/>
+		@else
+			@if ($objeto->cargas->count() != 0)
+				<x-enlace-accion titulo="Cargas Familiares" color="purple-text" icono="fa-users" ruta="cargas_listar" :id="$objeto->id"/>
+			@else
+				<x-enlace-accion titulo="Sin Cargas Familiares" color="grey-text" icono="fa-users" ruta="cargas.create" :id="$objeto->id"/>
+			@endif			
+	    @endif							
+	</td>
 	<!-- Ventanas modales  -->
 	<!-- socios -->
 	@if ($objeto instanceof App\Socio && $objeto->categoria_id != 1)

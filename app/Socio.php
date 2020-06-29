@@ -90,7 +90,25 @@ class Socio extends Model
     public function ciudadania()
     {
         return $this->belongsTo('App\Ciudadania');
+    }       
+
+    /**
+     * Relación hasMany
+     * Esta/e socio tiene muchos/as cargas
+     */
+    public function cargas()
+    {
+        return $this->hasMany('App\Carga');
     }            
+
+    /**
+     * Relación hasMany
+     * Esta/e socio tiene muchos/as estudios
+     */
+    public function estudios()
+    {
+        return $this->hasMany('App\Estudio');
+    }       
 
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************

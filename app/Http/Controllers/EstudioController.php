@@ -24,9 +24,10 @@ class EstudioController extends Controller
      */
     public function index(Request $request)
     {
+        $socio = Socio::findOrfail($request->id);
         $coleccion = Estudio::where('socio_id',$request->id)->orderBy('created_at','DESC')->paginate(15); 
         $total = $coleccion->total();
-        return view('app.estudios.index', compact('coleccion', 'total'));
+        return view('app.estudios.index', compact('coleccion', 'total', 'socio'));
     }
 
     /**
@@ -34,13 +35,19 @@ class EstudioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $socio = null;
+        if($request->id){
+            $socio = Socio::findOrFail($request->id);
+        }else{
+            $socio = false;
+        }        
         $socios = Socio::orderBy('apellido1','ASC')->get();
         $grados = Grado::orderBy('nombre','ASC')->get();
         $fases = Fase::orderBy('nombre','ASC')->get();
         $colecciones = array('socios'=>$socios,'grados'=>$grados,'fases'=>$fases);
-        return view('app.estudios.create', compact('colecciones'));
+        return view('app.estudios.create', compact('colecciones','socio'));
     }
 
     /**
@@ -63,7 +70,8 @@ class EstudioController extends Controller
      */
     public function show(Estudio $estudio)
     {
-        //
+        $objeto = $estudio;
+        return view('app.estudios.show', compact('objeto'));
     }
 
     /**

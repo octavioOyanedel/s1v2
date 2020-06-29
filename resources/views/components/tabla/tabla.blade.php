@@ -2,6 +2,17 @@
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
 	@if ($total > 0)
+		{{-- Nombre de socio --}}
+		@if($anexos && $titulo === 'Cargas Familiares')
+	        <p class="text-center">Pertenecientes a:</p>
+	        <p class="text-center active">{{ strtoupper($anexos->nombre1.' '.$anexos->nombre2.' '.$anexos->apellido1.' '.$anexos->apellido2) }}</p>			
+		@endif
+
+		@if($anexos && $titulo === 'Estudios Realizados')
+	        <p class="text-center">Por:</p>
+	        <p class="text-center active">{{ strtoupper($anexos->nombre1.' '.$anexos->nombre2.' '.$anexos->apellido1.' '.$anexos->apellido2) }}</p>				
+		@endif		
+
 		<!-- Filtro tabla -->
 		<x-filtro action="" filtro="" :total="$total" />
 
@@ -92,10 +103,20 @@
 			                {{-- icono estudios --}}
 			                @if ($contenido === 'socios')
 			                	<td>
-			                		<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$item->id"/>
+			                		@if ($item->estudios->count() != 0)
+			                			<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$item->id"/>
+			                		@else
+			                			<x-enlace-accion titulo="Sin Estudios Realizados" color="grey-text" icono="fa-user-graduate" ruta="estudios.create" :id="$item->id"/>
+			                		@endif			                		
+			                		
 			                	</td>
 			                	<td>
-			                		<x-enlace-accion titulo="Cargas Familiares" color="purple-text" icono="fa-users" ruta="cargas_listar" :id="$item->id"/>
+			                		@if ($item->cargas->count() != 0)
+			                			<x-enlace-accion titulo="Cargas Familiares" color="purple-text" icono="fa-users" ruta="cargas_listar" :id="$item->id"/>
+			                		@else
+			                			<x-enlace-accion titulo="Sin Cargas Familiares" color="grey-text" icono="fa-users" ruta="cargas.create" :id="$item->id"/>
+			                		@endif
+			                		
 			                	</td>			                	
 			                @endif							
 							@include(obtenerContenidoTabla($contenido))

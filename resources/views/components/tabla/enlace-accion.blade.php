@@ -24,7 +24,17 @@
 			<a title="{{ $titulo }}" class="p-2 {{ $color }}" href="{{ route($ruta ,['id'=>$id]) }}">
 				<i class="fas {{ $icono }}"></i>
 			</a>
-	    @break 	   	        
+	    @break 
+	    @case('Sin Cargas Familiares')
+			<a title="{{ $titulo }}" class="p-2 {{ $color }}" href="{{ route($ruta ,['id'=>$id]) }}">
+				<i class="fas {{ $icono }}"></i>
+			</a>
+	    @break 	
+	    @case('Sin Estudios Realizados')
+			<a title="{{ $titulo }}" class="p-2 {{ $color }}" href="{{ route($ruta ,['id'=>$id]) }}">
+				<i class="fas {{ $icono }}"></i>
+			</a>
+	    @break 	 	     	    	   	        
 	    @default
 			<a title="{{ $titulo }}" class="p-2 {{ $color }}" href="{{ route($ruta ,$id) }}">
 				<i class="fas {{ $icono }}"></i>

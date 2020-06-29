@@ -53,5 +53,14 @@ class Estudio extends Model
     public function titulo()
     {
         return $this->belongsTo('App\Titulo');
-    }            
+    }   
+
+    /**
+     * Relación belongsTo
+     * Esta/e socio pertenece a un/a carga
+     */
+    public function socio()
+    {
+        return $this->belongsTo('App\Socio');
+    }           
 }

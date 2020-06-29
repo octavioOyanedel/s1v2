@@ -19,12 +19,13 @@ class Form extends Component
     public $tamanoBoton;
     public $largoBoton;
     public $idBoton;
+    public $extra;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $colecciones, $objetos, $alinear, $metodo, $action, $csrf, $titulo, $colorBoton, $tituloBoton, $tamanoBoton, $largoBoton, $idBoton)
+    public function __construct($id, $colecciones, $objetos, $alinear, $metodo, $action, $csrf, $titulo, $colorBoton, $tituloBoton, $tamanoBoton, $largoBoton, $idBoton, $extra)
     {
         $this->id = $id;
         $this->colecciones = $colecciones;
@@ -39,6 +40,7 @@ class Form extends Component
         $this->tamanoBoton = $tamanoBoton;
         $this->largoBoton = $largoBoton;
         $this->idBoton = $idBoton;
+        $this->extra = $extra;
     }
 
     /**

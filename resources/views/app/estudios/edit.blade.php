@@ -4,7 +4,7 @@
 
     <!-- formulario editar estudio realizado -->
     <div class="contenedor-form">
-        <x-form id="editar-estudio-form" :colecciones="$colecciones" :objetos="$objetos" alinear="text-center" metodo="POST" action="estudios.update" csrf="put" titulo="Editar Estudio Realizado" colorBoton="btn-primary" tituloBoton="Editar" tamanoBoton="" largoBoton="btn-block" idBoton="editar-estudio"/>
+        <x-form id="editar-estudio-form" :colecciones="$colecciones" :objetos="$objetos" alinear="text-center" metodo="POST" action="estudios.update" csrf="put" titulo="Editar Estudio Realizado" colorBoton="btn-primary" tituloBoton="Editar" tamanoBoton="" largoBoton="btn-block" idBoton="editar-estudio" extra=""/>
     </div>
 
     <!-- Modal nuevo registro -->

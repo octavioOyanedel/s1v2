@@ -32,10 +32,10 @@ class CargaController extends Controller
      */
     public function listar(Request $request)
     {
-        // dd($request);
+        $socio = Socio::findOrfail($request->id);
         $coleccion = Carga::where('socio_id',$request->id)->orderBy('created_at','DESC')->paginate(15); 
         $total = $coleccion->total();
-        return view('app.cargas.list', compact('coleccion', 'total'));
+        return view('app.cargas.list', compact('coleccion', 'total','socio'));
     }
 
     /**
@@ -43,12 +43,18 @@ class CargaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $socio = null;
+        if($request->id){
+            $socio = Socio::findOrFail($request->id);
+        }else{
+            $socio = false;
+        }
         $parentescos = Parentesco::orderBy('nombre','ASC')->get();
         $socios = Socio::orderBy('apellido1','ASC')->get();
         $colecciones = array('parentescos'=>$parentescos,'socios'=>$socios);
-        return view('app.cargas.create', compact('colecciones'));
+        return view('app.cargas.create', compact('colecciones','socio'));
     }
 
     /**

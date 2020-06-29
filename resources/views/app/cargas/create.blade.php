@@ -4,7 +4,7 @@
 
     <!-- formulario agregar carga -->
     <div class="contenedor-form">
-        <x-form id="crear-carga-form" :colecciones="$colecciones" objetos="" alinear="text-center" metodo="POST" action="cargas.store" csrf="post" titulo="Agregar Carga Familiar" colorBoton="btn-primary" tituloBoton="Agregar" tamanoBoton="" largoBoton="btn-block" idBoton="agregar-carga"/>
+        <x-form id="crear-carga-form" :colecciones="$colecciones" objetos="" alinear="text-center" metodo="POST" action="cargas.store" csrf="post" titulo="Agregar Carga Familiar" colorBoton="btn-primary" tituloBoton="Agregar" tamanoBoton="" largoBoton="btn-block" idBoton="agregar-carga" :extra="$socio"/>
     </div>
 
     <!-- Modal nuevo registro -->

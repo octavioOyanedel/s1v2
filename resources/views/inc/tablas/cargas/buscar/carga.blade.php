@@ -28,7 +28,9 @@
         <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$objeto->id"/>
 	</td>
 	<!-- cuadrar otros resultados reg. contables -->
-	<td>otro</td>
+	<td class="text-center">otro</td>
+	<td class="text-center">otro</td>
+
 	<!-- Ventanas modales  -->
 	<!-- usuarios -->
 	<x-modal :id="$objeto->id" titulo="Eliminar Carga Familiar" csrf="delete" action="cargas.destroy" anexos=""/>	

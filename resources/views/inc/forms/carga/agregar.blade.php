@@ -6,7 +6,13 @@
 
     <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio_rut" />
 
-    <x-select2 :colecciones="$colecciones" keyColeccion="socios" objetos="" keyObjeto="" label="Socio" nombre="socio_id" id="socio_id" tamano="custom-select-sm" obligatorio="si" />
+    @if ($extra == null)
+        <x-select2 :colecciones="$colecciones" keyColeccion="socios" objetos="" keyObjeto="" label="Socio" nombre="socio_id" id="socio_id" tamano="custom-select-sm" obligatorio="si" />
+    @else
+        <label for="" class="active">Socio</label>
+        <p class="active">{{ strtoupper($extra->nombre1.' '.$extra->nombre2.' '.$extra->apellido1.' '.$extra->apellido2) }}</p>
+        <input type="hidden" name="socio_id" value="{{ $extra->id }}">
+    @endif
 
     <!-- Rut -->
     <x-input label="Rut" tipo="text" nombre="rut" id="rut" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 11222333k" obligatorio="si"/>
