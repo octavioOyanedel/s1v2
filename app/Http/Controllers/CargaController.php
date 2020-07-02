@@ -67,7 +67,7 @@ class CargaController extends Controller
     {
         $request['fecha_nac'] = formatoFecha($request->fecha_nac);
         $this->createGenerico($request, new Carga);
-        return redirect('home')->with('status', 'Carga Familiar Agregada!'); 
+        return redirect('cargas/create')->with('status', 'Carga Familiar Agregada!'); 
     }
 
     /**

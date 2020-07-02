@@ -59,7 +59,8 @@ class EstudioController extends Controller
     public function store(EstudioRequest $request)
     {
         $this->createGenerico($request, new Estudio);
-        return redirect('estudios/create')->with('status', 'Estudio Registrado!');         
+        return redirect('estudios/create')->with('status', 'Estudio Registrado!'); 
+              
     }
 
     /**

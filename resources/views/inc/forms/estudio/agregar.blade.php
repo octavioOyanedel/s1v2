@@ -32,5 +32,8 @@
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	
-  			
+
+    <div class="text-center">
+        <a  href="{{ route('home') }}">Salir</a>           
+    </div>			
 </form>

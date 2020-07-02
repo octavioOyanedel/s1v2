@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="app">
-<small>{{ Request()->path() }}</small>
+    <small>{{ Request()->path() }}</small>
         @if (Auth::user() != null)
 
             <!-- Navbar -->

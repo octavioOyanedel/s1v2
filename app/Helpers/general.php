@@ -105,3 +105,13 @@ function existeRegistro($registro, $campo)
 		return 'Sin '.$campo;
 	}
 }
+
+/**
+ * Descripción: devuelve ruta sin el dominio root (todo menos http://sind1.test)
+ * Entrada/s: string url anterior, string ruta raiz
+ * Salida: fecha ruta modificada 
+ */
+function obtenerRutaSinRoot($raiz, $url_previa)
+{
+	return str_replace($raiz, "", $url_previa);
+}

@@ -58,7 +58,9 @@ class SocioController extends Controller
         $request['fecha_pucv'] = formatoFecha($request->fecha_pucv);
         $request['fecha_sind1'] = formatoFecha($request->fecha_sind1);
         $this->createGenerico($request, new Socio);
-        return redirect('home')->with('status', 'Socio Creado!'); 
+
+        // Envio a form crear carga 
+        return redirect('cargas/create')->with('status', 'Socio Creado!'); 
     }
 
     /**

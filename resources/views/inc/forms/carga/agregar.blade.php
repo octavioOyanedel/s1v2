@@ -37,5 +37,9 @@
     <x-select :colecciones="$colecciones" keyColeccion="parentescos" objetos="" keyObjeto="" label="Parentesco" nombre="parentesco_id" id="parentesco_id" tamano="custom-select-sm" obligatorio="si" nuevo="si"/>       
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	
-  			
+
+    <div class="text-center">
+        <a  href="{{ route('home') }}">Salir</a> - <a href="{{ route('estudios.create') }}">Agregar Estudio</a>           
+    </div>
+		
 </form>
