@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(FaseSeeder::class);
         $this->call(TituloSeeder::class);
         $this->call(EstudioSeeder::class);
+        $this->call(CuentaSeeder::class);
+        $this->call(EstadoSeeder::class);
+        $this->call(MetodoSeeder::class);
     }
 }
