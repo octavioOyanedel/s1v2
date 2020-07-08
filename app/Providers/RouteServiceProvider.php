@@ -62,8 +62,24 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapEstudioRoutes();
 
+        $this->mapPrestamoRoutes();
+
         //
     }
+
+    /**
+     * Define las rutas de estudios realizados.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapPrestamoRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/prestamo.php'));
+    }    
 
     /**
      * Define las rutas de estudios realizados.
