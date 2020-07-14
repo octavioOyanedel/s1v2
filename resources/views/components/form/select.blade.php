@@ -41,7 +41,12 @@
 			@break
 			@case('area_id')
 				<option value="" selected>...</option>
-			@break			
+			@break
+			@case('cuotas')
+				@for ($i = 1; $i <= 24; $i++)
+				    <option value="{{ $i }}">{{ $i }}</option>
+				@endfor
+			@break								
 		    @default
 				@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item) <!-- Carga de otros selects -->
 					@if ($keyObjeto === '' && old($nombre) === null)

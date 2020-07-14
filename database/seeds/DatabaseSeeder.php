@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CuentaSeeder::class);
         $this->call(EstadoSeeder::class);
         $this->call(MetodoSeeder::class);
+        $this->call(RentaSeeder::class);
     }
 }

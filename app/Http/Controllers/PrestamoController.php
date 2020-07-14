@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Renta;
+use App\Socio;
+use App\Cuenta;
+use App\Estado;
+use App\Metodo;
 use App\Prestamo;
 use Illuminate\Http\Request;
 
@@ -14,7 +19,9 @@ class PrestamoController extends Controller
      */
     public function index()
     {
-        //
+        $coleccion = Prestamo::orderBy('updated_at','DESC')->paginate(10); 
+        $total = $coleccion->total();
+        return view('app.prestamos.index', compact('coleccion', 'total'));        
     }
 
     /**
@@ -24,7 +31,13 @@ class PrestamoController extends Controller
      */
     public function create()
     {
-        //
+        $cuentas = Cuenta::orderBy('numero','ASC')->get();
+        $metodos = Metodo::orderBy('nombre','ASC')->get();
+        $rentas = Renta::orderBy('cantidad','ASC')->get();
+        $estados = Estado::orderBy('nombre','ASC')->get();
+        $socios = Socio::orderBy('apellido1','ASC')->get();
+        $colecciones = array('cuentas'=>$cuentas,'metodos'=>$metodos,'rentas'=>$rentas,'estados'=>$estados,'socios'=>$socios);
+        return view('app.prestamos.create', compact('colecciones'));       
     }
 
     /**
@@ -35,7 +48,7 @@ class PrestamoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

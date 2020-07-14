@@ -1,6 +1,7 @@
 <?php
 
 use App\Socio;
+use App\Prestamo;
 
 /**
  * Descripción: Obtener ruta para completar csrf según formulario
@@ -70,7 +71,10 @@ function cargarFormulario($action)
             break;   
         case "estudios.update":
             return 'inc.forms.estudio.editar';
-            break;                                       	                        	                	        	             	        	                               
+            break;                                       	                        	                	        	             	        	
+        case "prestamos.store":
+            return 'inc.forms.prestamo.solicitar';
+            break;                                              
 	}
 }
 
@@ -109,9 +113,12 @@ function obtenerNombreObjeto($objeto, $nombre)
 	    case "banca_id":
 	        return $objeto->numero;
 	        break;
-	    case "renta_id":
-	        return $objeto->valor;
-	        break;	     
+        case "cuenta_id":
+            return $objeto->tipo.' N° '.$objeto->numero.' '.$objeto->banco;
+            break;
+        case "renta_id":
+            return $objeto->cantidad.'%';
+            break;                                   
 	    default:
 	        return $objeto->nombre;	        	        	                               
 	}
@@ -151,6 +158,20 @@ function obtenerIdDesdeRequestUri($ruta)
 function ultimoNumeroSocio()
 {
     return Socio::all()->last()->numero + 1;
+}
+
+/**
+ * Descripción: Obtener recomendación de número de préstamo
+ * Entrada/s: 
+ * Salida: int número de pestamo
+ */
+function ultimoNumeroPrestamo()
+{
+    if(Prestamo::all()->last() != null){
+        return Prestamo::all()->last()->numero + 1;
+    }else{
+        return 0;
+    }
 }
 
 /**

@@ -2,3 +2,4 @@
 <x-enlace-nav-bar titulo="usuarios" />
 <x-enlace-nav-bar titulo="socios" />
 <x-enlace-nav-bar titulo="cargas" />
+<x-enlace-nav-bar titulo="préstamos" />

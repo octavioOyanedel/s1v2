@@ -15,6 +15,16 @@ $(window).on('load',function(){
         language: "es"
     });
 
+    $('#fecha').datepicker({
+        format: "dd-mm-yyyy",
+        language: "es"
+    });
+
+    $('#fecha_pago').datepicker({
+        format: "dd-mm-yyyy",
+        language: "es"
+    });
+
     $('.rango').datepicker({
         format: "dd-mm-yyyy",
         language: "es"
