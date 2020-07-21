@@ -8,10 +8,17 @@ use App\Cuenta;
 use App\Estado;
 use App\Metodo;
 use App\Prestamo;
+use App\Traits\LogGenerico;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Traits\BuscarGenerico;
+use App\Http\Requests\PrestamoRequest;
 
 class PrestamoController extends Controller
 {
+    use CrudGenerico;
+    use LogGenerico;
+    use BuscarGenerico;  
     /**
      * Display a listing of the resource.
      *
@@ -46,9 +53,14 @@ class PrestamoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrestamoRequest $request)
     {
-        
+        $request['fecha'] = formatoFecha($request->fecha_nac);
+        if($request['fecha_pago'] != null){
+            $request['fecha_pago'] = formatoFecha($request->fecha_nac);
+        }      
+        $this->createGenerico($request, new Prestamo);
+        dd($request);
     }
 
     /**

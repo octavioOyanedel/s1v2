@@ -10,7 +10,7 @@
     <x-select2 :colecciones="$colecciones" keyColeccion="socios" objetos="" keyObjeto="" label="Socio" nombre="socio_id" id="socio_id" tamano="custom-select-sm" obligatorio="si" />
 
     <!-- Fecha solicitud -->
-    <x-input label="Fecha Solicitud" tipo="text" nombre="fecha" id="fecha" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/>  
+    <x-input label="Fecha Solicitud" tipo="text" nombre="fecha" id="fecha" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="si"/>  
 
     <!-- # préstamo -->
     <x-input label="N° Préstamo" tipo="text" nombre="numero" id="numero" margen="mb-4" tamano="form-control-sm" :valor="ultimoNumeroPrestamo()" placeholder="Ej. 123" obligatorio="si"/>  
@@ -31,10 +31,14 @@
     <x-select :colecciones="$colecciones" keyColeccion="metodos" objetos="" keyObjeto="" label="Método" nombre="metodo_id" id="metodo_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     {{-- Cuotas --}}
-    <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Cuotas" nombre="cuotas" id="cuotas" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
+    <div id="">
+        <x-select colecciones="" keyColeccion="" objetos="" keyObjeto="" label="Cuotas" nombre="cuotas" id="cuotas" tamano="custom-select-sm" obligatorio="no"  nuevo="si"/>        
+    </div>
 
-    <!-- Fecha de pago -->
-    <x-input label="Fecha de Pago" tipo="text" nombre="fecha_pago" id="fecha_pago" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/>  
+    <!-- Fecha de pago -->    
+    <div id="">
+        <x-input label="Fecha de Pago" tipo="text" nombre="fecha_pago" id="fecha_pago" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 01-01-2020" obligatorio="no"/>     
+    </div>
 
     <!-- Botón -->
 	<button class="btn {{ $colorBoton }} {{ $tamanoBoton }} {{ $largoBoton }} my-4" type="submit">{{ $tituloBoton }}</button>    	
