@@ -25,7 +25,7 @@ class PrestamoRequest extends FormRequest
     {
         if(Request()->method === 'POST'){
             return [
-                'socio_id' => 'required|date',
+                'socio_id' => 'required',
                 'fecha' => 'required|date',
                 'numero' => 'required|numeric|unique:prestamos,numero',
                 'cuenta_id' => 'required',

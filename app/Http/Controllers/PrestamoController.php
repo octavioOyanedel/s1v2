@@ -55,12 +55,12 @@ class PrestamoController extends Controller
      */
     public function store(PrestamoRequest $request)
     {
-        $request['fecha'] = formatoFecha($request->fecha_nac);
+        $request['fecha'] = formatoFecha($request->fecha);
         if($request['fecha_pago'] != null){
             $request['fecha_pago'] = formatoFecha($request->fecha_nac);
         }      
         $this->createGenerico($request, new Prestamo);
-        dd($request);
+        return redirect('prestamos')->with('status', 'Préstamo Registrado!'); 
     }
 
     /**

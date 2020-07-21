@@ -86,9 +86,9 @@ function fechaRangoEdadIgualIni($edad)
 }
 
 /**
- * Descripción: comprueba si registro es nulo e imprime - en tablas
- * Entrada/s: string registro
- * Salida: string registro o -
+ * Descripción: comprueba si registro es nulo e imprime sin registro
+ * Entrada/s: string registro, string campo
+ * Salida: string registro o sin campo
  */
 function existeRegistro($registro, $campo)
 {
@@ -114,4 +114,16 @@ function existeRegistro($registro, $campo)
 function obtenerRutaSinRoot($raiz, $url_previa)
 {
 	return str_replace($raiz, "", $url_previa);
+}
+
+/**
+ * Descripción: comprueba si registro es nulo e imprime - en tablas
+ * Entrada/s: string registro
+ * Salida: string registro o -
+ */
+function noAplica($campo)
+{
+	if($campo == null || $campo == ''){
+		return 'N/A';
+	}
 }

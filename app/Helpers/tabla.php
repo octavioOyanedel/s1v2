@@ -31,7 +31,10 @@ function obtenerContenidoTabla($nombre)
 		break;	
 		case "ver_estudio":
 			return 'inc.tablas.estudios.mostrar';
-		break;									
+		break;
+		case "prestamos":
+			return 'inc.tablas.prestamos.listar';
+		break;						
 	}
 }
 
@@ -66,7 +69,10 @@ function obtenerCabecerasTablas($nombre)
 		break;	
 		case "ver_estudio":
 			return array('Socio'=>'socio_id','Nivel Académico'=>'grado_id','Institución'=>'establecimiento_id','Estado Estudio'=>'fase_id','Título'=>'titulo_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at');
-		break;						
+		break;	
+		case "prestamos":
+			return array('Estado'=>'', 'Fecha de Solicitud'=>'text-center', 'Socio'=>'', 'N° Préstamo'=>'', 'Cuenta'=>'', 'Cheque'=>'', 'Monto'=>'', 'Método de Pago'=>'', 'Cuotas'=>'text-center', 'Fecha de Pago'=>'text-center');
+		break;					
 	}
 }
 
