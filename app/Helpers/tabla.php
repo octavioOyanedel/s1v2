@@ -71,7 +71,7 @@ function obtenerCabecerasTablas($nombre)
 			return array('Socio'=>'socio_id','Nivel Académico'=>'grado_id','Institución'=>'establecimiento_id','Estado Estudio'=>'fase_id','Título'=>'titulo_id','Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at');
 		break;	
 		case "prestamos":
-			return array('Estado'=>'', 'Fecha de Solicitud'=>'text-center', 'Socio'=>'', 'N° Préstamo'=>'', 'Cuenta'=>'', 'Cheque'=>'', 'Monto'=>'', 'Método de Pago'=>'', 'Cuotas'=>'text-center', 'Fecha de Pago'=>'text-center');
+			return array('Estado'=>'', 'Fecha de Solicitud'=>'text-center', 'Socio'=>'', 'N° Préstamo'=>'text-center', 'Cuenta'=>'', 'Cheque'=>'', 'Monto'=>'', 'Método de Pago'=>'', 'Cuotas'=>'text-center', 'Fecha de Pago'=>'text-center');
 		break;					
 	}
 }

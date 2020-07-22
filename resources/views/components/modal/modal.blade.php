@@ -36,7 +36,10 @@
 					        @break		
 					        @case('Eliminar Estudio Realizado')
 								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="eliminar_estudio" />
-					        @break							        				        	
+					        @break
+					        @case('Eliminar Préstamo')
+								<x-mensaje alerta="warning" alinear="text-center" icono="alerta" mensaje="eliminar_prestamo" />
+					        @break						        					        				        	
 						@endswitch		
 					</div>
 					<div class="modal-footer">

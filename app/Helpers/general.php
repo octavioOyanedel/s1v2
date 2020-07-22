@@ -125,5 +125,7 @@ function noAplica($campo)
 {
 	if($campo == null || $campo == ''){
 		return 'N/A';
+	}else{
+		return $campo;
 	}
 }

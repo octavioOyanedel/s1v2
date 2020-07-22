@@ -25,7 +25,7 @@ class CreatePrestamosTable extends Migration
             $table->unsignedInteger('cuotas')->nullable();
             $table->unsignedInteger('metodo_id'); //restrict descuento por planilla, depósito
             $table->unsignedInteger('renta_id')->default(1); //restrict interés
-            $table->unsignedInteger('estado_id')->default(2); //restrict 2 activo
+            $table->unsignedInteger('estado_id')->default(1); //restrict 1 vigente
             $table->date('fecha_pago')->nullable();
             $table->unsignedInteger('socio_id');
             $table->timestamps();

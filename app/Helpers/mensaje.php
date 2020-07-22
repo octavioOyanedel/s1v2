@@ -52,6 +52,9 @@ function obtenerMensaje($mensaje)
 		break;		
 		case "eliminar_estudio":
 			return '¿Está seguro/a que desea eliminar a este estudio realizado?';
-		break;									
+		break;
+		case "eliminar_prestamo":
+			return '¿Está seguro/a que desea eliminar este préstamo?';
+		break;											
 	}
 }

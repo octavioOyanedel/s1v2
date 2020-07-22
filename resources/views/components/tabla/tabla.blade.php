@@ -55,7 +55,10 @@
 								    @break		
 								    @case('estudios')
 								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="estudios.show" :id="$item->id"/>
-								    @break									    						    								    
+								    @break	
+								    @case('prestamos')
+								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="estudios.show" :id="$item->id"/>
+								    @break											    								    						    								    
 								@endswitch							
 							</td>
 							<!-- editar -->
@@ -76,7 +79,10 @@
 								    @break
 								    @case('estudios')
 								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="estudios.edit" :id="$item->id"/>
-								    @break									    							    								    
+								    @break	
+								    @case('prestamos')
+								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="estudios.edit" :id="$item->id"/>
+								    @break									    								    							    								    
 								@endswitch						
 							</td>
 							<!-- eliminar: data-target permite distinguir modal -->
@@ -97,7 +103,10 @@
 								    @break	
 								    @case('estudios')
 								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
-								    @break									    							    							    
+								    @break	
+								    @case('prestamos')
+								        <x-enlace-accion titulo="Eliminar" color="text-danger" icono="fa-trash" ruta="" :id="$item->id"/>								        
+								    @break									    								    							    							    
 								@endswitch		
 							</td>
 			                {{-- icono estudios --}}
@@ -138,7 +147,10 @@
 						    @break	
 						    @case('estudios')
 						        <x-modal :id="$item->id" titulo="Eliminar Estudio Realizado" csrf="delete" action="estudios.destroy" anexos=""/>					        
-						    @break								    					 							    
+						    @break		
+						    @case('prestamos')
+						        <x-modal :id="$item->id" titulo="Eliminar Préstamo" csrf="delete" action="estudios.destroy" anexos=""/>					        
+						    @break							    						    					 							    
 						@endswitch												
 					@endforeach		
 				</tbody>			
