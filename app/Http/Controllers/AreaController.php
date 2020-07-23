@@ -98,7 +98,6 @@ class AreaController extends Controller
      */
     public function crearViaAjax(AreaRequest $request)
     {
-
         $this->createGenerico($request, new Area);
         $area = Area::all()->last();
         if($request->ajax()){

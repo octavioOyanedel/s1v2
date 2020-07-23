@@ -22,6 +22,7 @@
     <x-input label="Cheque" tipo="text" nombre="cheque" id="cheque" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 4455667788" obligatorio="si"/>  
 
     {{-- Interés --}}
+    <x-enlace-modal label="Interés" />
     <x-select :colecciones="$colecciones" keyColeccion="rentas" objetos="" keyObjeto="" label="Interés" nombre="renta_id" id="renta_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- Monto -->

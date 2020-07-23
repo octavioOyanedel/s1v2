@@ -12,6 +12,7 @@ use App\Traits\LogGenerico;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Traits\BuscarGenerico;
+use App\Http\Requests\RentaRequest;
 use App\Http\Requests\PrestamoRequest;
 
 class PrestamoController extends Controller
@@ -108,4 +109,5 @@ class PrestamoController extends Controller
         $this->deleteGenerico(Prestamo::findOrFail($prestamo->id));
         return redirect('prestamos')->with('status', 'Préstamo Eliminado!');
     }
+       
 }

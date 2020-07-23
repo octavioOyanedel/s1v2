@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Renta;
+use App\Traits\LogGenerico;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\RentaRequest;
 
 class RentaController extends Controller
 {
+    use CrudGenerico;
+    use LogGenerico;    
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +87,23 @@ class RentaController extends Controller
     {
         //
     }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear interés via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(RentaRequest $request)
+    {
+        $this->createGenerico($request, new Renta);
+        $renta = Renta::all()->last();
+        if($request->ajax()){
+            return response()->json($renta->id);
+        }
+    }   
 }

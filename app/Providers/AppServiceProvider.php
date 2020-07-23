@@ -10,6 +10,7 @@ use App\User;
 use App\Carga;
 use App\Cargo;
 use App\Grado;
+use App\Renta;
 use App\Socio;
 use App\Comuna;
 use App\Titulo;
@@ -26,6 +27,7 @@ use App\Observers\UserObserver;
 use App\Observers\CargaObserver;
 use App\Observers\CargoObserver;
 use App\Observers\GradoObserver;
+use App\Observers\RentaObserver;
 use App\Observers\SocioObserver;
 use App\Observers\ComunaObserver;
 use App\Observers\TituloObserver;
@@ -75,6 +77,7 @@ class AppServiceProvider extends ServiceProvider
         // Fase::observe(FaseObserver::class);
         // Titulo::observe(TituloObserver::class);
         Prestamo::observe(PrestamoObserver::class);
+        Renta::observe(RentaObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

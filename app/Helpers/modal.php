@@ -40,7 +40,10 @@ function obtenerIdFormulario($label)
 		break;
 		case "Título":
 			return 'form-nuevo-titulo';
-		break;														
+		break;
+		case "Interés":
+			return 'form-nuevo-interes';
+		break;													
 	}
 }
 

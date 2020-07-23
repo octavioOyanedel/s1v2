@@ -55,6 +55,9 @@ $(window).on('load',function(){
         procesarFormulario(event, 'titulo');
     });   
 
+    $('#form-nuevo-interes').on('submit',function(event){
+        procesarFormulario(event, 'interes');
+    });   
     /************************************************
      * FUNCIONES
      ************************************************/ 
@@ -115,7 +118,10 @@ $(window).on('load',function(){
             break;       
             case 'titulo':
                 data = {nombre: valor, grado_id: id}; 
-            break;                            
+            break; 
+            case 'interes':
+                data = {cantidad: valor}; 
+            break;                                 
             default:
                 data = {nombre: valor};                      
         }  
@@ -206,7 +212,10 @@ $(window).on('load',function(){
             break;   
             case 'titulo':
                 return '/create_titulo';
-            break;                                                                                  
+            break; 
+            case 'interes':
+                return '/create_interes';
+            break;                                                                                               
         }        
     }
 
@@ -336,7 +345,10 @@ $(window).on('load',function(){
             break;    
             case 'titulo':
                 return $('#titulo_id');
-            break;                                                                                                                       
+            break; 
+            case 'interes':
+                return $('#renta_id');
+            break;                                                                                                                                     
         }    
     }
 
@@ -408,7 +420,10 @@ $(window).on('load',function(){
             break;
             case 'titulo':
                 return $('#nuevo-titulo');
-            break;                                                                                                                     
+            break; 
+            case 'interes':
+                return $('#nuevo-interes');
+            break;                                                                                                                                   
         }   
     }
 
@@ -446,7 +461,10 @@ $(window).on('load',function(){
             break;
             case 'titulo':
                 return $('#nuevo-titulo').val().trim();
-            break;                                                                                                                                            
+            break;   
+            case 'interes':
+                return $('#nuevo-interes').val().trim();
+            break;                                                                                                                                              
         }   
     }   
 
@@ -459,7 +477,7 @@ $(window).on('load',function(){
     }    
 
     function soloLetras(nombre){
-        var regEx = /^[A-Z a-zÑÁÉÍÓÚñáéíóúü]+$/;
+        var regEx = /^[A-Z 0-9 a-zÑÁÉÍÓÚñáéíóúü]+$/;
         if(nombre.match(regEx)){
             return true;
         }else{

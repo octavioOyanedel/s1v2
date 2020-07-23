@@ -8,5 +8,5 @@
     </div>
 
     <!-- Modal nuevo registro -->
-{{--     <x-modal-nuevo label="Parentesco" colecciones="" keyColeccion="" /> --}}
+    <x-modal-nuevo label="Interés" colecciones="" keyColeccion="" />
 @endsection
