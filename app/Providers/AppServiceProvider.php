@@ -14,6 +14,7 @@ use App\Socio;
 use App\Comuna;
 use App\Titulo;
 use App\Estudio;
+use App\Prestamo;
 use App\Ciudadania;
 use App\Parentesco;
 use App\Establecimiento;
@@ -30,6 +31,7 @@ use App\Observers\ComunaObserver;
 use App\Observers\TituloObserver;
 use App\Observers\EstudioObserver;
 use Illuminate\Support\Collection;
+use App\Observers\PrestamoObserver;
 use App\Observers\CiudadaniaObserver;
 use App\Observers\ParentescoObserver;
 use Illuminate\Support\Facades\Schema;
@@ -72,6 +74,7 @@ class AppServiceProvider extends ServiceProvider
         // Establecimiento::observe(EstablecimientoObserver::class);
         // Fase::observe(FaseObserver::class);
         // Titulo::observe(TituloObserver::class);
+        Prestamo::observe(PrestamoObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

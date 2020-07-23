@@ -16,7 +16,7 @@ class CargoObserver
      */
     public function created(Cargo $cargo)
     {
-        $texto = obtenerTexto(array(), $cargo->toArray(), 'crear_cargo');  
+        $texto = obtenerTexto(array(), $cargo->toArray(), 'crear');  
         $this->logGenerico('Cargo creado: '.$texto);
     }
 

@@ -16,7 +16,7 @@ class CargaObserver
      */
     public function created(Carga $carga)
     {
-        $texto = obtenerTexto(array(), $carga->toArray(), 'crear_carga');  
+        $texto = obtenerTexto(array(), $carga->toArray(), 'crear');  
         $this->logGenerico('Carga familiar agregada: '.$texto);
     }
 

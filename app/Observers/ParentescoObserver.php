@@ -16,7 +16,7 @@ class ParentescoObserver
      */
     public function created(Parentesco $parentesco)
     {
-        $texto = obtenerTexto(array(), $parentesco->toArray(), 'crear_parentesco');  
+        $texto = obtenerTexto(array(), $parentesco->toArray(), 'crear');  
         $this->logGenerico('Parentesco creado: '.$texto);
     }
 

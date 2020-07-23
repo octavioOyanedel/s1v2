@@ -149,7 +149,7 @@
 						        <x-modal :id="$item->id" titulo="Eliminar Estudio Realizado" csrf="delete" action="estudios.destroy" anexos=""/>					        
 						    @break		
 						    @case('prestamos')
-						        <x-modal :id="$item->id" titulo="Eliminar Préstamo" csrf="delete" action="estudios.destroy" anexos=""/>					        
+						        <x-modal :id="$item->id" titulo="Eliminar Préstamo" csrf="delete" action="prestamos.destroy" anexos=""/>					        
 						    @break							    						    					 							    
 						@endswitch												
 					@endforeach		

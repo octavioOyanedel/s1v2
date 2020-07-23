@@ -16,7 +16,7 @@ class AreaObserver
      */
     public function created(Area $area)
     {
-        $texto = obtenerTexto(array(), $area->toArray(), 'crear_area');  
+        $texto = obtenerTexto(array(), $area->toArray(), 'crear');  
         $this->logGenerico('Área creada: '.$texto);
     }
 

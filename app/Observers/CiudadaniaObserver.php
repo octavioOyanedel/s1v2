@@ -16,7 +16,7 @@ class CiudadaniaObserver
      */
     public function created(Ciudadania $ciudadania)
     {
-        $texto = obtenerTexto(array(), $ciudadania->toArray(), 'crear_ciudadania');  
+        $texto = obtenerTexto(array(), $ciudadania->toArray(), 'crear');  
         $this->logGenerico('Nacionalidad creada: '.$texto);
     }
 

@@ -105,6 +105,7 @@ class PrestamoController extends Controller
      */
     public function destroy(Prestamo $prestamo)
     {
-        //
+        $this->deleteGenerico(Prestamo::findOrFail($prestamo->id));
+        return redirect('prestamos')->with('status', 'Préstamo Eliminado!');
     }
 }

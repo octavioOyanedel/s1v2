@@ -16,7 +16,7 @@ class ComunaObserver
      */
     public function created(Comuna $comuna)
     {
-        $texto = obtenerTexto(array(), $comuna->toArray(), 'crear_comuna');  
+        $texto = obtenerTexto(array(), $comuna->toArray(), 'crear');  
         $this->logGenerico('Comuna creada: '.$texto);
     }
 

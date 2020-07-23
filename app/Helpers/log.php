@@ -85,34 +85,7 @@ function filtrarCampos($array, $nombre) {
         break;      
         case 'eliminar_usuario':
             $keys = array('id','email_verified_at','password','remember_token','created_at','updated_at');
-        break;  
-        case 'crear_socio':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;
-        case 'crear_sede':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;
-        case 'crear_area':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;         
-        case 'crear_cargo':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;                
-        case 'crear_carga':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;
-        case 'crear_urbe':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;
-        case 'crear_comuna':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;                              
-        case 'crear_parentesco':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;    
-        case 'crear_ciudadania':
-            $keys = array('_token', 'updated_at', 'created_at');
-        break;
+        break;                                 
         case 'crear':
             $keys = array('_token', 'updated_at', 'created_at');
         break;             

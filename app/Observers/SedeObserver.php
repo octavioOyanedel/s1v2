@@ -16,7 +16,7 @@ class SedeObserver
      */
     public function created(Sede $sede)
     {
-        $texto = obtenerTexto(array(), $sede->toArray(), 'crear_sede');  
+        $texto = obtenerTexto(array(), $sede->toArray(), 'crear');  
         $this->logGenerico('Sede creada: '.$texto);
     }
 
