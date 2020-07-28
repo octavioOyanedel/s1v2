@@ -31,3 +31,4 @@ Route::get('/create_fase', 'FaseController@crearViaAjax');
 Route::get('/create_institucion', 'EstablecimientoController@crearViaAjax');
 Route::get('/create_titulo', 'TituloController@crearViaAjax');
 Route::get('/create_interes', 'RentaController@crearViaAjax');
+Route::get('/create_cuenta', 'CuentaController@crearViaAjax');

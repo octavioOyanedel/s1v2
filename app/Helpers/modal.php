@@ -43,7 +43,10 @@ function obtenerIdFormulario($label)
 		break;
 		case "Interés":
 			return 'form-nuevo-interes';
-		break;													
+		break;	
+		case "Cuenta":
+			return 'form-nueva-cuenta';
+		break;															
 	}
 }
 

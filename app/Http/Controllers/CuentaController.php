@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Cuenta;
+use App\Traits\LogGenerico;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\CuentaRequest;
 
 class CuentaController extends Controller
 {
+    use CrudGenerico;
+    use LogGenerico;        
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +86,24 @@ class CuentaController extends Controller
     public function destroy(Cuenta $cuenta)
     {
         //
+    }
+
+    /************************************************
+     ********************* AJAX ********************* 
+     ************************************************/
+
+    /**
+     * Validar crear cuenta via ajax.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    public function crearViaAjax(CuentaRequest $request)
+    {
+        $this->createGenerico($request, new Cuenta);
+        $cuenta = Cuenta::all()->last();
+        if($request->ajax()){
+            return response()->json($cuenta->id);
+        }
     }
 }

@@ -13,6 +13,7 @@ use App\Grado;
 use App\Renta;
 use App\Socio;
 use App\Comuna;
+use App\Cuenta;
 use App\Titulo;
 use App\Estudio;
 use App\Prestamo;
@@ -30,6 +31,7 @@ use App\Observers\GradoObserver;
 use App\Observers\RentaObserver;
 use App\Observers\SocioObserver;
 use App\Observers\ComunaObserver;
+use App\Observers\CuentaObserver;
 use App\Observers\TituloObserver;
 use App\Observers\EstudioObserver;
 use Illuminate\Support\Collection;
@@ -78,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
         // Titulo::observe(TituloObserver::class);
         Prestamo::observe(PrestamoObserver::class);
         Renta::observe(RentaObserver::class);
+        Cuenta::observe(CuentaObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

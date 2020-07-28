@@ -58,6 +58,10 @@ $(window).on('load',function(){
     $('#form-nuevo-interes').on('submit',function(event){
         procesarFormulario(event, 'interes');
     });   
+
+    $('#form-nueva-cuenta').on('submit',function(event){
+        procesarFormulario(event, 'cuenta');
+    });       
     /************************************************
      * FUNCIONES
      ************************************************/ 
@@ -93,9 +97,7 @@ $(window).on('load',function(){
                 break;                                                     
                 default:
                     ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
-            }   
-            
-
+            }          
         }else{
             errorValidacion('Campo no válido, solo letras y espacios en blanco.');
         }
@@ -121,7 +123,10 @@ $(window).on('load',function(){
             break; 
             case 'interes':
                 data = {cantidad: valor}; 
-            break;                                 
+            break;    
+            case 'cuenta':
+                data = {cantidad: valor}; 
+            break;                                            
             default:
                 data = {nombre: valor};                      
         }  
@@ -215,7 +220,10 @@ $(window).on('load',function(){
             break; 
             case 'interes':
                 return '/create_interes';
-            break;                                                                                               
+            break;    
+            case 'interes':
+                return '/create_cuenta';
+            break;                                                                                                        
         }        
     }
 
@@ -348,7 +356,10 @@ $(window).on('load',function(){
             break; 
             case 'interes':
                 return $('#renta_id');
-            break;                                                                                                                                     
+            break;     
+            case 'interes':
+                return $('#cuenta_id');
+            break;                                                                                                                                               
         }    
     }
 
@@ -423,7 +434,10 @@ $(window).on('load',function(){
             break; 
             case 'interes':
                 return $('#nuevo-interes');
-            break;                                                                                                                                   
+            break;
+            case 'cuenta':
+                return $('#nueva-cuenta');
+            break;                                                                                                                                  
         }   
     }
 
@@ -464,7 +478,10 @@ $(window).on('load',function(){
             break;   
             case 'interes':
                 return $('#nuevo-interes').val().trim();
-            break;                                                                                                                                              
+            break; 
+            case 'cuenta':
+                return $('#nueva-cuenta').val().trim();
+            break;                                                                                                                                                                 
         }   
     }   
 

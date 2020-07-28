@@ -9,4 +9,5 @@
 
     <!-- Modal nuevo registro -->
     <x-modal-nuevo label="Interés" colecciones="" keyColeccion="" />
+    <x-modal-nuevo label="Cuenta" colecciones="" keyColeccion="" />
 @endsection

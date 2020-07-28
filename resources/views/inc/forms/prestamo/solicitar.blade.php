@@ -16,6 +16,7 @@
     <x-input label="N° Préstamo" tipo="text" nombre="numero" id="numero" margen="mb-4" tamano="form-control-sm" :valor="ultimoNumeroPrestamo()" placeholder="Ej. 123" obligatorio="si"/>  
 
     {{-- Cuentas --}}
+    <x-enlace-modal label="Cuenta" />
     <x-select :colecciones="$colecciones" keyColeccion="cuentas" objetos="" keyObjeto="" label="Cuenta" nombre="cuenta_id" id="cuenta_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
 
     <!-- # Cheque -->

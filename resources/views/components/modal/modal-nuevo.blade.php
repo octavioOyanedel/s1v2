@@ -52,7 +52,10 @@
 						    @break
 						    @case('Interés')
 						        @include('inc.forms.prestamo.modal.nuevo_interes')
-						    @break							    								    						    						  							    				    						          
+						    @break
+						    @case('Cuenta')
+						        @include('inc.forms.prestamo.modal.nueva_cuenta')
+						    @break							    					    								    						    						  							    				    						          
 						@endswitch
 						<!-- form nuevo -->
 
