@@ -81,7 +81,7 @@
 								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="estudios.edit" :id="$item->id"/>
 								    @break	
 								    @case('prestamos')
-								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="estudios.edit" :id="$item->id"/>
+								        <x-enlace-accion titulo="Editar" color="text-warning" icono="fa-pen" ruta="prestamos.edit" :id="$item->id"/>
 								    @break									    								    							    								    
 								@endswitch						
 							</td>

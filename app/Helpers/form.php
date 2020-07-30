@@ -74,6 +74,9 @@ function cargarFormulario($action)
             break;                                       	                        	                	        	             	        	
         case "prestamos.store":
             return 'inc.forms.prestamo.solicitar';
+            break;   
+        case "prestamos.update":
+            return 'inc.forms.prestamo.editar';
             break;                                              
 	}
 }
@@ -131,7 +134,7 @@ function obtenerNombreObjeto($objeto, $nombre)
  */
 function estaSelected($id, $idObjeto)
 {
-
+    var_dump($id.$idObjeto);
 	if($id != '' && $id != null && $idObjeto != '' && $idObjeto != null){
 		if(intval($id) === intval($idObjeto)){
 			return 'selected';

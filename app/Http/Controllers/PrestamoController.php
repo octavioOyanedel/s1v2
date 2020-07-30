@@ -83,7 +83,14 @@ class PrestamoController extends Controller
      */
     public function edit(Prestamo $prestamo)
     {
-        //
+        $cuentas = Cuenta::orderBy('numero','ASC')->get();
+        $metodos = Metodo::orderBy('nombre','ASC')->get();
+        $rentas = Renta::orderBy('cantidad','ASC')->get();
+        $estados = Estado::orderBy('nombre','ASC')->get();
+        $socios = Socio::orderBy('apellido1','ASC')->get();
+        $objetos = array('prestamo' => $prestamo);
+        $colecciones = array('cuentas'=>$cuentas,'metodos'=>$metodos,'rentas'=>$rentas,'estados'=>$estados,'socios'=>$socios);
+        return view('app.prestamos.edit', compact('colecciones','objetos'));  
     }
 
     /**

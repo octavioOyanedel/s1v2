@@ -9,4 +9,4 @@
 <td>{{ formatoMoneda($item->monto) }}</td>
 <td>{{ $item->metodo->nombre }}</td>
 <td class="text-center">{{ noAplica($item->cuotas) }}</td>
-<td class="text-center">{{ noAplica($item->fecha_pago) }}</td>
+<td class="text-center">{{ noAplica(formatoFecha($item->fecha_pago)) }}</td>

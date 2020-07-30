@@ -48,7 +48,7 @@ function obtenerEnlacesMantenedor($ruta)
 		return array('Nivel académico'=>'home','Institución'=>'home','Estado'=>'home','Título'=>'home');
 	}
 
-	if($ruta === 'prestamos' || $ruta === 'prestamos/create'){
+	if($ruta === 'prestamos' || $ruta === 'prestamos/create' || preg_match('/^prestamos\/([0-9]*)\/edit/', $ruta)){
 		return array('Cuenta'=>'home', 'Métodos de Pago'=>'home', 'Interés'=>'home');
 	}		
 }

@@ -49,6 +49,13 @@
 						<option value="{{ $i }}" {{ estaSelected(old('cuotas'), $i) }}>{{ $i }}</option>
 					@endfor
 				@endif
+				{{-- Editar --}}
+				@if ($keyObjeto != '' && old('cuotas') === null)
+					<!-- carga editar -->
+					@for ($i = 1; $i <= 24; $i++)
+						<option value="{{ $i }}" {{ estaSelected($i, obtenerObjeto($objetos, $keyObjeto)['cuotas']) }}>{{ $i }}</option>
+					@endfor					
+				@endif	
 				@for ($i = 1; $i <= 24; $i++)
 				    <option value="{{ $i }}">{{ $i }}</option>
 				@endfor
