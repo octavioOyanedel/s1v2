@@ -3,9 +3,11 @@
 namespace App\Observers;
 
 use App\Cuenta;
+use App\Traits\LogGenerico;
 
 class CuentaObserver
 {
+    use LogGenerico;
     /**
      * Handle the cuenta "created" event.
      *

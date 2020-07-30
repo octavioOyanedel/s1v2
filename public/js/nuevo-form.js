@@ -72,35 +72,53 @@ $(window).on('load',function(){
         event.preventDefault();
         //event.currentTarget.submit(); // continuar ejecución de form
 
-        // obtener valor de formulario
-        var valor = obtenerValorInputModal(nombre); 
+        switch(nombre) {
+            case 'cuenta':
+                // obtener valores de formulario
+                var numero = obtenerValorInputModal('numero');
+                var tipo = obtenerValorInputModal('tipo');  
+                var banco = obtenerValorInputModal('banco');    
 
-        // validación inicial
-        if(soloLetras(valor) && existe(valor)){
-            $('.spinner-border').fadeIn(1800);
-            switch(nombre) {
-                case 'comuna':                    
-                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('urbe_modal'));
-                    seleccionarOptionEnSelected('urbe_form', obtenerValorSeleccionado('urbe_modal'));
-                break;  
-                case 'area':
-                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('sede_modal'));
-                    seleccionarOptionEnSelected('sede_form', obtenerValorSeleccionado('sede_modal'));
-                break;  
-                case 'establecimiento':
-                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('grado_modal'));
-                    seleccionarOptionEnSelected('grado_form', obtenerValorSeleccionado('grado_modal'));
-                break;     
-                case 'titulo':
-                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('titulo_modal'));
-                    seleccionarOptionEnSelected('titulo_form', obtenerValorSeleccionado('titulo_modal'));
-                break;                                                     
-                default:
-                    ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
-            }          
-        }else{
-            errorValidacion('Campo no válido, solo letras y espacios en blanco.');
-        }
+                // validación inicial
+                if(soloLetras(numero) && existe(numero) && soloLetras(tipo) && existe(tipo) && soloLetras(banco) && existe(banco)){
+                    $('.spinner-border').fadeIn(1800);
+                    var data = {numero: numero, tipo: tipo, banco: banco}; 
+                    ajaxCompuesto(data, event, obtenerRuta(nombre), nombre);
+                }else{
+                    errorValidacion('Número, tipo o nombre de banco no válido.');
+                }        
+            break;       
+            default:
+            // obtener valor de formulario
+            var valor = obtenerValorInputModal(nombre); 
+
+            // validación inicial
+            if(soloLetras(valor) && existe(valor)){
+                $('.spinner-border').fadeIn(1800);
+                switch(nombre) {
+                    case 'comuna':                    
+                        ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('urbe_modal'));
+                        seleccionarOptionEnSelected('urbe_form', obtenerValorSeleccionado('urbe_modal'));
+                    break;  
+                    case 'area':
+                        ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('sede_modal'));
+                        seleccionarOptionEnSelected('sede_form', obtenerValorSeleccionado('sede_modal'));
+                    break;  
+                    case 'establecimiento':
+                        ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('grado_modal'));
+                        seleccionarOptionEnSelected('grado_form', obtenerValorSeleccionado('grado_modal'));
+                    break;     
+                    case 'titulo':
+                        ajaxSimple(valor, event, obtenerRuta(nombre), nombre, obtenerValorSelectModal('titulo_modal'));
+                        seleccionarOptionEnSelected('titulo_form', obtenerValorSeleccionado('titulo_modal'));
+                    break;                                                     
+                    default:
+                        ajaxSimple(valor, event, obtenerRuta(nombre), nombre, '');                     
+                }          
+            }else{
+                errorValidacion('Campo no válido, solo letras y espacios en blanco.');
+            }                                                                       
+        }   
     }
 
     // 7. ajax
@@ -133,7 +151,6 @@ $(window).on('load',function(){
 
         cabeceraAjax();
  
-
         $.ajax({
             method: 'GET',
             dataType: 'json',
@@ -149,7 +166,34 @@ $(window).on('load',function(){
                 errorValidacion(respuesta.responseJSON.errors.nombre);                              
             }
         });        
+    }    
 
+    // 7. ajax
+    function ajaxCompuesto(data, event, ruta, nombre){
+
+        cabeceraAjax();
+ 
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            url: ruta,
+            data: data,
+            success: function(respuesta){
+                switch(nombre) {
+                    case 'cuenta':
+                        obtenerSelectFormIncorporar(nombre).append('<option value='+respuesta+' selected>'+data.tipo+' N° '+data.numero+' '+data.banco+'</option>');
+                    break;                                        
+                    default:
+                        console.log('Error cargar select ajax compuesto');                   
+                }                  
+                // event.currentTarget.submit();
+                $('.spinner-border').hide();
+                $('.modal').modal('hide');
+            },
+            error: function(respuesta){
+                errorValidacion(respuesta.responseJSON.errors.nombre);                              
+            }
+        });        
     }    
 
     // 3- validar para agregar valor a select
@@ -221,9 +265,9 @@ $(window).on('load',function(){
             case 'interes':
                 return '/create_interes';
             break;    
-            case 'interes':
+            case 'cuenta':
                 return '/create_cuenta';
-            break;                                                                                                        
+            break;                                                                                                            
         }        
     }
 
@@ -357,9 +401,9 @@ $(window).on('load',function(){
             case 'interes':
                 return $('#renta_id');
             break;     
-            case 'interes':
+            case 'cuenta':
                 return $('#cuenta_id');
-            break;                                                                                                                                               
+            break;                                                                                                                                           
         }    
     }
 
@@ -479,9 +523,15 @@ $(window).on('load',function(){
             case 'interes':
                 return $('#nuevo-interes').val().trim();
             break; 
-            case 'cuenta':
-                return $('#nueva-cuenta').val().trim();
-            break;                                                                                                                                                                 
+            case 'numero':
+                return $('#nuevo-numero').val().trim();
+            break;       
+            case 'tipo':
+                return $('#nuevo-tipo').val().trim();
+            break; 
+            case 'banco':
+                return $('#nuevo-banco').val().trim();
+            break;                                                                                                                                                                       
         }   
     }   
 

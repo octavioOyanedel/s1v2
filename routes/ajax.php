@@ -15,7 +15,7 @@ Route::get('/cargar_areas', 'SelectController@areas')->name('cargar_areas');
 Route::get('/cargar_establecimientos', 'SelectController@establecimientos')->name('cargar_establecimientos');
 Route::get('/cargar_titulos', 'SelectController@titulos')->name('cargar_titulos');
 
-// LOGIn
+// LOGIN
 Route::get('/correos_reset', 'UserController@existeCorreo');
 
 //nuevos módulo socio

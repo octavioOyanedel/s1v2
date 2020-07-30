@@ -111,7 +111,7 @@ $(window).on('load',function(){
 			break;
 			case 'titulos':
 				return '/cargar_titulos';
-			break;
+			break;	
 		}
 	}
 
