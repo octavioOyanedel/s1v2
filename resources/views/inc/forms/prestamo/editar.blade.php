@@ -16,6 +16,9 @@
     <!-- # préstamo -->
     <x-input label="N° Préstamo" tipo="text" nombre="numero" id="numero" margen="mb-4" tamano="form-control-sm" :valor="$prestamo->numero" placeholder="Ej. 123" obligatorio="si"/>  
 
+    {{-- Estados --}}
+    <x-select :colecciones="$colecciones" keyColeccion="estados" :objetos="$objetos" keyObjeto="prestamo" label="Estado" nombre="estado_id" id="estado_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>
+
     {{-- Cuentas --}}
     <x-enlace-modal label="Cuenta" />
     <x-select :colecciones="$colecciones" keyColeccion="cuentas" :objetos="$objetos" keyObjeto="prestamo" label="Cuenta" nombre="cuenta_id" id="cuenta_id" tamano="custom-select-sm" obligatorio="si"  nuevo="si"/>

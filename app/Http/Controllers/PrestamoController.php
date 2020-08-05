@@ -102,7 +102,33 @@ class PrestamoController extends Controller
      */
     public function update(Request $request, Prestamo $prestamo)
     {
-        //
+        $metodo_original = $prestamo->metodo_id;
+        $metodo_nuevo = $request->metodo_id;
+
+        if($metodo_original != $metodo_nuevo){
+
+            // Cambio de DPP(1) a DEP(2)
+            if($metodo_original == 1 && $metodo_nuevo == 2){
+                // 1. Obtener total, sumar cuotas pagadas
+                //$total = sumarCuotas($prestamo->id);
+                // 2. Eliminar cuotas
+                // 3. Modificar préstamo con nueva fecha de pago
+            }
+            // Cambio de DEP(2) a DPP(1)
+            if($metodo_original == 2 && $metodo_nuevo == 1){
+                // 1. Obtener total, sumar abonos
+                $total = sumarAbonos($prestamo->id);
+                // 2. Agregar cuotas
+                // 3. Eliminar abonos
+                // 4. Modificar préstamo con nuevas cuotas
+            }
+        }
+
+        // Actualizar    
+        // $request['fecha'] = formatoFecha($request->fecha);
+        // $request['fecha_pago'] = formatoFecha($request->fecha_pago);
+        // $this->updateGenerico($request, $prestamo);
+        // return redirect('prestamos')->with('status', 'Préstamo Actualizado!');     
     }
 
     /**

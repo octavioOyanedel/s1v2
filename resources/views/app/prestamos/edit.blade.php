@@ -4,7 +4,7 @@
 
     <!-- formulario editar préstamo -->
     <div class="contenedor-form">
-        <x-form id="editar-prestamo-form" :colecciones="$colecciones" :objetos="$objetos" alinear="text-center" metodo="POST" action="prestamos.update" csrf="post" titulo="Editar Préstamo" colorBoton="btn-primary" tituloBoton="Editar" tamanoBoton="" largoBoton="btn-block" idBoton="editar-prestamo" extra=""/>
+        <x-form id="editar-prestamo-form" :colecciones="$colecciones" :objetos="$objetos" alinear="text-center" metodo="POST" action="prestamos.update" csrf="put" titulo="Editar Préstamo" colorBoton="btn-primary" tituloBoton="Editar" tamanoBoton="" largoBoton="btn-block" idBoton="editar-prestamo" extra=""/>
     </div>
 
     <!-- Modal nuevo registro -->

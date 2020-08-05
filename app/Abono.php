@@ -14,4 +14,18 @@ class Abono extends Model
     protected $fillable = [
         'fecha','monto','prestamo_id',
     ];
+
+    /*******************************************************************************************
+    /************************************ Métodos Estáticos ************************************
+    /*******************************************************************************************
+
+    /**
+     * Descripción: Sumar abonos
+     * Entrada/s: id de préstamo
+     * Salida: int suma
+     */
+    static public function sumarAbonos($id)
+    {
+    	return Abono::where('prestamo_id',$id)->get()->sum('monto');
+    }    
 }
