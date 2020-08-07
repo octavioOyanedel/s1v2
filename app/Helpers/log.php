@@ -88,7 +88,10 @@ function filtrarCampos($array, $nombre) {
         break;                                 
         case 'crear':
             $keys = array('_token', 'updated_at', 'created_at');
-        break;             
+        break;
+        case 'crear_prestamo':
+            $keys = array('_token', 'updated_at', 'created_at','renta');
+        break;                     
             default: 
             $keys = array('created_at','updated_at');                                                   
     }

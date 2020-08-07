@@ -79,8 +79,8 @@ class AppServiceProvider extends ServiceProvider
         // Fase::observe(FaseObserver::class);
         // Titulo::observe(TituloObserver::class);
         Prestamo::observe(PrestamoObserver::class);
-        Renta::observe(RentaObserver::class);
-        Cuenta::observe(CuentaObserver::class);
+        // Renta::observe(RentaObserver::class);
+        // Cuenta::observe(CuentaObserver::class);
 
         /**
          * Paginate a standard Laravel Collection.

@@ -21,7 +21,7 @@ class CreateCuotasTable extends Migration
             $table->unsignedInteger('numero');
             $table->unsignedInteger('monto');
             $table->unsignedInteger('prestamo_id'); //restrict
-            $table->unsignedInteger('estado_id')->default(2); //restrict 2 activo
+            $table->unsignedInteger('estado_id')->default(1); //restrict 1 vigente
             $table->timestamps();
         });
     }

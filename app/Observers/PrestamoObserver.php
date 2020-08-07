@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Cuota;
 use App\Prestamo;
 use App\Traits\LogGenerico;
 
@@ -16,7 +17,13 @@ class PrestamoObserver
      */
     public function created(Prestamo $prestamo)
     {
-        $texto = obtenerTexto(array(), $prestamo->toArray(), 'crear');  
+
+        // Crear cuotas
+        if($prestamo->cuotas != null && $prestamo->cuotas > 0){
+            Cuota::agregarCuotasPrestamo($prestamo);
+
+        }        
+        $texto = obtenerTexto(array(), $prestamo->toArray(), 'crear_prestamo');  
         $this->logGenerico('Préstamo creado: '.$texto);
     }
 
