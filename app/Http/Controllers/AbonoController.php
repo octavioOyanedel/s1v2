@@ -24,7 +24,7 @@ class AbonoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

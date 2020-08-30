@@ -102,33 +102,14 @@ class PrestamoController extends Controller
      */
     public function update(Request $request, Prestamo $prestamo)
     {
-        $metodo_original = $prestamo->metodo_id;
-        $metodo_nuevo = $request->metodo_id;
+        // Caso 1 préstamo normal sin cambios críticos
+        // Caso 2 préstamo con cambio de cuotas -> Rehacer préstamo restando total pagado hasta la fecha
+        // Caso 3 préstamo con cambio de método de pago DPP (1) -> DEP (2) o DEP (2) -> DPP (1)
+        // Caso 4 préstamo con cambio de estado -> PAGADO : pagar cuotas ssi método es DPP (1)
+        // Caso 5 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
+        // 
+        // 
 
-        if($metodo_original != $metodo_nuevo){
-
-            // Cambio de DPP(1) a DEP(2)
-            if($metodo_original == 1 && $metodo_nuevo == 2){
-                // 1. Obtener total, sumar cuotas pagadas
-                //$total = sumarCuotas($prestamo->id);
-                // 2. Eliminar cuotas
-                // 3. Modificar préstamo con nueva fecha de pago
-            }
-            // Cambio de DEP(2) a DPP(1)
-            if($metodo_original == 2 && $metodo_nuevo == 1){
-                // 1. Obtener total, sumar abonos
-                $total = sumarAbonos($prestamo->id);
-                // 2. Agregar cuotas
-                // 3. Eliminar abonos
-                // 4. Modificar préstamo con nuevas cuotas
-            }
-        }
-
-        // Actualizar    
-        // $request['fecha'] = formatoFecha($request->fecha);
-        // $request['fecha_pago'] = formatoFecha($request->fecha_pago);
-        // $this->updateGenerico($request, $prestamo);
-        // return redirect('prestamos')->with('status', 'Préstamo Actualizado!');     
     }
 
     /**
@@ -142,5 +123,16 @@ class PrestamoController extends Controller
         $this->deleteGenerico(Prestamo::findOrFail($prestamo->id));
         return redirect('prestamos')->with('status', 'Préstamo Eliminado!');
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Prestamo  $prestamo
+     * @return \Illuminate\Http\Response
+     */
+    public function abonar(Prestamo $prestamo)
+    {
+        $this->deleteGenerico(Prestamo::findOrFail($prestamo->id));
+        return redirect('prestamos')->with('status', 'Préstamo Eliminado!');
+    }    
        
 }

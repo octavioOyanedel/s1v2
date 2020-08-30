@@ -14,7 +14,7 @@ class UpdateCuotasTable extends Migration
     public function up()
     {
         Schema::table('cuotas', function (Blueprint $table) {
-            $table->foreign('prestamo_id')->references('id')->on('prestamos')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('prestamo_id')->references('id')->on('prestamos')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('estado_id')->references('id')->on('estados')->onUpdate('cascade')->onDelete('restrict');
         });
     }

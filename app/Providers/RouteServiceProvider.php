@@ -64,8 +64,24 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapPrestamoRoutes();
 
+        $this->mapAbonoRoutes();
+
         //
     }
+
+    /**
+     * Define las rutas de abonos realizados.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAbonoRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/abono.php'));
+    }    
 
     /**
      * Define las rutas de estudios realizados.

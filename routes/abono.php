@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Rutas de Parentescos
+| Rutas de Cargas Familiares
 |--------------------------------------------------------------------------|
 */
 
-Route::resource('/prestamos', 'PrestamoController');
-
+Route::resource('/abonos', 'AbonoController');
