@@ -31,7 +31,7 @@ class PrestamoRequest extends FormRequest
                 'cuenta_id' => 'required',
                 'cheque' => 'required|numeric',
                 'renta_id' => 'required',
-                'monto' => 'required',
+                'monto' => 'required|numeric',
                 'metodo_id' => 'required',
                 'cuotas' => 'nullable',
                 'fecha_pago' => 'nullable|date',

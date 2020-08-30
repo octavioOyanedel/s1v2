@@ -28,7 +28,9 @@
 		                	<th></th>
 		                	<th></th>
 		                @endif
-		                
+		                @if ($contenido === 'prestamos')
+		                	<th></th>
+		                @endif		                
 						@foreach (obtenerCabecerasTablas($contenido) as $nombre => $clase)
 							<th class="{{ $clase }}"><b>{{ $nombre }}</b></th>
 						@endforeach	                
@@ -116,8 +118,7 @@
 			                			<x-enlace-accion titulo="Estudios Realizados" color="text-success" icono="fa-user-graduate" ruta="estudios.index" :id="$item->id"/>
 			                		@else
 			                			<x-enlace-accion titulo="Sin Estudios Realizados" color="grey-text" icono="fa-user-graduate" ruta="estudios.create" :id="$item->id"/>
-			                		@endif			                		
-			                		
+			                		@endif			                				                		
 			                	</td>
 			                	<td>
 			                		@if ($item->cargas->count() != 0)
@@ -127,7 +128,18 @@
 			                		@endif
 			                		
 			                	</td>			                	
-			                @endif							
+			                @endif	
+			                {{-- icono abonar --}}
+			                @if ($contenido === 'prestamos')
+								<td class="text-center">
+									@if ($item->metodo_id == 2)
+										<x-enlace-accion titulo="Abonar" color="text-default" icono="fa-hand-holding-usd" ruta="abonos.create" :id="$item->id"/>
+									@else
+										<x-enlace-accion titulo="No habilitado, abono solo permitido para préstamos DEPOSITO." color="grey-text" icono="fa-hand-holding-usd" ruta="" id=""/>
+									@endif
+									
+								</td>	
+							@endif	
 							@include(obtenerContenidoTabla($contenido))
 						</tr>
 						<!-- ventanas modales -->

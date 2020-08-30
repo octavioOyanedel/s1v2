@@ -77,7 +77,10 @@ function cargarFormulario($action)
             break;   
         case "prestamos.update":
             return 'inc.forms.prestamo.editar';
-            break;                                              
+            break;      
+        case "abonos.store":
+            return 'inc.forms.abono.abonar';
+            break;                                           
 	}
 }
 

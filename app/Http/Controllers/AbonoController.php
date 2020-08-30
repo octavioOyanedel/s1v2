@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Abono;
+use App\Prestamo;
+use App\Traits\LogGenerico;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\AbonoRequest;
 
 class AbonoController extends Controller
 {
+    use CrudGenerico;
+    use LogGenerico;   
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +28,11 @@ class AbonoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-
+        // dd($request->id);
+        $prestamo = Prestamo::findOrFail($request->id);
+        return view('app.abonos.create', compact('prestamo'));   
     }
 
     /**
@@ -33,9 +41,11 @@ class AbonoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AbonoRequest $request)
     {
-        //
+        $request['fecha'] = formatoFecha($request->fecha);   
+        $this->createGenerico($request, new Abono);
+        return redirect('prestamos')->with('status', 'Abono Agregado!');        
     }
 
     /**
