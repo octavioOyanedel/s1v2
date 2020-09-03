@@ -36,7 +36,7 @@ class PrestamoObserver
     public function updated(Prestamo $prestamo)
     {
         $texto = obtenerTexto($prestamo->getOriginal(), $prestamo->toArray(), 'editar_prestamo');
-        $this->logGenerico('Datos de prestamo editados: '.$texto);   
+        $this->logGenerico('Datos de préstamo editados: '.$texto);   
     }
 
     /**

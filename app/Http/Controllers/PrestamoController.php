@@ -102,9 +102,7 @@ class PrestamoController extends Controller
      */
     public function update(PrestamoRequest $request, Prestamo $prestamo)
     {
-        dd(formatoFecha($request->fecha));
-        // dd($prestamo->fecha);
-        // 
+
         // Caso 1 préstamo con cambio de método de pago DPP (1) -> DEP (2) o DEP (2) -> DPP (1) rehacer préstamo con nuevos parámetros 
         if($prestamo->metodo_id != $request->metodo_id){
             // DPP (1) -> DEP (2)
@@ -124,6 +122,30 @@ class PrestamoController extends Controller
         if($prestamo->estado_id == 1 && $prestamo->estado_id == 2){
             dd('prestamo pagado');
         }
+    
+        // Caso 4 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
+        if($prestamo->metodo_id == 2 && $prestamo->fecha != formatoFecha($request->fecha)){
+            dd('cambio de fecha de pago');
+        }
+
+        // Caso 5 préstamo con cambio dee interés
+        if($prestamo->renta_id != $request->renta_id){
+            
+            if($prestamo->metodo_id == 1){
+                dd('cambio de interes dpp');
+            }else{
+                dd('cambio de interes dep');
+            }
+        }
+
+        // Caso 6 préstamo normal sin cambios críticos
+        $request['fecha'] = formatoFecha($request->fecha);
+        if($request['fecha_pago'] != null){
+            $request['fecha_pago'] = formatoFecha($request->fecha_pago);
+        }    
+        
+        $this->updateGenerico($request, $prestamo);
+        return redirect('prestamos')->with('status', 'Préstamo Actualizado!');     
 
     }
 
