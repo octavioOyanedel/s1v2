@@ -100,15 +100,30 @@ class PrestamoController extends Controller
      * @param  \App\Prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestamo $prestamo)
+    public function update(PrestamoRequest $request, Prestamo $prestamo)
     {
-        // Caso 1 préstamo normal sin cambios críticos
+        dd(formatoFecha($request->fecha));
+        // dd($prestamo->fecha);
+        // 
+        // Caso 1 préstamo con cambio de método de pago DPP (1) -> DEP (2) o DEP (2) -> DPP (1) rehacer préstamo con nuevos parámetros 
+        if($prestamo->metodo_id != $request->metodo_id){
+            // DPP (1) -> DEP (2)
+            if($prestamo->metodo_id == 1 && $request->metodo_id == 2){
+                dd('cambio de dpp a dep');
+            }else{ // DEP (2) -> DPP (1)
+                dd('cambio de dep a dpp');
+            }
+        }
+
         // Caso 2 préstamo con cambio de cuotas -> Rehacer préstamo restando total pagado hasta la fecha
-        // Caso 3 préstamo con cambio de método de pago DPP (1) -> DEP (2) o DEP (2) -> DPP (1)
-        // Caso 4 préstamo con cambio de estado -> PAGADO : pagar cuotas ssi método es DPP (1)
-        // Caso 5 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
-        // 
-        // 
+        if($prestamo->metodo_id == 1 && $prestamo->cuotas != $request->cuotas){
+            dd('cambio de cuotas');
+        }
+
+        // Caso 3 préstamo con cambio de estado -> PAGADO : pagar cuotas ssi método es DPP (1)
+        if($prestamo->estado_id == 1 && $prestamo->estado_id == 2){
+            dd('prestamo pagado');
+        }
 
     }
 
