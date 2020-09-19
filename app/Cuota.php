@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Prestamo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Cuota extends Model
@@ -17,8 +18,33 @@ class Cuota extends Model
     ];
 
     /*******************************************************************************************
+    /************************************ Relaciones *******************************************
+    *******************************************************************************************/
+
+     
+    /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************
     /*******************************************************************************************
+
+    /**
+     * Descripción: Sumar cuotas de préstamo
+     * Entrada/s: prestamo de tipo Prestamo
+     * Salida: int
+     */
+    static public function sumarCuotasPagadas(Prestamo $prestamo)
+    {
+        return Cuota::where([['prestamo_id','=',$prestamo->id],['estado_id','=', 2]])->get()->sum('monto');
+    }
+
+    /**
+     * Descripción: Eliminar cuotas de préstamo
+     * Entrada/s: prestamo de tipo Prestamo
+     * Salida: void
+     */
+    static public function eliminarCuotasPrestamo(Prestamo $prestamo)
+    {
+        DB::table('cuotas')->where('prestamo_id', $prestamo->id)->delete();
+    }
 
     /**
      * Descripción: Guardar cuotas de préstamo

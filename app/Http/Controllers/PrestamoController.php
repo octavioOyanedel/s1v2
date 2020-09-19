@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuota;
 use App\Renta;
 use App\Socio;
 use App\Cuenta;
@@ -107,26 +108,35 @@ class PrestamoController extends Controller
         if($prestamo->metodo_id != $request->metodo_id){
             // DPP (1) -> DEP (2)
             if($prestamo->metodo_id == 1 && $request->metodo_id == 2){
-                dd('cambio de dpp a dep');
+                $request['monto'] = $prestamo->monto - Cuota::sumarCuotasPagadas($prestamo);
+                Cuota::eliminarCuotasPrestamo($prestamo);
             }else{ // DEP (2) -> DPP (1)
-                dd('cambio de dep a dpp');
+                $prestamo['cuotas'] = $request->cuotas;
+                $prestamo['fecha'] = formatoFecha($request->fecha);
+                $prestamo['monto'] = $prestamo->monto - sumarAbonos($prestamo->id);
+                $prestamo['renta_id'] = $request->renta_id;
+                Cuota::agregarCuotasPrestamo($prestamo);
             }
+        }else{
+            // Caso 2 préstamo con cambio de cuotas -> Rehacer préstamo restando total pagado hasta la fecha
+            if($prestamo->cuotas != $request->cuotas){
+                dd('cambio de cuotas');
+            }    
+
+            // Caso 4 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
+            if($prestamo->metodo_id == 2 && $prestamo->fecha != formatoFecha($request->fecha)){
+                dd('cambio de fecha de pago');
+            }        
         }
 
-        // Caso 2 préstamo con cambio de cuotas -> Rehacer préstamo restando total pagado hasta la fecha
-        if($prestamo->metodo_id == 1 && $prestamo->cuotas != $request->cuotas){
-            dd('cambio de cuotas');
-        }
+
 
         // Caso 3 préstamo con cambio de estado -> PAGADO : pagar cuotas ssi método es DPP (1)
         if($prestamo->estado_id == 1 && $prestamo->estado_id == 2){
             dd('prestamo pagado');
         }
     
-        // Caso 4 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
-        if($prestamo->metodo_id == 2 && $prestamo->fecha != formatoFecha($request->fecha)){
-            dd('cambio de fecha de pago');
-        }
+
 
         // Caso 5 préstamo con cambio dee interés
         if($prestamo->renta_id != $request->renta_id){

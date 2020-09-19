@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Abono;
 use App\Renta;
 use App\Estado;
 use Illuminate\Database\Eloquent\Model;
@@ -59,11 +60,10 @@ class Prestamo extends Model
 
     /**
      * Relación belongsTo
-     * Esta/e renta (interés) a un/a préstamo
+     * Esta/e renta (interés) pertenece a un/a préstamo
      */
     public function renta()
     {
         return $this->belongsTo('App\Renta');
-    }           
-
+    }      
 }
