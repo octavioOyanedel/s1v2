@@ -30,7 +30,6 @@ class AbonoController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request->id);
         $prestamo = Prestamo::findOrFail($request->id);
         return view('app.abonos.create', compact('prestamo'));   
     }

@@ -22,7 +22,7 @@ class Abono extends Model
     /**
      * Descripción: Sumar abonos
      * Entrada/s: id de préstamo
-     * Salida: int suma
+     * Salida: int suma de abonos.
      */
     static public function sumarAbonos($id)
     {
