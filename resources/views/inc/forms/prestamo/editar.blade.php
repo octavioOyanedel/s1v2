@@ -9,6 +9,8 @@
 	<p class="{{ $alinear }} h4 mb-4">{{ $titulo }}</p>
 
     <x-mensaje alerta="info" alinear="text-left" icono="alerta" mensaje="campos_obligatorio_rut" />
+
+    <input type="hidden" name="socio_id" value={{ $prestamo->socio_id }}>
     
     <!-- Fecha solicitud -->
     <x-input label="Fecha Solicitud" tipo="text" nombre="fecha" id="fecha" margen="mb-4" tamano="form-control-sm" :valor="formatoFecha($prestamo->fecha)" placeholder="Ej. 01-01-2020" obligatorio="si"/>  

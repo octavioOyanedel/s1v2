@@ -6,8 +6,8 @@ $(window).on('load',function(){
   
     // Verificación por si existe valor old
     if($('#metodo_id option:selected').val() == 1){
-        deshabilitar($('#fecha_pago'));
-        limpiarInput($('#fecha_pago'));            
+        limpiarInput($('#fecha_pago'));    
+        deshabilitar($('#fecha_pago'));        
         habilitar($('#cuotas'));
     }
 
@@ -47,7 +47,7 @@ $(window).on('load',function(){
     }   
 
     function limpiarInput(elemento){
-        elemento.val();
+        elemento.val('');   
     }
 
     function limpiarSelect(elemento){

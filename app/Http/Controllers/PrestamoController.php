@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Abono;
 use App\Cuota;
 use App\Renta;
 use App\Socio;
@@ -104,6 +105,10 @@ class PrestamoController extends Controller
     public function update(PrestamoRequest $request, Prestamo $prestamo)
     {
 
+        $request['fecha'] = formatoFecha($request->fecha);
+        if($request['fecha_pago'] != null){
+            $request['fecha_pago'] = formatoFecha($request->fecha_pago);
+        }      
         // Caso 1 préstamo con cambio de método de pago DPP (1) -> DEP (2) o DEP (2) -> DPP (1) rehacer préstamo con nuevos parámetros 
         if($prestamo->metodo_id != $request->metodo_id){
             // DPP (1) -> DEP (2)
@@ -111,50 +116,12 @@ class PrestamoController extends Controller
                 $request['monto'] = $prestamo->monto - Cuota::sumarCuotasPagadas($prestamo);
                 Cuota::eliminarCuotasPrestamo($prestamo);
             }else{ // DEP (2) -> DPP (1)
-                $prestamo['cuotas'] = $request->cuotas;
-                $prestamo['fecha'] = formatoFecha($request->fecha);
-                $prestamo['monto'] = $prestamo->monto - sumarAbonos($prestamo->id);
-                $prestamo['renta_id'] = $request->renta_id;
-                Cuota::agregarCuotasPrestamo($prestamo);
-            }
-        }else{
-            // Caso 2 préstamo con cambio de cuotas -> Rehacer préstamo restando total pagado hasta la fecha
-            if($prestamo->cuotas != $request->cuotas){
-                dd('cambio de cuotas');
-            }    
-
-            // Caso 4 préstamo con cambio fecha de solicitud -> rehacer préstamo con nuevos parámetros 
-            if($prestamo->metodo_id == 2 && $prestamo->fecha != formatoFecha($request->fecha)){
-                dd('cambio de fecha de pago');
-            }        
-        }
-
-
-
-        // Caso 3 préstamo con cambio de estado -> PAGADO : pagar cuotas ssi método es DPP (1)
-        if($prestamo->estado_id == 1 && $prestamo->estado_id == 2){
-            dd('prestamo pagado');
-        }
-    
-
-
-        // Caso 5 préstamo con cambio dee interés
-        if($prestamo->renta_id != $request->renta_id){
-            
-            if($prestamo->metodo_id == 1){
-                dd('cambio de interes dpp');
-            }else{
-                dd('cambio de interes dep');
+                $request['monto'] = $prestamo->monto - sumarAbonos($prestamo->id);
+                Abono::eliminarAbonosPrestamo($prestamo);
             }
         }
-
-        // Caso 6 préstamo normal sin cambios críticos
-        $request['fecha'] = formatoFecha($request->fecha);
-        if($request['fecha_pago'] != null){
-            $request['fecha_pago'] = formatoFecha($request->fecha_pago);
-        }    
-        
-        $this->updateGenerico($request, $prestamo);
+        $this->createGenerico($request, new Prestamo);
+        Prestamo::eliminarPrestamo($prestamo);
         return redirect('prestamos')->with('status', 'Préstamo Actualizado!');     
 
     }

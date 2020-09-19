@@ -5,6 +5,7 @@ namespace App;
 use App\Abono;
 use App\Renta;
 use App\Estado;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Prestamo extends Model
@@ -66,4 +67,14 @@ class Prestamo extends Model
     {
         return $this->belongsTo('App\Renta');
     }      
+
+    /**
+     * Descripción: Eliminar préstamo
+     * Entrada/s: prestamo de tipo Prestamo
+     * Salida: void
+     */
+    static public function eliminarPrestamo(Prestamo $prestamo)
+    {
+        DB::table('prestamos')->where('id', $prestamo->id)->delete();
+    }
 }
