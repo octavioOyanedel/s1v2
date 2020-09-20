@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 class BuscarController extends Controller
 {
     /**
-    * Buscar.
+    * Buscar....
     *
     * @return \Illuminate\Http\Response
     */

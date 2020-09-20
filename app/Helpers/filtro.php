@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 /**
  * Descripción: obtener nombre y valor de campos para filtro
  * Entrada/s: string nombre de tabla
- * Salida: arreglo asociativo con nombre y ruta
+ * Salida: arreglo asociativo con nombre y rutas
  */
 function obtenerCamposParaFiltro($nombre)
 {

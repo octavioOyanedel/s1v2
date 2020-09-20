@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        // User::observe(UserObserver::class);
+        User::observe(UserObserver::class);
         // Socio::observe(SocioObserver::class);
         // Urbe::observe(UrbeObserver::class);
         // Comuna::observe(ComunaObserver::class);
