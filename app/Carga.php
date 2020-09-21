@@ -163,6 +163,7 @@ class Carga extends Model
                 return $query->whereBetween('fecha_nac', [fechaRangoEdadIgualIni($edad_ini),fechaRangoEdad($edad_ini)]);
             }                       
         }
+
         if($edad_ini != null && $edad_fin === null){
             if((int)$edad_ini < 1){
                 return $query->where('fecha_nac','>=',date('Y-m-d'));
@@ -170,6 +171,7 @@ class Carga extends Model
                 return $query->where('fecha_nac','>=',fechaRangoEdad($edad_ini));
             }
         }
+        
         if($edad_ini === null && $edad_fin != null){
             if((int)$edad_fin < 1){
                 return $query->where('fecha_nac','>=',date('Y-m-d'));

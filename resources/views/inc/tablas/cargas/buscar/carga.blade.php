@@ -5,7 +5,7 @@
 
 	<!-- descripción -->
 	<td>
-
+		{{ $objeto->parentesco->nombre }}
 	</td>
 	<!-- detalle -->
 	<td>

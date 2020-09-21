@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Carga;
 use App\Socio;
+use App\Prestamo;
 use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -69,6 +70,14 @@ class BuscarController extends Controller
                 ->fecha($q, 'fecha_nac')        
                 ->get();
 
+            $prestamos = Prestamo::orderBy('created_at','DESC')
+                ->general($q, 'cheque')
+                ->general($q, 'monto')
+                ->general($q, 'cuotas')
+                ->fecha($q, 'fecha')
+                ->fecha($q, 'fecha_pago')        
+                ->get();        
+
             if($socios->count() > 0){
                 $this->iterarColeccion($socios, $coleccion);
             }
@@ -79,7 +88,11 @@ class BuscarController extends Controller
 
             if($cargas->count() > 0){
                 $this->iterarColeccion($cargas, $coleccion);
-            }            
+            }     
+
+            if($prestamos->count() > 0){
+                $this->iterarColeccion($prestamos, $coleccion);
+            }                      
 
             $total = count($coleccion);
             $coleccion->paginate(5);

@@ -31,7 +31,10 @@
 						    @break
 						    @case($objeto instanceof App\Carga)
 								@include('inc.tablas.cargas.buscar.carga')
-						    @break								        
+						    @break
+						    @case($objeto instanceof App\Prestamo)
+								@include('inc.tablas.prestamos.buscar.prestamo')
+						    @break							    						        
 						@endswitch
 					@endforeach	
 					</table>

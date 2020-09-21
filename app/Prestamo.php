@@ -77,4 +77,29 @@ class Prestamo extends Model
     {
         DB::table('prestamos')->where('id', $prestamo->id)->delete();
     }
+
+    /*******************************************************************************************
+    /******************************* Consultas búsqueda general ********************************
+    /*******************************************************************************************
+
+    /**
+     * scope busqueda fecha 
+     */
+    public function scopeFecha($query, $q, $campo)
+    {
+        if ($q && esFormatoFecha($q)) {
+            return $query->orWhere($campo, '=', formatoFecha($q));
+        }
+    }
+
+    /**
+     * scope busqueda general
+     */
+    public function scopeGeneral($query, $q, $campo)
+    {
+        if ($q) {
+            return $query->orWhere($campo, 'LIKE', "%$q%");
+        }
+    }
+
 }
