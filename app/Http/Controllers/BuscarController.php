@@ -71,11 +71,12 @@ class BuscarController extends Controller
                 ->get();
 
             $prestamos = Prestamo::orderBy('created_at','DESC')
+                ->union($q, 'estados', 'estados.id', 'prestamos.estado_id', 'estados.nombre')            
                 ->general($q, 'cheque')
                 ->general($q, 'monto')
                 ->general($q, 'cuotas')
                 ->fecha($q, 'fecha')
-                ->fecha($q, 'fecha_pago')        
+                ->fecha($q, 'fecha_pago')   
                 ->get();        
 
             if($socios->count() > 0){

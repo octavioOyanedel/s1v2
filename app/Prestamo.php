@@ -102,4 +102,14 @@ class Prestamo extends Model
         }
     }
 
+    /**
+     * scope busqueda unión (join)
+     */
+    public function scopeUnion($query, $q, $tabla2, $tabla2_id, $tabla1_id, $tabla2_campo)
+    {
+        if ($q) {
+            return $query->join($tabla2,$tabla1_id,'=',$tabla2_id)->orWhere($tabla2_campo,'LIKE',"%$q%");
+        }
+    }       
+
 }
