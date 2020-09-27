@@ -2,6 +2,7 @@
 
 use App\Abono;
 use App\Prestamo;
+use App\Cuota;
 
 /**
  * Descripción: obtener formato moneda para visualización en tablas, agrega $ y puntos por unidad
@@ -35,4 +36,24 @@ function obtenerMontoPrestamo($id)
 		return $prestamo->monto;
 	}
     return 0;
+}
+
+/**
+ * Descripción: Obtener cuotas de préstamo
+ * Entrada/s: prestamo de tipo Prestamo
+ * Salida: colección de cuotas
+ */
+function obtenerCuotasDePrestamo(Prestamo $prestamo)
+{
+    return Cuota::obtenerCuotasDePrestamo($prestamo);
+}
+
+/**
+ * Descripción: Obtener estado
+ * Entrada/s: prestamo de tipo Prestamo
+ * Salida: string nombre estado
+ */
+function obtenerNombreEstado(Cuota $cuota)
+{
+    return Estado::obtenerNombreEstado($cuota);
 }

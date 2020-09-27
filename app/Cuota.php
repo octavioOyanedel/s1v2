@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Estado;
 use App\Prestamo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +22,14 @@ class Cuota extends Model
     /************************************ Relaciones *******************************************
     *******************************************************************************************/
 
+     /**
+     * Relación belongsTo
+     * Esta/e estado de préstamo pertenece a un/a préstamo
+     */
+    public function estado()
+    {
+        return $this->belongsTo('App\Estado');
+    }    
      
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************
@@ -106,5 +115,15 @@ class Cuota extends Model
             $cuota->save();
             $mes_pago++;
         }
-    }       
+    }    
+
+    /**
+     * Descripción: Obtener cuotas de préstamo
+     * Entrada/s: prestamo de tipo Prestamo
+     * Salida: colección de cuotas
+     */
+    static public function obtenerCuotasDePrestamo(Prestamo $prestamo)
+    {
+        return DB::table('cuotas')->where('prestamo_id', $prestamo->id)->get();
+    }   
 }

@@ -35,8 +35,5 @@
 		    @default
 		    	{{ $objeto[$nombre] }}
 		@endswitch
-
 	</td>					
 </tr>
-
-

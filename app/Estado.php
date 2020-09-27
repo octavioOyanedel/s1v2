@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cuota;
 use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model
@@ -14,4 +15,5 @@ class Estado extends Model
     protected $fillable = [
         'nombre',
     ];
+
 }

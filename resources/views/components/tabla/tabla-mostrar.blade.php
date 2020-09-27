@@ -16,6 +16,19 @@
 				@endforeach								
 			</tbody>
 		</table>
+
+		<!-- Tablas adicionales en vista ver objeto -->
+		
+		@switch($objeto)
+		    @case($objeto instanceof App\Prestamo)
+		    	@if ($objeto->cuotas)
+		    		@include('inc.tablas.prestamos.mostrar_cuotas')
+		  		@else
+					@include('inc.tablas.prestamos.mostrar_abonos')
+		    	@endif		
+		    @break							    						        
+		@endswitch
+
 	</div>
 
 </div>

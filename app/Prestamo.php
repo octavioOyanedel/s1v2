@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Abono;
+use App\Cuota;
 use App\Renta;
 use App\Estado;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +68,15 @@ class Prestamo extends Model
     {
         return $this->belongsTo('App\Renta');
     }      
+
+    /**
+     * Relación belongsTo
+     * Esta/e renta (interés) pertenece a un/a préstamo
+     */
+    public function cuotas()
+    {
+        return $this->belongsToMany('App\Cuota');
+    }   
 
     /**
      * Descripción: Eliminar préstamo
