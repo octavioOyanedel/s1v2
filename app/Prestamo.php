@@ -105,11 +105,34 @@ class Prestamo extends Model
     /**
      * scope busqueda unión (join)
      */
-    public function scopeUnion($query, $q, $tabla2, $tabla2_id, $tabla1_id, $tabla2_campo)
+    public function scopeUnionEstados($query, $q)
     {
         if ($q) {
-            return $query->join($tabla2,$tabla1_id,'=',$tabla2_id)->orWhere($tabla2_campo,'LIKE',"%$q%");
+            return $query->join('estados','prestamos.estado_id','=','estados.id')->orWhere('estados.nombre','LIKE',"%$q%");
+        }
+    }
+
+    /**
+     * scope busqueda unión (join)
+     */
+    public function scopeUnionMetodos($query, $q)
+    {
+        if ($q) {
+            return $query->join('metodos','prestamos.metodo_id','=','metodos.id')->orWhere('metodos.nombre','LIKE',"%$q%");
+        }
+    }
+
+    /**
+     * scope busqueda unión (join)
+     */
+    public function scopeUnionSocios($query, $q)
+    {
+        if(strpos(trim($q), ' ') != null){
+            $nombre = separarNombreApellido($q)['nombre'];
+            $apellido = separarNombreApellido($q)['apellido'];
+            return $query->join('socios','prestamos.socio_id','=','socios.id')->orWhere('socios.nombre1','LIKE',"%$nombre%")->orWhere('socios.apellido1','LIKE',"%$apellido%");
+        }else{
+            return $query->join('socios','prestamos.socio_id','=','socios.id')->orWhere('socios.nombre1','LIKE',"%$q%")->orWhere('socios.apellido1','LIKE',"%$q%")->orWhere('socios.rut','LIKE',"%$q%");
         }
     }       
-
 }

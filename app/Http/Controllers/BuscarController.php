@@ -70,14 +70,16 @@ class BuscarController extends Controller
                 ->fecha($q, 'fecha_nac')        
                 ->get();
 
-            $prestamos = Prestamo::orderBy('created_at','DESC')
-                ->union($q, 'estados', 'estados.id', 'prestamos.estado_id', 'estados.nombre')            
+            $prestamos = Prestamo::orderBy('prestamos.created_at','DESC')
+                ->unionEstados($q)
+                ->unionMetodos($q)
+                ->unionSocios($q)
                 ->general($q, 'cheque')
                 ->general($q, 'monto')
                 ->general($q, 'cuotas')
                 ->fecha($q, 'fecha')
                 ->fecha($q, 'fecha_pago')   
-                ->get();        
+                ->get();             
 
             if($socios->count() > 0){
                 $this->iterarColeccion($socios, $coleccion);
