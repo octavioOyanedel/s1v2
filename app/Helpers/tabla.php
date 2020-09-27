@@ -34,6 +34,9 @@ function obtenerContenidoTabla($nombre)
 		break;
 		case "prestamos":
 			return 'inc.tablas.prestamos.listar';
+		break;	
+		case "ver_prestamo":
+			return 'inc.tablas.prestamos.mostrar';
 		break;						
 	}
 }
@@ -72,7 +75,10 @@ function obtenerCabecerasTablas($nombre)
 		break;	
 		case "prestamos":
 			return array('Estado'=>'', 'Fecha de Solicitud'=>'text-center', 'Socio'=>'', 'N° Préstamo'=>'text-center', 'Cuenta'=>'', 'Cheque'=>'', 'Monto'=>'', 'Método de Pago'=>'', 'Cuotas'=>'text-center', 'Fecha de Pago'=>'text-center');
-		break;					
+		break;
+		case "ver_prestamo":
+			return array('Socio'=>'socio_id', 'Fecha Solicitud'=>'fecha', 'N° Préstamo'=>'numero', 'Cuenta'=>'cuenta_id', 'Cheque'=>'cheque', 'Monto'=>'monto', 'Cuotas'=>'cuotas', 'Método de Pago'=>'metodo_id', 'Interés'=>'renta_id', 'Estado'=>'estado_id', 'Fecha de Pago'=>'fecha_pago', 'Fecha de Creación'=>'created_at','Última Actualización'=>'updated_at');
+		break;								
 	}
 }
 
@@ -109,6 +115,9 @@ function obtenerRutaEditar($nombre)
 		break;				
 		case "Datos de Estudio Realizado":
 			return 'estudios.edit';
-		break;	
+		break;
+		case "Datos de Préstamo":
+			return 'prestamos.edit';
+		break;			
 	}
 }

@@ -59,7 +59,7 @@
 								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="estudios.show" :id="$item->id"/>
 								    @break	
 								    @case('prestamos')
-								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="estudios.show" :id="$item->id"/>
+								        <x-enlace-accion titulo="Ver" color="text-primary" icono="fa-eye" ruta="prestamos.show" :id="$item->id"/>
 								    @break											    								    						    								    
 								@endswitch							
 							</td>

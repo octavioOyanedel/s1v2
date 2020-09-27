@@ -29,7 +29,7 @@ function esActive($ruta, $titulo)
 			}	
 		break;
 		case 'préstamos':
-			if ($ruta === 'abonos/create' || $ruta === 'prestamos' || $ruta === 'prestamos/create' || preg_match('/^prestamos\/([0-9]*)\/edit/', $ruta)){
+			if ($ruta === 'abonos/create' || $ruta === 'prestamos' || $ruta === 'prestamos/create' || preg_match('/^prestamos\/([0-9]*)\/edit/', $ruta) || preg_match('/^prestamos\/([0-9]*)/', $ruta)){
 			    return 'active';
 			}	
 		break;					

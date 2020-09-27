@@ -74,7 +74,7 @@ class PrestamoController extends Controller
      */
     public function show(Prestamo $prestamo)
     {
-        //
+        return view('app.prestamos.show', compact('prestamo'));
     }
 
     /**
